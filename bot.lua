@@ -22,8 +22,8 @@ funtion tdm.getBotSpawnEntity(id)
 	if team == 1 then
 		return tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
 	end
-	if team == 1 then
+	if team == 2 then
 		retitm tdm.random_array_value(tdm.find_entity_types("Env_Item"))
 	end
-	error(id.." is in unknown team: "..team)
+	error("player "..id.." is in unknown team: "..team)
 end
