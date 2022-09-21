@@ -1,21 +1,21 @@
 tdm.rarity = {}
 
 tdm.rarity.common = {
-	name = "Common"
+	name = "Common",
 	color = rgb(100, 100, 100)
 }
 
 tdm.rarity.rare = {
-	name = "Rare"
+	name = "Rare",
 	color = rgb(100, 100, 100)
 }
 
 tdm.rarity.legendary = {
-	name = "Legendary"
+	name = "Legendary",
 	color = rgb(100, 100, 100)
 }
 
 tdm.rarity.global = {
-	name = "Global"
+	name = "Global",
 	color = rgb(100, 100, 100)
 }
