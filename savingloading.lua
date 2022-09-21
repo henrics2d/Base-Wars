@@ -16,7 +16,7 @@ function tdm.load(id)
 		return
 	end
 	local playerdata = tdm.player[id]
-	local file = io.open(tdm.savesdirectory.."/usgnsave_"..usgn..".txt","r")
+	local file = io.open(tdm.directories.saves.."/usgnsave_"..usgn..".txt","r")
 	if file == nil then
 		return
 	end
@@ -35,7 +35,7 @@ function tdm.save(id)
 		return
 	end
 	local playerdata = tdm.player[id]
-	local file = io.open(tdm.savesdirectory.."/usgnsave_"..usgn..".txt","w")
+	local file = io.open(tdm.directories.saves.."/usgnsave_"..usgn..".txt","w")
 	file:write(playerdata.battlescore.."\n")
 	file:write(playerdata.rank.."\n")
 	file:write(playerdata.exp.."\n")
