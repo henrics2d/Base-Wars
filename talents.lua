@@ -84,12 +84,13 @@ function tdm.givePlayerTalent(id, talent)
 	if (tdm.isPlayerHasTalent(id, talent)) then
 		error(player(id,"name").." ("..id..") already has talent: "..talent.name)
 	end
-  tdm.playerTalents[id][talent] = true
-  tdm.playerTalents[id][#tdm.playerTalents[id]+1] = talent
-  print("  accepted, player aquired talent!")
-  local rarity = talent.rarity
-  msg2(id,rgb(255,255,255).."Recieved Talent: "..rgb(255,255,128)..talent.name..rgb(0,200,0).." ("..rarity.color..rarity.name..rgb(255,255,255)..")@C")
-  return true
+	local playerdata = tdm.player[id]
+	playerdata.talents[talent] = true
+	playerdata.talents[#tdm.playerTalents[id]+1] = talent
+	print("  accepted, player aquired talent!")
+	local rarity = talent.rarity
+	msg2(id,rgb(255,255,255).."Recieved Talent: "..rgb(255,255,128)..talent.name..rgb(0,200,0).." ("..rarity.color..rarity.name..rgb(255,255,255)..")@C")
+	return true
 end
 
 
