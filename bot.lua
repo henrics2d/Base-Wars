@@ -16,14 +16,14 @@ function tdm.bots(id)
 	end
 end
 
-funtion tdm.getBotSpawnEntity(id)
+function tdm.getBotSpawnEntity(id)
 	checks.requireType("id", id, "number")
 	local team = player(id,"team")
 	if team == 1 then
 		return tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
 	end
 	if team == 2 then
-		retitm tdm.random_array_value(tdm.find_entity_types("Env_Item"))
+		return tdm.random_array_value(tdm.find_entity_types("Env_Item"))
 	end
 	error("player "..id.." is in unknown team: "..team)
 end
