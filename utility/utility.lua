@@ -21,6 +21,7 @@ function rgb(red,green,blue)
 end
 
 dofile(tdm.directories.utility.."/timer2.lua")
+dofile(tdm.directories.utility.."/checks.lua")
 
 --Made by EnderCrypt
 

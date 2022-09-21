@@ -13,7 +13,6 @@ tdm.directories.data = tdm.directory.."/data"
 dofile(tdm.directories.utility.."/utility.lua")
 dofile(tdm.directory.."/console.lua")
 dofile(tdm.directory.."/savingloading.lua")
-dofile(tdm.directory.."/checks.lua")
 dofile(tdm.directories.data.."/ranks.lua")
 dofile(tdm.directory.."/custommenus.lua")
 dofile(tdm.directory.."/health.lua")
