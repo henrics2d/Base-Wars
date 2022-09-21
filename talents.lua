@@ -30,7 +30,7 @@ end
 function tdm.registerTalent(talentData)
   checks.requireType("talentData", talentData, "table")
   local id = #tdm.talents+1
-  talentData = id
+  talentData.id = id
   tdm.talents[id] = talentData
 end
 
