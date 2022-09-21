@@ -1,4 +1,4 @@
-tdm.registerTalent({
+ tdm.registerTalent({
   name = "Engage",
   rarity = "Legendary",
   chance = 10,
@@ -338,7 +338,7 @@ tdm.registerTalent({
   name = "Hell's Partisan",
   rarity = "Rare",
   chance = 30,
-  description = "Hitting an enemy whos on fire or with 30+ damage causes you to throw a followup burning spear",
+  description = "Hitting an enemy whos on fire or with 40+ damage causes you to throw a followup burning spear",
   description2 = "Extinguishes enemy fire on succesful fiery hits",
   healthbonus = 4,
   speedbonus = 1,
@@ -348,7 +348,7 @@ tdm.registerTalent({
       tdm.spawnprojectile(source,tdm.entitytypes.burningspear)
       tdm.player[id].effects.fire = 0
     end
-    if hpdmg >= 30 then
+    if hpdmg >= 40 then
       tdm.spawnprojectile(source,tdm.entitytypes.burningspear)
     end
   end,
