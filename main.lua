@@ -56,6 +56,9 @@ end
 addhook("die","tdm.deletePlayerClass")
 function tdm.deletePlayerClass(id)
   parse("hudtxtclear "..id)
+  if tdm.player[id].gui.solarhalo ~= nil then
+    freeimage(tdm.player[id].gui.solarhalo)
+  end
   if tdm.player[id].image ~= nil then
     freeimage(tdm.player[id].image)
     tdm.player[id].image = nil
@@ -67,6 +70,9 @@ addhook("spawn","tdm.defaultSpawns")
 function tdm.defaultSpawns(id)
   if tdm.player[id].defaultclass == nil then
     return
+  end
+  if tdm.player[id].chosentalent.name == "Solar Eruption" then
+    tdm.player[id].gui.solarhalo = image("gfx/henristdm/solarradiance.png",player(id,"x"),player(id,"y"),200 + id,3)
   end
   tdm.setPlayerClass(id,tdm.player[id].defaultclass)
   if player(id,"team") == 1 then
@@ -141,8 +147,8 @@ function tdm.ranks(killer,victim,x,y,killerobject,assistant)
 		tdm.player[killer].exp = 0
 		tdm.player[killer].rank = tdm.player[killer].rank + 1
 		msg2(killer,""..rgb(255,255,255).."Rank "..rgb(255,255,128).."Up!@C")
-      tdm.givePlayerRandomNewTalent(killer)
-      tdm.deleteRankIcon(killer)
+    tdm.givePlayerRandomNewTalent(killer)
+    tdm.deleteRankIcon(killer)
 		tdm.createRankIcon(killer)
 		msg(rgb(255,255,255)..player(killer, "name").." ranked up to "..rgb(255,255,128)..tdm.playerranks[tdm.player[killer].rank].name.."!")
 	end

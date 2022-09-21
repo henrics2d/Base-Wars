@@ -107,7 +107,7 @@ tdm.commands[#tdm.commands+1] = {
 }
 
 tdm.commands[#tdm.commands+1] = {
-  locked = false,
+  locked = true,
   permlevel = "Tester",
   name = "Recieve Random Talent",
   callback = function(id)
