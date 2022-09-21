@@ -60,7 +60,7 @@ function tdm.listPlayersMissingTalents(id)
 end
 
 function tdm.listPlayersTalents(id)
-	checks.requireType("id", id, "string")
+	checks.requireType("id", id, "number")
 	local talents = {}
 	for talent,_ in pairs(tdm.player[id].talents) do
 		talents[#talents + 1] = talent
