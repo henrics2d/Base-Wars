@@ -3,10 +3,7 @@ images = "gfx/henristdm/"
 
 tdm.directory = "sys/lua/henristdm"
 
-
 tdm.directories = {}
-
-
 tdm.directories.saves = tdm.directory.."/saves"
 tdm.directories.vehicles = tdm.directory.."/vehicles"
 tdm.directories.customnpc = tdm.directory.."/customnpcs"
