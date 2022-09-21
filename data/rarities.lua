@@ -12,7 +12,12 @@ tdm.rarity.rare = {
 
 tdm.rarity.legendary = {
 	name = "Legendary",
-	color = rgb(100, 100, 100)
+	color = rgb(0, 255, 100)
+}
+
+tdm.rarity.mythical = {
+	name = "Mythical",
+	color = rgb(120, 0, 150)
 }
 
 tdm.rarity.global = {
