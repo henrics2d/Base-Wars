@@ -3,14 +3,16 @@ images = "gfx/henristdm/"
 
 tdm.directory = "sys/lua/henristdm"
 
-tdm.savesdirectory = tdm.directory.."/saves"
-tdm.vehiclesdirectory = tdm.directory.."/vehicles"
-tdm.customnpcsdirectory = tdm.directory.."/customnpcs"
-tdm.datadirectory = tdm.directory.."/data"
+tdm.directories = {}
+tdm.directories.saves = tdm.directory.."/saves"
+tdm.directories.vehicles = tdm.directory.."/vehicles"
+tdm.directories.customnpc = tdm.directory.."/customnpcs"
+tdm.directories.utility = tdm.directory.."/utility"
+tdm.directories.data = tdm.directory.."/data"
 
-dofile(tdm.directory.."/utility.lua")
+dofile(tdm.directories.utility.."/utility.lua")
+dofile(tdm.directories.utility.."/console.lua")
 dofile(tdm.directory.."/savingloading.lua")
-dofile(tdm.directory.."/parsesettings.lua")
 dofile(tdm.directory.."/checks.lua")
 dofile(tdm.directory.."/ranks.lua")
 dofile(tdm.directory.."/custommenus.lua")
@@ -26,8 +28,8 @@ dofile(tdm.directory.."/gui.lua")
 dofile(tdm.directory.."/spawns.lua")
 dofile(tdm.directory.."/talents.lua")
 dofile(tdm.directory.."/customchat.lua")
-dofile(tdm.vehiclesdirectory.."/engine.lua")
-dofile(tdm.customnpcsdirectory.."/engine.lua")
+dofile(tdm.directories.vehicles.."/engine.lua")
+dofile(tdm.directories.customnpc.."/engine.lua")
 
 tdm.player = {}
 

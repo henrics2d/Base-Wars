@@ -1,6 +1,3 @@
- 
-
-
 tdm.registerTalent({
   name = "Engage",
   rarity = "Legendary",

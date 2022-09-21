@@ -35,7 +35,7 @@ function tdm.registerTalent(talentData)
 end
 
 
-dofile(tdm.datadirectory.."/talents.lua")
+dofile(tdm.directories.data.."/talents.lua")
 
 
 tdm.playerTalents = {}
