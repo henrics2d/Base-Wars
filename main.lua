@@ -11,7 +11,7 @@ tdm.directories.utility = tdm.directory.."/utility"
 tdm.directories.data = tdm.directory.."/data"
 
 dofile(tdm.directories.utility.."/utility.lua")
-dofile(tdm.directories.utility.."/console.lua")
+dofile(tdm.directory.."/console.lua")
 dofile(tdm.directory.."/savingloading.lua")
 dofile(tdm.directory.."/checks.lua")
 dofile(tdm.directories.data.."/ranks.lua")
