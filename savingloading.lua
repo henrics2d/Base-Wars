@@ -10,13 +10,21 @@ function tdm.initPlayer(id)
 	playerdata.chosentalent = tdm.talents[21]
 end
 
+function tdm.getPlayerSaveFile(id)
+	local usgn = player(id,"usgn")
+	if usgn == 0 then
+		error("player "..player(id,"name").." ("..id..") does not have a USGN and thus cant save")
+	end
+	return tdm.directories.saves.."/usgnsave_"..usgn..".txt"
+end
+
 function tdm.load(id)
 	local usgn = player(id,"usgn")
 	if usgn == 0 then
 		return
 	end
 	local playerdata = tdm.player[id]
-	local file = io.open(tdm.directories.saves.."/usgnsave_"..usgn..".txt","r")
+	local file = io.open(tdm.getPlayerSaveFile(id),"r")
 	if file == nil then
 		return
 	end
@@ -35,7 +43,7 @@ function tdm.save(id)
 		return
 	end
 	local playerdata = tdm.player[id]
-	local file = io.open(tdm.directories.saves.."/usgnsave_"..usgn..".txt","w")
+	local file = io.open(tdm.getPlayerSaveFile(id),"w")
 	file:write(playerdata.battlescore.."\n")
 	file:write(playerdata.rank.."\n")
 	file:write(playerdata.exp.."\n")
