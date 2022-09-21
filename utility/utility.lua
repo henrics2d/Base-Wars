@@ -36,7 +36,7 @@ function misc.stringsplit(text, separator)
 	end
 	local results = {}
 	for sequence in string.gmatch(text, "([^"..separator.."]+)") do
-		results[#results + 1] + sequence
+		results[#results + 1] = sequence
 	end
 	return results
 end
