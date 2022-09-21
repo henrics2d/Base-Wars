@@ -6,6 +6,7 @@ tdm.directory = "sys/lua/henristdm"
 tdm.savesdirectory = tdm.directory.."/saves"
 tdm.vehiclesdirectory = tdm.directory.."/vehicles"
 tdm.customnpcsdirectory = tdm.directory.."/customnpcs"
+tdm.datadirectory = tdm.directory.."/data"
 
 dofile(tdm.directory.."/utility.lua")
 dofile(tdm.directory.."/savingloading.lua")
