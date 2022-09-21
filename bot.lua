@@ -3,7 +3,7 @@ function tdm.bots(id)
 	if player(id,"bot") then
 		tdm.deletePlayerClass(id)
 		tdm.setPlayerClass(id,tdm.getRandomClass())
-		tdm.player[id].chosentalent = tdm.generateRandomTalent(id)
+		tdm.player[id].chosentalent = tdm.generateRandomNewTalent(id)
 		if tdm.player[id].class.unique then
 			tdm.bots(id)
 			console.strip(id, 47)
@@ -16,14 +16,14 @@ function tdm.bots(id)
 	end
 end
 
-funtion tdm.getBotSpawnEntity(id)
-	checks.requireType("id", id, "number")
-	local team = player(id,"team")
-	if team == 1 then
-		return tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
-	end
-	if team == 1 then
-		retitm tdm.random_array_value(tdm.find_entity_types("Env_Item"))
-	end
-	error(id.." is in unknown team: "..team)
+function tdm.getBotSpawnEntity(id)
+  checks.requireType("id", id, "number")
+  local team = player(id,"team")
+  if team == 1 then
+    return tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
+  end
+  if team == 2 then
+    return tdm.random_array_value(tdm.find_entity_types("Env_Item"))
+  end
+  error("player "..id.." is in unknown team: "..team)
 end
