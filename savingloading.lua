@@ -49,7 +49,7 @@ function tdm.saveEnginePlayerLoad(playerdata, file)
 
 	-- talents
 	local talentsString = SaveEngine.read(file,"talent","owned","")
-	for talentId, _ in ipairs(misc.stringsplit(talentsString, ",")) do -- talentId should probalbly have leading/trailing spaces removed
+	for _,talentId in ipairs(misc.stringsplit(talentsString, ",")) do -- talentId should probalbly have leading/trailing spaces removed
 		local talent = tdm.getTalentById(talentId)
 		if (talent == nil) then
 			print("failed to give player "..id.." talent: "..talentId.." (unknown talent)")

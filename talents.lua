@@ -33,9 +33,9 @@ function tdm.registerTalent(talentData)
   tdm.talents[talentData.id] = talentData
 end
 
-function tdm.getTalentById(id)
-  checks.requireType("id", id, "string")
-  return tdm.talents[id]
+function tdm.getTalentById(talentId)
+  checks.requireType("talentId", talentId, "string")
+  return tdm.talents[talentId]
 end
 
 dofile(tdm.directories.data.."/talents.lua")
