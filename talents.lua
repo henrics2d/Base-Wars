@@ -30,24 +30,39 @@ end
 function tdm.registerTalent(talentData)
   checks.requireType("talentData", talentData, "table")
   local id = #tdm.talents+1
-  talentData.id = id
-  tdm.talents[id] = talentData
+  talentData.id = idtalentData
+  tdm.talents[id] =
 end
 
 
 dofile(tdm.directories.data.."/talents.lua")
 
-
 tdm.playerTalents = {}
 
-function tdm.givePlayerTalent(id,talent)
-  print("trying to give player: "..talent.name)
-  if (tdm.playerTalents[id][talent] ~= nil) then
-    print("  rejected, player already has it!")
-    local talent = tdm.generateRandomTalent(id)
-    tdm.givePlayerTalent(id,talent)
-    return
-  end
+function tdm.isPlayerHasTalent(id, talent)
+	return (tdm.playerTalents[id][talent] == nil)
+end
+
+function tdm.listPlayersMissingTalents(id)
+	local talents = {}
+	for _,talent in ipairs(tdm.talents) do
+		if (tdm.isPlayerHasTalent(id, talent) == false) then
+			talents[#talents+1] = talent
+		end
+	end
+	return talents
+end
+
+function tdm.givePlayerRandomNewTalent(id)
+	local newTalent = tdm.generateRandomNewTalent(id)
+	tdm.givePlayerTalent(id, newTalent)
+	return newTalent
+end
+
+function tdm.givePlayerTalent(id, talent)
+	if (tdm.isPlayerHasTalent(id, talent)) then
+		error(player(id,"name").." ("..id..") already has talent: "..talent.name)
+	end
   tdm.playerTalents[id][talent] = true
   tdm.playerTalents[id][#tdm.playerTalents[id]+1] = talent
   print("  accepted, player aquired talent!")
@@ -56,13 +71,17 @@ function tdm.givePlayerTalent(id,talent)
 end
 
 
-function tdm.generateRandomTalent(id)
+function tdm.generateRandomNewTalent(id)
+	local missingTalents = tdm.listPlayersMissingTalents(id)
+	if (#missingTalents == 0) then
+		return nil
+	end
 	local chances = 0
-	for _,talent in ipairs(tdm.talents) do
+	for _,talent in ipairs(missingTalents) do
 		chances = chances + talent.chance
 	end
 	local target = chances * math.random()
-	for _,talent in ipairs(tdm.talents) do
+	for _,talent in ipairs(missingTalents) do
 		target = target - talent.chance
 		if target <= 0 then
 			return talent
