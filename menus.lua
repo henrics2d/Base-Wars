@@ -125,7 +125,7 @@ function tdm.talentDescription(id,button,data,parameter)
 end
 
 function tdm.pickTalentList(id)
-  sme.createMenu(id,tdm.pickTalent,tdm.showTalentUnlocked,"Owned Talents",true,tdm.playerTalents[id],false)
+  sme.createMenu(id,tdm.pickTalent,tdm.showTalentUnlocked,"Owned Talents",true,tdm.listPlayersTalents(id),false)
 end
 
 function tdm.showTalentUnlocked(id,data,parameter)

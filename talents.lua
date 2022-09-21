@@ -29,21 +29,23 @@ end
 
 function tdm.registerTalent(talentData)
   checks.requireType("talentData", talentData, "table")
-  local id = #tdm.talents+1
-  talentData.id = id
-  tdm.talents[id] = talentData
+  tdm.talents[#tdm.talents+1] = talentData
+  tdm.talents[talentData.id] = talentData
 end
 
+function tdm.getTalentById(id)
+  checks.requireType("id", id, "string")
+  return tdm.talents[id]
+end
 
 dofile(tdm.directories.data.."/talents.lua")
 
 
-tdm.playerTalents = {}
-
 function tdm.isPlayerHasTalent(id, talent)
 	checks.requireType("id", id, "number")
 	checks.requireType("talent", talent, "table")
-	return (tdm.playerTalents[id][talent] ~= nil)
+	local playerdata = tdm.player[id]
+	return (playerdata.talents[talent] ~= nil)
 end
 
 function tdm.listPlayersMissingTalents(id)
@@ -53,6 +55,15 @@ function tdm.listPlayersMissingTalents(id)
 		if (tdm.isPlayerHasTalent(id, talent) == false) then
 			talents[#talents+1] = talent
 		end
+	end
+	return talents
+end
+
+function tdm.listPlayersTalents(id)
+	checks.requireType("id", id, "number")
+	local talents = {}
+	for talent,_ in ipairs(tdm.player[id].talents) do
+		talents[#talents + 1] = talent
 	end
 	return talents
 end
