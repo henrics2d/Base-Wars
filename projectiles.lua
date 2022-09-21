@@ -104,7 +104,7 @@ tdm.entitytypes.burningspear = {
     parse("explosion "..entity.position.x.." "..entity.position.y.." 10 10 "..entity.owner)
   end,
   onDespawn = function(entity)
-    parse("explosion "..entity.position.x.." "..entity.position.y.." 30 50 "..entity.owner)
+    parse("explosion "..entity.position.x.." "..entity.position.y.." 30 0 "..entity.owner)
   end
 }
 
