@@ -48,7 +48,7 @@ function tdm.saveEnginePlayerLoad(playerdata, file)
 	playerdata.kills = SaveEngine.read(file,"status","kills",playerdata.kills)
 
 	-- talents
-	local talentsString = SaveEngine.read(file,"talents","owned","")
+	local talentsString = SaveEngine.read(file,"talent","owned","")
 	for talentId, _ in ipairs(misc.stringsplit(talentsString, ",")) do -- talentId should probalbly have leading/trailing spaces removed
 		local talent = tdm.getTalentById(talentId)
 		if (talent == nil) then
