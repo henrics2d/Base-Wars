@@ -43,7 +43,7 @@ tdm.playerTalents = {}
 function tdm.isPlayerHasTalent(id, talent)
 	checks.requireType("id", id, "number")
 	checks.requireType("talent", talent, "table")
-	return (tdm.playerTalents[id][talent] == nil)
+	return (tdm.playerTalents[id][talent] ~= nil)
 end
 
 function tdm.listPlayersMissingTalents(id)
