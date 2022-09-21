@@ -11,17 +11,16 @@ tdm.directories.utility = tdm.directory.."/utility"
 tdm.directories.data = tdm.directory.."/data"
 
 dofile(tdm.directories.utility.."/utility.lua")
-dofile(tdm.directories.utility.."/console.lua")
+dofile(tdm.directories.data.."/commands.lua")
+dofile(tdm.directories.data.."/armors.lua")
+dofile(tdm.directories.data.."/ranks.lua")
+dofile(tdm.directory.."/console.lua")
 dofile(tdm.directory.."/savingloading.lua")
-dofile(tdm.directory.."/checks.lua")
-dofile(tdm.directory.."/ranks.lua")
 dofile(tdm.directory.."/custommenus.lua")
 dofile(tdm.directory.."/health.lua")
 dofile(tdm.directory.."/effects.lua")
 dofile(tdm.directory.."/menus.lua")
 dofile(tdm.directory.."/classes.lua")
-dofile(tdm.directory.."/armors.lua")
-dofile(tdm.directory.."/commands.lua")
 dofile(tdm.directory.."/projectiles.lua")
 dofile(tdm.directory.."/bot.lua")
 dofile(tdm.directory.."/gui.lua")
@@ -142,8 +141,8 @@ function tdm.ranks(killer,victim,x,y,killerobject,assistant)
 		tdm.player[killer].exp = 0
 		tdm.player[killer].rank = tdm.player[killer].rank + 1
 		msg2(killer,""..rgb(255,255,255).."Rank "..rgb(255,255,128).."Up!@C")
-    tdm.givePlayerRandomNewTalent(killer)
-    tdm.deleteRankIcon(killer)
+      tdm.givePlayerRandomNewTalent(killer)
+      tdm.deleteRankIcon(killer)
 		tdm.createRankIcon(killer)
 		msg(rgb(255,255,255)..player(killer, "name").." ranked up to "..rgb(255,255,128)..tdm.playerranks[tdm.player[killer].rank].name.."!")
 	end

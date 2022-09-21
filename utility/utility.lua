@@ -20,6 +20,10 @@ function rgb(red,green,blue)
 	return "\169"..red..green..blue
 end
 
+dofile(tdm.directories.utility.."/timer2.lua")
+dofile(tdm.directories.utility.."/checks.lua")
+dofile(tdm.directories.utility.."/EnderCryptSaveEngine.lua")
+
 --Made by EnderCrypt
 
 --misc
@@ -41,25 +45,6 @@ function misc.pixel_to_tile(pixel)
     return misc.round((pixel-16)/32)
 end
 
--- timer
-
-timer2_container = {}
-function timer2(delay,args,callback)
-    local index = #timer2_container+1
-    local temp = {}
-    temp.args = args
-    temp.callback = callback
-    timer2_container[index] = temp
-    timer(delay,"timer2_handler",index)
-end
-
-function timer2_handler(index)
-    local temp = timer2_container[tonumber(index)]
-    temp.callback(unpack(temp.args))
-    timer2_container[index] = nil
-end
-
---
 
 function misc.tile_to_pixel(tile)
     return (tile*32)+16

@@ -108,32 +108,6 @@ tdm.entitytypes.burningspear = {
   end
 }
 
-tdm.entitytypes.solarpear = {
-  name = "Solar Spear",
-  image = "gfx/henristdm/solarspear.png",
-  speed = 50,
-  lifetime = 4,
-  size = 15,
-  onCreate = function(entity)
-  end,
-  onUpdate = function(entity)
-    parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 10 10 255 170 000")
-  end,
-  onPlayerCollsion = function(entity,id)
-    if (player(entity.owner, "team") ~= player(id, "team")) then
-      tdm.handledamage(id, entity.owner, 100)
-      tdm.player[id].effects.combattimer = math.random(16,24)
-      tdm.player[id].effects.fire = 15
-      entity.alive = false
-    end
-  end,
-  onWallCollision = function(entity)
-  end,
-  onDespawn = function(entity)
-    parse("explosion "..entity.position.x.." "..entity.position.y.." 30 30 "..entity.owner)
-  end
-}
-
 tdm.entitytypes.hbeacon = {
   name = "Healing Beacon",
   image = "gfx/henristdm/beacon.png",

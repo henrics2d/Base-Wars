@@ -111,6 +111,9 @@ tdm.commands[#tdm.commands+1] = {
   permlevel = "Tester",
   name = "Recieve Random Talent",
   callback = function(id)
-	tdm.givePlayerRandomNewTalent(id)
+	local talent = tdm.givePlayerRandomNewTalent(id)
+	if (talent == nil) then
+		msg2(id, rgb(100,255,0).."All talents already aquired!")
+	end
   end
 }

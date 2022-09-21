@@ -119,7 +119,7 @@ end
 
 function tdm.talentDescription(id,button,data,parameter)
   msg2(id,rgb(255,255,128).."Talent Description: "..data.name)
-  msg2(id,data.rarity.color..data.rarity.name.." Talent")
+  msg2(id,rgb(255,255,255)..data.rarity.name.." Talent")
   msg2(id,rgb(255,255,255)..data.description)
   msg2(id,rgb(255,255,255)..data.description2)
 end
@@ -139,7 +139,7 @@ end
 
 function tdm.showTalentStats(id,data,parameter)
   msg2(id,rgb(255,255,128).."Talent "..data.name)
-  msg2(id,data.rarity.color..data.rarity.name.." Talent")
+  msg2(id,rgb(255,255,255)..data.rarity.name.." Talent")
   msg2(id,rgb(255,255,255)..data.healthbonus.." extra health")
   msg2(id,rgb(255,255,255)..data.speedbonus.." extra base speed")
   msg2(id,rgb(255,255,255)..data.damagebonus * 100 .."% extra damage")
