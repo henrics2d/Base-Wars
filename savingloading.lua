@@ -12,6 +12,8 @@ function tdm.initPlayer(id)
 
 	-- talents
 	playerdata.talents = {}
+
+	tdm.playerTalents[id] = {} -- temporary fix
 	playerdata.chosentalent = tdm.talents[21]
 end
 
