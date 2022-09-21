@@ -13,7 +13,6 @@ function tdm.initPlayer(id)
 	-- talents
 	playerdata.talents = {}
 
-	tdm.playerTalents[id] = {} -- temporary fix
 	playerdata.chosentalent = tdm.talents[21]
 end
 
@@ -28,6 +27,14 @@ function tdm.saveEnginePlayerSave(playerdata, file)
 	SaveEngine.write(file,"status","kills",playerdata.kills)
 
 	-- talents
+	local talentsString = ""
+	for talent, _ in pairs(playerdata.talents) do
+		if (string.len(talentsString) > 0) then
+			talentsString = talentsString..","
+		end
+		talentsString = talentsString..talent.id
+	end
+	SaveEngine.write(file,"talent","owned",talentsString)
 end
 
 function tdm.saveEnginePlayerLoad(playerdata, file)
@@ -41,6 +48,15 @@ function tdm.saveEnginePlayerLoad(playerdata, file)
 	playerdata.kills = SaveEngine.read(file,"status","kills",playerdata.kills)
 
 	-- talents
+	local talentsString = SaveEngine.read(file,"talent","owned","")
+	for _,talentId in ipairs(misc.stringsplit(talentsString, ",")) do -- talentId should probalbly have leading/trailing spaces removed
+		local talent = tdm.getTalentById(talentId)
+		if (talent == nil) then
+			print("failed to give player "..id.." talent: "..talentId.." (unknown talent)")
+		else
+			playerdata.talents[talent] = true
+		end
+	end
 end
 
 function tdm.getPlayerSaveFile(id)

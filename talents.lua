@@ -29,21 +29,23 @@ end
 
 function tdm.registerTalent(talentData)
   checks.requireType("talentData", talentData, "table")
-  local id = #tdm.talents+1
-  talentData.id = id
-  tdm.talents[id] = talentData
+  tdm.talents[#tdm.talents+1] = talentData
+  tdm.talents[talentData.id] = talentData
 end
 
+function tdm.getTalentById(talentId)
+  checks.requireType("talentId", talentId, "string")
+  return tdm.talents[talentId]
+end
 
 dofile(tdm.directories.data.."/talents.lua")
 
 
-tdm.playerTalents = {}
-
 function tdm.isPlayerHasTalent(id, talent)
 	checks.requireType("id", id, "number")
 	checks.requireType("talent", talent, "table")
-	return (tdm.playerTalents[id][talent] ~= nil)
+	local playerdata = tdm.player[id]
+	return (playerdata.talents[talent] ~= nil)
 end
 
 function tdm.listPlayersMissingTalents(id)
@@ -53,6 +55,15 @@ function tdm.listPlayersMissingTalents(id)
 		if (tdm.isPlayerHasTalent(id, talent) == false) then
 			talents[#talents+1] = talent
 		end
+	end
+	return talents
+end
+
+function tdm.listPlayersTalents(id)
+	checks.requireType("id", id, "number")
+	local talents = {}
+	for talent,_ in pairs(tdm.player[id].talents) do
+		talents[#talents + 1] = talent
 	end
 	return talents
 end
@@ -73,12 +84,12 @@ function tdm.givePlayerTalent(id, talent)
 	if (tdm.isPlayerHasTalent(id, talent)) then
 		error(player(id,"name").." ("..id..") already has talent: "..talent.name)
 	end
-  tdm.playerTalents[id][talent] = true
-  tdm.playerTalents[id][#tdm.playerTalents[id]+1] = talent
-  print("  accepted, player aquired talent!")
-  local rarity = talent.rarity
-  msg2(id,rgb(255,255,255).."Recieved Talent: "..rgb(255,255,128)..talent.name..rgb(0,200,0).." ("..rarity.color..rarity.name..rgb(255,255,255)..")@C")
-  return true
+	local playerdata = tdm.player[id]
+	playerdata.talents[talent] = true
+	print("  accepted, player aquired talent!")
+	local rarity = talent.rarity
+	msg2(id,rgb(255,255,255).."Recieved Talent: "..rgb(255,255,128)..talent.name..rgb(0,200,0).." ("..rarity.color..rarity.name..rgb(255,255,255)..")@C")
+	return true
 end
 
 

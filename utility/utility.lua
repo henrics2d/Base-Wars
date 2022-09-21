@@ -30,6 +30,17 @@ dofile(tdm.directories.utility.."/EnderCryptSaveEngine.lua")
 
 misc = {}
 
+function misc.stringsplit(text, separator)
+	if (text == nil) then
+		return {}
+	end
+	local results = {}
+	for sequence in string.gmatch(text, "([^"..separator.."]+)") do
+		results[#results + 1] = sequence
+	end
+	return results
+end
+
 function misc.round(num,base)
     if base == nil then
         return math.floor(num+0.5)
