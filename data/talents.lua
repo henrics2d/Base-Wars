@@ -1,6 +1,6 @@
- tdm.registerTalent({
+tdm.registerTalent({
   name = "Engage",
-  rarity = "Legendary",
+  rarity = tdm.rarity.legendary,
   chance = 10,
   description = "Regain armor when dealing damage, scales with your weapon's damage",
   description2 = "In a ratio of 1:8",
@@ -17,7 +17,7 @@
 
 tdm.registerTalent({
   name = "Healthpack",
-  rarity = "Common",
+  rarity = tdm.rarity.common,
   chance = 100,
   description = "It's just extra health",
   description2 = "What else do you need?",
@@ -31,7 +31,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Hermes' Gun",
-  rarity = "Common",
+  rarity = tdm.rarity.common,
   chance = 100,
   description = "Gain a very slight speed boost for shooting people",
   description2 = "Speed gain depends on the damage done",
@@ -48,7 +48,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Critical Attack",
-  rarity = "Common",
+  rarity = tdm.rarity.common,
   chance = 100,
   description = "Gain the ability to perform random critical attacks",
   description2 = "Critical attacks deal 1.25x damage",
@@ -67,7 +67,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Tap Dancer",
-  rarity = "Common",
+  rarity = tdm.rarity.common,
   chance = 100,
   description = "Gain a very slight chance to dodge attacks",
   description2 = "After a succesful dodge gain a brief period of immunity",
@@ -85,7 +85,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Swift Rebound",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "Basically Tap Dancer but better",
   description2 = "Gain a speed boost after a succesful dodge",
@@ -105,7 +105,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Heavens' Striker",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "Call forth a strike from the heavens on your opponents",
   description2 = "15% chance of occuring everytime you hit someone",
@@ -124,7 +124,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Evasive Expert",
-  rarity = "Legendary",
+  rarity = tdm.rarity.legendary,
   chance = 10,
   description = "Increases your dodge chances",
   description2 = "Also increases your speed boost on dodge",
@@ -144,7 +144,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Exo-Skeleton",
-  rarity = "Legendary",
+  rarity = tdm.rarity.legendary,
   chance = 10,
   description = "You naturally resist 15% of all damage",
   description2 = "Also comes with an extra 20 hp!",
@@ -160,7 +160,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Destructive Recovery",
-  rarity = "Legendary",
+  rarity = tdm.rarity.legendary,
   chance = 10,
   description = "Deal more damage the more you are hit",
   description2 = "5% extra damage per hit (stacks up to 60%)",
@@ -176,7 +176,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Explosive Finish",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "Create an explosion whenever you kill someone",
   description2 = "The explosion happens on their death location, deals mild damage",
@@ -192,7 +192,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "In Twain",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "Gain a brief period of immunity after killing someone",
   description2 = "Immunity lasts 1.5 seconds",
@@ -208,7 +208,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Ghost",
-  rarity = "Legendary",
+  rarity = tdm.rarity.legendary,
   chance = 10,
   description = "Gain 6 seconds of dodge frames for 6 seconds",
   description2 = "Dodge frames give you a 50% chance of dodging an attack",
@@ -224,7 +224,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Scoped Gun",
-  rarity = "Common",
+  rarity = tdm.rarity.common,
   chance = 100,
   description = "Just an extra 8% damage to all your weapons",
   description2 = "What else do you need?",
@@ -238,7 +238,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Scout's Will",
-  rarity = "Common",
+  rarity = tdm.rarity.common,
   chance = 100,
   description = "Just a basic speed boost increase",
   description2 = "What else do you need?",
@@ -252,7 +252,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "The Jack of All Trades",
-  rarity = "Common",
+  rarity = tdm.rarity.common,
   chance = 100,
   description = "A basic boost to all stats",
   description2 = "What else do you need?",
@@ -266,7 +266,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "The Runner",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "A good increase to your speed",
   description2 = "What else do you need?",
@@ -280,7 +280,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "The Tank",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "A good increase to your health",
   description2 = "What else do you need?",
@@ -294,7 +294,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "The Bullseye",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "A good increase to your damage",
   description2 = "What else do you need?",
@@ -308,7 +308,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "All in One",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "A good increase to all your stats",
   description2 = "What else do you need?",
@@ -322,7 +322,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Pathfinder",
-  rarity = "Global",
+  rarity = tdm.rarity.global,
   chance = 0,
   description = "The talent everyone starts out with",
   description2 = "Does nothing",
@@ -336,7 +336,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Hell's Partisan",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "Hitting an enemy whos on fire or with 40+ damage causes you to throw a followup burning spear",
   description2 = "Extinguishes enemy fire on succesful fiery hits",
@@ -358,7 +358,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   name = "Meteor Shot",
-  rarity = "Rare",
+  rarity = tdm.rarity.rare,
   chance = 30,
   description = "All your attacks apply the On Fire! debuff",
   description2 = "Deals 10 damage per second to unarmored targets",

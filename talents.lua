@@ -40,29 +40,60 @@ dofile(tdm.directories.data.."/talents.lua")
 
 tdm.playerTalents = {}
 
-function tdm.givePlayerTalent(id,talent)
-  print("trying to give player: "..talent.name)
-  if (tdm.playerTalents[id][talent] ~= nil) then
-    print("  rejected, player already has it!")
-    local talent = tdm.generateRandomTalent(id)
-    tdm.givePlayerTalent(id,talent)
-    return
-  end
+function tdm.isPlayerHasTalent(id, talent)
+	checks.requireType("id", id, "number")
+	checks.requireType("talent", talent, "table")
+	return (tdm.playerTalents[id][talent] ~= nil)
+end
+
+function tdm.listPlayersMissingTalents(id)
+	checks.requireType("id", id, "number")
+	local talents = {}
+	for _,talent in ipairs(tdm.talents) do
+		if (tdm.isPlayerHasTalent(id, talent) == false) then
+			talents[#talents+1] = talent
+		end
+	end
+	return talents
+end
+
+function tdm.givePlayerRandomNewTalent(id)
+	checks.requireType("id", id, "number")
+	local newTalent = tdm.generateRandomNewTalent(id)
+	if (newTalent == nil) then
+		return nil
+	end
+	tdm.givePlayerTalent(id, newTalent)
+	return newTalent
+end
+
+function tdm.givePlayerTalent(id, talent)
+	checks.requireType("id", id, "number")
+	checks.requireType("talent", talent, "table")
+	if (tdm.isPlayerHasTalent(id, talent)) then
+		error(player(id,"name").." ("..id..") already has talent: "..talent.name)
+	end
   tdm.playerTalents[id][talent] = true
   tdm.playerTalents[id][#tdm.playerTalents[id]+1] = talent
   print("  accepted, player aquired talent!")
-  msg2(id,rgb(255,255,255).."Recieved Talent: "..rgb(255,255,128)..talent.name..rgb(0,200,0).." ("..talent.rarity..")@C")
+  local rarity = talent.rarity
+  msg2(id,rgb(255,255,255).."Recieved Talent: "..rgb(255,255,128)..talent.name..rgb(0,200,0).." ("..rarity.color..rarity.name..rgb(255,255,255)..")@C")
   return true
 end
 
 
-function tdm.generateRandomTalent(id)
+function tdm.generateRandomNewTalent(id)
+	checks.requireType("id", id, "number")
+	local missingTalents = tdm.listPlayersMissingTalents(id)
+	if (#missingTalents == 0) then
+		return nil
+	end
 	local chances = 0
-	for _,talent in ipairs(tdm.talents) do
+	for _,talent in ipairs(missingTalents) do
 		chances = chances + talent.chance
 	end
 	local target = chances * math.random()
-	for _,talent in ipairs(tdm.talents) do
+	for _,talent in ipairs(missingTalents) do
 		target = target - talent.chance
 		if target <= 0 then
 			return talent

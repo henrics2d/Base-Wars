@@ -110,5 +110,7 @@ tdm.commands[#tdm.commands+1] = {
   locked = false,
   permlevel = "Tester",
   name = "Recieve Random Talent",
-  callback = function(id) tdm.givePlayerTalent(id,tdm.generateRandomTalent(id)) end
+  callback = function(id)
+	tdm.givePlayerRandomNewTalent(id)
+  end
 }

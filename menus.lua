@@ -113,13 +113,13 @@ function tdm.showTalentList(id)
 end
 
 function tdm.showTalent(id,data,parameter)
-  local text = data.name.."|"..data.rarity
+  local text = data.name.."|"..data.rarity.name
   return text
 end
 
 function tdm.talentDescription(id,button,data,parameter)
   msg2(id,rgb(255,255,128).."Talent Description: "..data.name)
-  msg2(id,rgb(255,255,255)..data.rarity.." Talent")
+  msg2(id,rgb(255,255,255)..data.rarity.name.." Talent")
   msg2(id,rgb(255,255,255)..data.description)
   msg2(id,rgb(255,255,255)..data.description2)
 end
@@ -129,7 +129,7 @@ function tdm.pickTalentList(id)
 end
 
 function tdm.showTalentUnlocked(id,data,parameter)
-  local text = data.name.."|"..data.rarity
+  local text = data.name.."|"..data.rarity.name
   return text
 end
 
@@ -139,7 +139,7 @@ end
 
 function tdm.showTalentStats(id,data,parameter)
   msg2(id,rgb(255,255,128).."Talent "..data.name)
-  msg2(id,rgb(255,255,255)..data.rarity.." Talent")
+  msg2(id,rgb(255,255,255)..data.rarity.name.." Talent")
   msg2(id,rgb(255,255,255)..data.healthbonus.." extra health")
   msg2(id,rgb(255,255,255)..data.speedbonus.." extra base speed")
   msg2(id,rgb(255,255,255)..data.damagebonus * 100 .."% extra damage")
