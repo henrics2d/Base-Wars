@@ -34,13 +34,7 @@ function tdm.sayClass(id,txt)
       tdm.deletePlayerClass(id)
       tdm.setPlayerClass(id,tdm.player[id].chosenclass)
       tdm.player[id].chosenclass = nil
-      if player(id,"team") == 1 then
-        local entity = tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
-        parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-      else
-        local entity = tdm.random_array_value(tdm.find_entity_types("Env_Item"))
-        parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-      end
+      tdm.selectSpawn(id)
       return 1
     end
     if (txt == "N") or (txt == "n") then
@@ -151,4 +145,23 @@ function tdm.showTalentStats(id,data,parameter)
   msg2(id,rgb(255,255,255)..data.damagebonus * 100 .."% extra damage")
   msg2(id,rgb(255,255,255).."Talent "..rgb(000,255,000).."Equipped!")
   tdm.player[id].chosentalent = data
+end
+
+function tdm.selectSpawn(id)
+  sme.createMenu(id,tdm.pickSpawn,tdm.showSpawn,"Spawnpoints",true,tdm.spawnpoints,false)
+end
+
+function tdm.showSpawn(id,data,parameter)
+  local text = entity(data.x,data.y,"name")
+  if player(id,"team") ~= entity(data.x,data.y,"int0") then
+    text = "("..text..")"
+  end
+  return text
+end
+
+function tdm.pickSpawn(id,button,data,parameter)
+  if player(id,"team") ~= entity(data.x,data.y,"int0") then
+    return
+  end
+  parse("setpos "..id.." "..misc.tile_to_pixel(data.x).." "..misc.tile_to_pixel(data.y))
 end

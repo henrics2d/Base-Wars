@@ -1,4 +1,4 @@
- tdm.registerTalent({
+tdm.registerTalent({
   name = "Engage",
   rarity = "Legendary",
   chance = 10,

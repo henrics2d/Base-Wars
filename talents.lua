@@ -30,12 +30,13 @@ end
 function tdm.registerTalent(talentData)
   checks.requireType("talentData", talentData, "table")
   local id = #tdm.talents+1
-  talentData.id = idtalentData
-  tdm.talents[id] =
+  talentData.id = id
+  tdm.talents[id] = talentData
 end
 
 
 dofile(tdm.directories.data.."/talents.lua")
+
 
 tdm.playerTalents = {}
 
