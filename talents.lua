@@ -86,7 +86,7 @@ function tdm.givePlayerTalent(id, talent)
 	end
 	local playerdata = tdm.player[id]
 	playerdata.talents[talent] = true
-	playerdata.talents[#playerdata.talents[id]+1] = talent
+	playerdata.talents[#playerdata.talents+1] = talent
 	print("  accepted, player aquired talent!")
 	local rarity = talent.rarity
 	msg2(id,rgb(255,255,255).."Recieved Talent: "..rgb(255,255,128)..talent.name..rgb(0,200,0).." ("..rarity.color..rarity.name..rgb(255,255,255)..")@C")
