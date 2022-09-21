@@ -371,3 +371,21 @@ tdm.registerTalent({
   prerequirment = nil,
   owned = false
 })
+
+tdm.registerTalent({
+  name = "Solar Radiance",
+  rarity = tdm.rarity.mythical,
+  chance = 4,
+  description = "All your attacks have a chance of throwing a follow up solar spear",
+  description2 = "This spear is an upgraded version of Hell's Partisan's spear, also gives you a cool Solar Halo",
+  healthbonus = 10,
+  speedbonus = 2,
+  damagebonus = 0.05,
+  callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
+    if math.random(1,100) <= 15 then
+      tdm.spawnprojectile(source,tdm.entitytypes.solarspear)
+    end
+  end,
+  prerequirment = nil,
+  owned = false
+})
