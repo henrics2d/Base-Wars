@@ -1,4 +1,5 @@
 tdm.registerTalent({
+  id = "armorregain",
   name = "Engage",
   rarity = tdm.rarity.legendary,
   chance = 10,
@@ -16,6 +17,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "extrahealth",
   name = "Healthpack",
   rarity = tdm.rarity.common,
   chance = 100,
@@ -30,6 +32,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "speedonhit",
   name = "Hermes' Gun",
   rarity = tdm.rarity.common,
   chance = 100,
@@ -47,6 +50,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "chanceforextradamage",
   name = "Critical Attack",
   rarity = tdm.rarity.common,
   chance = 100,
@@ -66,6 +70,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "chancetododge",
   name = "Tap Dancer",
   rarity = tdm.rarity.common,
   chance = 100,
@@ -84,6 +89,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "chancetododgeupgrade",
   name = "Swift Rebound",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -104,6 +110,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "chanceforextradamageupgrade",
   name = "Heavens' Striker",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -123,6 +130,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "chancetododgesecondupgrade",
   name = "Evasive Expert",
   rarity = tdm.rarity.legendary,
   chance = 10,
@@ -143,6 +151,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "damageresistance",
   name = "Exo-Skeleton",
   rarity = tdm.rarity.legendary,
   chance = 10,
@@ -159,6 +168,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "damageonhit",
   name = "Destructive Recovery",
   rarity = tdm.rarity.legendary,
   chance = 10,
@@ -175,6 +185,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "explosionondeath",
   name = "Explosive Finish",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -191,6 +202,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "immunityondeath",
   name = "In Twain",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -207,6 +219,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "dodgeondeath",
   name = "Ghost",
   rarity = tdm.rarity.legendary,
   chance = 10,
@@ -223,6 +236,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "increaseddamage",
   name = "Scoped Gun",
   rarity = tdm.rarity.common,
   chance = 100,
@@ -237,6 +251,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "increasedspeed",
   name = "Scout's Will",
   rarity = tdm.rarity.common,
   chance = 100,
@@ -251,6 +266,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "increasedstats",
   name = "The Jack of All Trades",
   rarity = tdm.rarity.common,
   chance = 100,
@@ -265,6 +281,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "speedbonusupgrade",
   name = "The Runner",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -279,6 +296,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "healthbonusupgrade",
   name = "The Tank",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -293,6 +311,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "damagebonusupgrade",
   name = "The Bullseye",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -307,6 +326,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "statsincreaseupgrade",
   name = "All in One",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -321,6 +341,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "globaltalent",
   name = "Pathfinder",
   rarity = tdm.rarity.global,
   chance = 0,
@@ -335,6 +356,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "spearondeath",
   name = "Hell's Partisan",
   rarity = tdm.rarity.rare,
   chance = 30,
@@ -357,6 +379,7 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
+  id = "fireonhit",
   name = "Meteor Shot",
   rarity = tdm.rarity.rare,
   chance = 30,
