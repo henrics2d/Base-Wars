@@ -79,13 +79,7 @@ function tdm.defaultSpawns(id)
     return
   end
   tdm.setPlayerClass(id,tdm.player[id].defaultclass)
-  if player(id,"team") == 1 then
-    local entity = tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
-    parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-  else
-    local entity = tdm.random_array_value(tdm.find_entity_types("Env_Item"))
-    parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-  end
+  tdm.selectSpawn(id)
 end
 
 function tdm.setPlayerClass(id,class)

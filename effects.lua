@@ -1,3 +1,16 @@
+addhook("select","tdm.solarAngelCosmetics")
+function tdm.solarAngelCosmetics(id,type,mode)
+  if tdm.player[id].class.name == "Solar Angel" then
+    if type == 50 then
+      freeimage(tdm.player[id].knifeimage)
+      tdm.player[id].knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
+    else
+      freeimage(tdm.player[id].knifeimage)
+      tdm.player[id].knifeimage = image(images.."solarswordholstered.png", 3, 0, 200 + id)
+    end
+  end
+end
+
 function tdm.regeneration()
   local players = player(0,"tableliving")
 	for _,id in ipairs(players) do

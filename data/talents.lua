@@ -398,7 +398,7 @@ tdm.registerTalent({
 tdm.registerTalent({
   id = "spearonhit",
   name = "Solar Eruption",
-  rarity = tdm.rarity.mythical,
+  rarity = tdm.rarity.blessing,
   chance = 4,
   description = "Hitting an enemy has a 20% chance of throwing a follow up solar javelin",
   description2 = "Also comes with a cool solar halo cosmetic!",
