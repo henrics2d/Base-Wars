@@ -2,7 +2,7 @@ local console_metatable = {}
 
 local function generate_argument(value)
 	local text = tostring(value)
-	if (string.find(text, " ")) then
+	if (string.find(text, " ") or text == "") then
 		text = "\""..text.."\""
 	end
 	return text
