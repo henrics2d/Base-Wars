@@ -16,7 +16,7 @@ function sme.createMenu(id,func,buttonProcessor,title,nextPrev,buttons,big,param
 	temp.title = title
 	temp.nextPrev = nextPrev
 	temp.buttons = buttons
-    temp.big = big
+	temp.big = big
 	temp.page = 0
 	temp.parameter = parameter
 	sme.pending[id] = temp
@@ -24,11 +24,11 @@ function sme.createMenu(id,func,buttonProcessor,title,nextPrev,buttons,big,param
 end
 
 function sme.open(id)
-    parameter = sme.pending[id].parameter
+		parameter = sme.pending[id].parameter
 	local menu_data = sme.pending[id].title
-    if sme.pending[id].big then
-        menu_data = menu_data.."@b"
-    end
+		if sme.pending[id].big then
+			menu_data = menu_data.."@b"
+		end
 	if sme.pending[id].nextPrev then
 		if sme.pending[id].page > 0 then
 			menu_data = menu_data..",Previous"
@@ -83,16 +83,16 @@ function sme.menu(id, title, button)
 				sme.open(id)
 				return 0
 			end
-            local real_button = ((sme.pending[id].page*7)+button-1)
-            local data = sme.pending[id].buttons[real_button]
+			local real_button = ((sme.pending[id].page*7)+button-1)
+			local data = sme.pending[id].buttons[real_button]
 			sme.pending[id].func(id,real_button,data,sme.pending[id].parameter)
 		else
-            before = sme.pending[id]
-            local data = sme.pending[id].buttons[button]
+			before = sme.pending[id]
+			local data = sme.pending[id].buttons[button]
 			sme.pending[id].func(id,button,data,sme.pending[id].parameter)
-            if sme.pending[id] == before then
-                sme.pending[id] = nil
-            end
+			if sme.pending[id] == before then
+				sme.pending[id] = nil
+			end
 		end
 	end
 end
