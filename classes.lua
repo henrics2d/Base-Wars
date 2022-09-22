@@ -51,8 +51,8 @@ tdm.classestable[#tdm.classestable+1] = {
 	description2 = "Can increase his speed and damage momentarily",
 	health = 100,
 	maxhealth = 100,
-	armorpoints = 50,
-	armorid = 1,
+	armorpoints = 80,
+	armorid = 2,
 	damagemultiplier = 1,
 	basespeed = 8,
 	img = "cap.png",
@@ -61,7 +61,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		cooldown = 15,
 		callback = function(id)
 			msg2(id,rgb(255,0,0).."I feel hyper!@C")
-			tdm.player[id].damagemultiplier = 1.80
+			tdm.player[id].damagemultiplier = 1.15
 			parse("speedmod "..id.." 32")
 			timer2(5000,{id},function(id)
 				msg2(id,rgb(255,0,0).."Boost over.@C")
@@ -83,8 +83,8 @@ tdm.classestable[#tdm.classestable+1] = {
 	name = "Heavy",
 	description = "A heavily armored soldier with lots of armor",
 	description2 = "Comes with a M249 but alike the soldier, no special abilities",
-	health = 165,
-	maxhealth = 165,
+	health = 125,
+	maxhealth = 125,
 	armorpoints = 300,
 	armorid = 6,
 	damagemultiplier = 1,
@@ -179,8 +179,8 @@ tdm.classestable[#tdm.classestable+1] = {
 	description2 = "Can penetrate the armor of vehicles with his rifle, aswell as momentarily increase his speed to escape dire situations",
 	health = 100,
 	maxhealth = 100,
-	armorpoints = 30,
-	armorid = 1,
+	armorpoints = 40,
+	armorid = 2,
 	damagemultiplier = 1,
 	basespeed = 3,
 	img = "sniper.png",
@@ -207,8 +207,8 @@ tdm.classestable[#tdm.classestable+1] = {
 	description2 = "Can one-shot anyone in a small timeframe using his ability",
 	health = 85,
 	maxhealth = 85,
-	armorpoints = 60,
-	armorid = 1,
+	armorpoints = 35,
+	armorid = 2,
 	damagemultiplier = 1,
 	basespeed = 11,
 	img = "assassin.png",
@@ -263,8 +263,8 @@ tdm.classestable[#tdm.classestable+1] = {
 	name = "Medic",
 	description = "A medic that can heal both in an area and single targets",
 	description2 = "Not completely defenseless however...",
-	health = 100,
-	maxhealth = 100,
+	health = 150,
+	maxhealth = 150,
 	armorpoints = 0,
 	armorid = 1,
 	damagemultiplier = 1,
@@ -309,7 +309,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
-	unique = false,
+	unique = true,
 	name = "Necromancer",
 	description = "(VERY UNFINISHED) An experienced magician in the art of reviving the dead",
 	description2 = "His ability allows him to spawn hordes of weak minions",
@@ -331,7 +331,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
-	unique = false,
+	unique = true,
 	name = "Godfather",
 	description = "(VERY UNFINISHED) A top rank mafia member",
 	description2 = "His ability allows him to call forth a mafioso to aid you in battle",
