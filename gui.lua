@@ -13,7 +13,7 @@ function tdm.updatePlayerUi(id)
     parse(' hudtxt2 '..id..' 3 "'..rgb(255,255,128)..'Class: '..rgb(255,255,255)..tdm.player[id].class.name..' " '..player(id,"screenw") - player(id,"screenw")..' " '..player(id,"screenh") / 1.115 ..' " 0 0 25')
     parse(' hudtxt2 '..id..' 4 "'..rgb(255,255,128)..'Ability: '..tdm.getPlayerAbilityStatus(id)..rgb(255,255,128)..' " '..player(id,"screenw") / 6 ..' " '..player(id,"screenh") / 1.115 ..' " 0 0 25')
     parse(' hudtxt2 '..id..' 6 "'..rgb(255,255,128)..'Rank: '..rgb(255,255,255)..tdm.playerranks[tdm.player[id].rank].name..' " '..player(id,"screenw") - player(id,"screenw") ..' " '..player(id,"screenh") - player(id,"screenh") + 300 ..' " 0 0 25')
-    if tdm.player[id].rank ~= 21 then
+    if tdm.player[id].rank ~= 22 then
       parse(' hudtxt2 '..id..' 8 "'..rgb(255,255,128)..'EXP: '..rgb(255,255,255)..math.ceil(tdm.player[id].exp)..'/'..math.ceil(tdm.player[id].expreq)..' " '..player(id,"screenw") - player(id,"screenw") ..' " '..player(id,"screenh") - player(id,"screenh") + 325 ..' " 0 0 25')
     else
       parse(' hudtxt2 '..id..' 8 "'..rgb(255,255,128)..'EXP: '..rgb(255,255,255)..'Max Rank Attained! " '..player(id,"screenw") - player(id,"screenw") ..' " '..player(id,"screenh") - player(id,"screenh") + 325 ..' " 0 0 25')
@@ -39,7 +39,7 @@ function tdm.createRankIcon(id)
     return
   end
   tdm.player[id].gui.icon = image(images..""..tdm.playerranks[tdm.player[id].rank].imgicon.."", player(id,"screenw") - player(id,"screenw") + 24, player(id,"screenh") - player(id,"screenh") + 276, 2, id)
-  imagescale(tdm.player[id].gui.icon,0.75,0.75)
+  imagescale(tdm.player[id].gui.icon,1.25,1.1)
 end
 
 function tdm.deleteRankIcon(id)

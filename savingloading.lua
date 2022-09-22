@@ -4,7 +4,7 @@ function tdm.initPlayer(id)
 	-- progress
 	playerdata.rank = 1
 	playerdata.exp = 0
-	playerdata.expreq = 25
+	playerdata.expreq = 35
 
 	-- status
 	playerdata.battlescore = 100
@@ -95,4 +95,3 @@ function tdm.load(id)
 	tdm.saveEnginePlayerLoad(tdm.player[id], file)
 	SaveEngine.save(file)
 end
-
