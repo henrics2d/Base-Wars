@@ -1,5 +1,8 @@
 addhook("select","tdm.solarAngelCosmetics")
 function tdm.solarAngelCosmetics(id,type,mode)
+  if tdm.player[id].class == nil then
+    return
+  end 
   if tdm.player[id].class.name == "Solar Angel" then
     if type == 50 then
       freeimage(tdm.player[id].knifeimage)

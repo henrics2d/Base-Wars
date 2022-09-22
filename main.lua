@@ -55,7 +55,7 @@ end
 
 addhook("die","tdm.deletePlayerClass")
 function tdm.deletePlayerClass(id)
-  parse("hudtxtclear "..id)
+  console.hudtxtclear(id)
   if tdm.player[id].gui == nil then
     return
   end
@@ -103,7 +103,7 @@ function tdm.setPlayerClass(id,class)
   playerdata.effects.resistancebuff = 0
   playerdata.effects.damagebuff = 0
   playerdata.gui = {}
-	parse("speedmod "..id.." "..playerdata.speed)
+	console.speedmod(id, playerdata.speed)
 	if playerdata.class.img ~= nil then
     if playerdata.chosentalent.name ~= "Solar Eruption" then
       playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
@@ -113,8 +113,8 @@ function tdm.setPlayerClass(id,class)
 	end
 	--
   tdm.createRankIcon(id)
-  parse("equip "..id.." 74")
-  parse("equip "..id.." 47")
+  console.equip(id, 74)
+  console.equip(id, 47)
   if playerdata.class.name == "Solar Angel" then
     playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
     console.strip(id, 47)
