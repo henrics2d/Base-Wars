@@ -3,12 +3,13 @@ images = "gfx/henristdm/"
 
 tdm.directory = "sys/lua/henristdm"
 
-tdm.directories = {}
-tdm.directories.saves = tdm.directory.."/saves"
-tdm.directories.vehicles = tdm.directory.."/vehicles"
-tdm.directories.customnpc = tdm.directory.."/customnpcs"
-tdm.directories.utility = tdm.directory.."/utility"
-tdm.directories.data = tdm.directory.."/data"
+tdm.directories = {
+	saves = tdm.directory.."/saves",
+	vehicles = tdm.directory.."/vehicles",
+	customnpc = tdm.directory.."/customnpcs",
+	utility = tdm.directory.."/utility",
+	data = tdm.directory.."/data"
+}
 
 dofile(tdm.directories.utility.."/utility.lua")
 dofile(tdm.directories.data.."/commands.lua")
