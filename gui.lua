@@ -35,7 +35,7 @@ function tdm.updateInfoStats(id)
 	local target = tdm.getPlayerTarget(id)
 	if target ~= nil then
 		console.hudtxt2(id,11,rgb(255,255,128).."Enemy HP: "..rgb(255,255,255)..math.ceil(tdm.player[target].health)..'/'..math.ceil(tdm.player[target].maxhealth),player(id,"mousex") + player(id,"mousex"),player(id,"mousey") + player(id,"mousey"),0,0,15)
-		console.hudtxt2(id,12,rgb(255,255,128).."Enemy AP: "..rgb(255,255,255)..math.ceil(tdm.player[target].armor),player(id,"mousex") + player(id,"mousex"),player(id,"mousey") + player(id,"mousey")+15,0,0,15)
+		console.hudtxt2(id,12,rgb(128,128,255).."Enemy AP: "..rgb(255,255,255)..math.ceil(tdm.player[target].armor),player(id,"mousex") + player(id,"mousex"),player(id,"mousey") + player(id,"mousey")+15,0,0,15)
 	end
 end
 
@@ -44,7 +44,7 @@ function tdm.createRankIcon(id)
 		return
 	end
 	tdm.player[id].gui.icon = image(images..""..tdm.playerranks[tdm.player[id].rank].imgicon.."", player(id,"screenw") - player(id,"screenw") + 20, player(id,"screenh") - player(id,"screenh") + 280, 2, id)
-	imagescale(tdm.player[id].gui.icon,0.75,0.75)
+	imagescale(tdm.player[id].gui.icon,1.35,1.35)
 end
 
 function tdm.deleteRankIcon(id)

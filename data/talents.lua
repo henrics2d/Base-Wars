@@ -384,7 +384,7 @@ tdm.registerTalent({
 	rarity = tdm.rarity.rare,
 	chance = 30,
 	description = "All your attacks apply the On Fire! debuff",
-	description2 = "Deals 10 damage per second to unarmored targets",
+	description2 = "Deals 15 damage per second to unarmored targets",
 	healthbonus = 6,
 	speedbonus = 0,
 	damagebonus = 0.03,

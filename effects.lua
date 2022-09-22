@@ -2,7 +2,7 @@ addhook("select","tdm.solarAngelCosmetics")
 function tdm.solarAngelCosmetics(id,type,mode)
   if tdm.player[id].class == nil then
     return
-  end 
+  end
   if tdm.player[id].class.name == "Solar Angel" then
     if type == 50 then
       freeimage(tdm.player[id].knifeimage)
@@ -96,7 +96,7 @@ function tdm.onFireEffect()
 	for _,id in ipairs(player(0,"tableliving")) do
 		if tdm.player[id].class ~= nil then
 			if tdm.player[id].effects.fire > 0 then
-				tdm.handledamage(id, 0, 1)
+				tdm.handledamage(id, 0, 1.5)
 				parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 3 3 255 165 000")
 			end
 		end

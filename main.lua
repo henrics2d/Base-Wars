@@ -94,7 +94,7 @@ function tdm.setPlayerClass(id,class)
 	playerdata.abilitycooldown = 0
 	playerdata.effects = {}
 	playerdata.effects.combattimer = 0
-	playerdata.effects.immunityframes = 0
+	playerdata.effects.immunityframes = 2.5
 	playerdata.effects.dodgeframes = 0
 	playerdata.effects.fire = 0
 	playerdata.effects.poison = 0
