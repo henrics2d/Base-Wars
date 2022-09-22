@@ -8,6 +8,7 @@ end
 function tdm.updatePlayerUi(id)
 	local playerdata = tdm.player[id]
   if playerdata.class ~= nil then
+		--
 		console.hudtxt2(id,"13 ",rgb(255,255,128),"HP: ",rgb(255,255,255),math.ceil(playerdata.health),"/",math.ceil(playerdata.maxhealth),player(id,"screenw") / 2.25,player(id,"screeh") / 1.5,0,0,25)
     parse(' hudtxt2 '..id..' 1 "'..rgb(255,255,128)..'HP: '..rgb(255,255,255)..math.ceil(tdm.player[id].health)..'/'..math.ceil(tdm.player[id].maxhealth)..' " '..player(id,"screenw") / 2.25 ..' " '..player(id,"screenh") / 1.5 ..' " 0 0 25')
     parse(' hudtxt2 '..id..' 5 "'..rgb(128,128,255)..'AP: '..rgb(255,255,255)..math.ceil(tdm.player[id].armor)..' " '..player(id,"screenw") / 2.25 ..' " '..player(id,"screenh") / 1.44 ..' " 0 0 25')
@@ -25,6 +26,7 @@ function tdm.updatePlayerUi(id)
     if tdm.player[id].chosentalent ~= nil then
       parse(' hudtxt2 '..id..' 12 "'..rgb(255,255,128)..'Talent Equipped: '..rgb(255,255,255)..tdm.player[id].chosentalent.name..' " '..player(id,"screenw") - player(id,"screenw") ..' " '..player(id,"screenh") - player(id,"screenh") + 400 ..' " 0 0 25')
     end
+		--
   end
   local target = tdm.getPlayerTarget(id)
   if target ~= nil then
