@@ -1,155 +1,148 @@
 tdm.playerranks = {}
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 1,
-  name = "Trainee",
-  expreq = 35,
-  imgicon = "ranks/Rank_1.png"
+	id = 1,
+	name = "Recruit",
+	expreq = 25,
+	imgicon = "recruit.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 2,
-  name = "Recruit",
-  expreq = 60,
-  imgicon = "ranks/Rank_2.png"
+	id = 2,
+	name = "Private I",
+	expreq = 50,
+	imgicon = "priv1.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 3,
-  name = "Private",
-  expreq = 100,
-  imgicon = "ranks/Rank_3.png"
+	id = 3,
+	name = "Private II",
+	expreq = 75,
+	imgicon = "priv2.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 4,
-  name = "Lance Corporal",
-  expreq = 140,
-  imgicon = "ranks/Rank_4.png"
+	id = 4,
+	name = "Private III",
+	expreq = 100,
+	imgicon = "priv3.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 5,
-  name = "Corporal",
-  expreq = 175,
-  imgicon = "ranks/Rank_5.png"
+	id = 5,
+	name = "Private IV",
+	expreq = 125,
+	imgicon = "priv4.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 6,
-  name = "Sergeant",
-  expreq = 225,
-  imgicon = "ranks/Rank_6.png"
+	id = 6,
+	name = "Private V",
+	expreq = 150,
+	imgicon = "priv5.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 7,
-  name = "Staff Sergeant",
-  expreq = 275,
-  imgicon = "ranks/Rank_7.png"
+	id = 7,
+	name = "Corporal I",
+	expreq = 200,
+	imgicon = "corp1.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 8,
-  name = "Master Sergeant",
-  expreq = 325,
-  imgicon = "ranks/Rank_8.png"
+	id = 8,
+	name = "Corporal II",
+	expreq = 230,
+	imgicon = "corp2.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 9,
-  name = "Sergeant Major",
-  expreq = 380,
-  imgicon = "ranks/Rank_9.png"
+	id = 9,
+	name = "Corporal III",
+	expreq = 265,
+	imgicon = "corp3.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 10,
-  name = "Warrant Officer",
-  expreq = 450,
-  imgicon = "ranks/Rank_10.png"
+	id = 10,
+	name = "Corporal IV",
+	expreq = 300,
+	imgicon = "corp4.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 11,
-  name = "Chief Officer",
-  expreq = 525,
-  imgicon = "ranks/Rank_11.png"
+	id = 11,
+	name = "Corporal V",
+	expreq = 350,
+	imgicon = "corp5.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 12,
-  name = "Command Officer",
-  expreq = 600,
-  imgicon = "ranks/Rank_12.png"
+	id = 12,
+	name = "Sergeant I",
+	expreq = 400,
+	imgicon = "sarge1.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 13,
-  name = "Lieutenant",
-  expreq = 750,
-  imgicon = "ranks/Rank_13.png"
+	id = 13,
+	name = "Sergeant II",
+	expreq = 450,
+	imgicon = "sarge2.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 14,
-  name = "Lieutenant Supervisor",
-  expreq = 880,
-  imgicon = "ranks/Rank_14.png"
+	id = 14,
+	name = "Sergeant III",
+	expreq = 500,
+	imgicon = "sarge3.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 15,
-  name = "Lieutenant Commander",
-  expreq = 1000,
-  imgicon = "ranks/Rank_15.png"
+	id = 15,
+	name = "Sergeant IV",
+	expreq = 550,
+	imgicon = "sarge4.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 16,
-  name = "Chief Lieutenant",
-  expreq = 1200,
-  imgicon = "ranks/Rank_16.png"
+	id = 16,
+	name = "Sergeant V",
+	expreq = 600,
+	imgicon = "sarge5.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 17,
-  name = "Field Captain",
-  expreq = 1350,
-  imgicon = "ranks/Rank_17.png"
+	id = 17,
+	name = "Lieutenant",
+	expreq = 700,
+	imgicon = "lieut.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 18,
-  name = "Captain",
-  expreq = 1500,
-  imgicon = "ranks/Rank_18.png"
+	id = 18,
+	name = "Lieutenant Commander",
+	expreq = 800,
+	imgicon = "lieutcomm.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 19,
-  name = "Captain in Command",
-  expreq = 1640,
-  imgicon = "ranks/Rank_19.png"
+	id = 19,
+	name = "Lieutenant Major",
+	expreq = 900,
+	imgicon = "lieutmajor.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 20,
-  name = "Chief Captain",
-  expreq = 1850,
-  imgicon = "ranks/Rank_20.png"
+	id = 20,
+	name = "Captain",
+	expreq = 1000,
+	imgicon = "capt.png"
 }
 
 tdm.playerranks[#tdm.playerranks+1] = {
-  id = 21,
-  name = "Second General",
-  expreq = 2000,
-  imgicon = "ranks/Rank_21.png"
-}
-
-tdm.playerranks[#tdm.playerranks+1] = {
-  id = 22,
-  name = "General",
-  expreq = 99999,
-  imgicon = "ranks/Rank_22.png"
+	id = 21,
+	name = "Captain Major",
+	expreq = 9999999,
+	imgicon = "captmajor.png"
 }
