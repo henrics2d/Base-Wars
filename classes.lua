@@ -29,7 +29,7 @@ tdm.classestable[#tdm.classestable+1] = {
 	armorid = 2,
 	damagemultiplier = 1,
 	basespeed = 0,
-	img = "soldier.png",
+	img = nil,
 	gadget = nil,
 	onSpawn = function(id)
 		if player(id, "team") == 1 then
