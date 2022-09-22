@@ -65,3 +65,12 @@ tdm.armorstable[#tdm.armorstable+1] = {
   damageondink = 25,
   damageonresist = 15
 }
+
+tdm.armorstable[#tdm.armorstable+1] = {
+  id = 7,
+  name = "Solar Armor",
+  description = "Extremely hot!",
+  resistance = 35,
+  damageondink = 1,
+  damageonresist = 20
+}

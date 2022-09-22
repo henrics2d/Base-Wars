@@ -384,7 +384,7 @@ tdm.registerTalent({
   rarity = tdm.rarity.rare,
   chance = 30,
   description = "All your attacks apply the On Fire! debuff",
-  description2 = "Deals 10 damage per second to unarmored targets",
+  description2 = "Deals 4 damage per second to targets",
   healthbonus = 6,
   speedbonus = 0,
   damagebonus = 0.03,
@@ -398,15 +398,15 @@ tdm.registerTalent({
 tdm.registerTalent({
   id = "spearonhit",
   name = "Solar Eruption",
-  rarity = tdm.rarity.rare,
-  chance = 30,
-  description = "Hitting an enemy has a 10% chance of throwing a follow up solar javellin",
+  rarity = tdm.rarity.mythical,
+  chance = 4,
+  description = "Hitting an enemy has a 20% chance of throwing a follow up solar javelin",
   description2 = "Also comes with a cool solar halo cosmetic!",
   healthbonus = 15,
   speedbonus = 2,
   damagebonus = 0.1,
   callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-    if math.random(1,100) <= 10 then
+    if math.random(1,100) <= 20 then
       tdm.spawnprojectile(source,tdm.entitytypes.solarspear)
     end
   end,

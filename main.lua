@@ -56,8 +56,15 @@ end
 addhook("die","tdm.deletePlayerClass")
 function tdm.deletePlayerClass(id)
   parse("hudtxtclear "..id)
+  if tdm.player[id].gui == nil then
+    return
+  end
   if tdm.player[id].gui.solarhalo ~= nil then
     freeimage(tdm.player[id].gui.solarhalo)
+  end
+  if tdm.player[id].knifeimage ~= nil then
+    freeimage(tdm.player[id].knifeimage)
+    tdm.player[id].knifeimage = nil
   end
   if tdm.player[id].image ~= nil then
     freeimage(tdm.player[id].image)
@@ -70,9 +77,6 @@ addhook("spawn","tdm.defaultSpawns")
 function tdm.defaultSpawns(id)
   if tdm.player[id].defaultclass == nil then
     return
-  end
-  if tdm.player[id].chosentalent.name == "Solar Eruption" then
-    tdm.player[id].gui.solarhalo = image("gfx/henristdm/solarradiance.png",player(id,"x"),player(id,"y"),200 + id,3)
   end
   tdm.setPlayerClass(id,tdm.player[id].defaultclass)
   if player(id,"team") == 1 then
@@ -107,12 +111,20 @@ function tdm.setPlayerClass(id,class)
   playerdata.gui = {}
 	parse("speedmod "..id.." "..playerdata.speed)
 	if playerdata.class.img ~= nil then
-		playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
+    if playerdata.chosentalent.name ~= "Solar Eruption" then
+      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
+    else
+      playerdata.image = image(images.."solarradiance.png", 3, 0, 200 + id)
+    end
 	end
 	--
   tdm.createRankIcon(id)
   parse("equip "..id.." 74")
   parse("equip "..id.." 47")
+  if playerdata.class.name == "Solar Angel" then
+    playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
+    console.strip(id, 47)
+  end
 	playerdata.class.onSpawn(id)
 end
 

@@ -119,7 +119,7 @@ end
 
 function tdm.talentDescription(id,button,data,parameter)
   msg2(id,rgb(255,255,128).."Talent Description: "..data.name)
-  msg2(id,data.rarity.talent..data.rarity.name.." Talent")
+  msg2(id,data.rarity.color..data.rarity.name.." Talent")
   msg2(id,rgb(255,255,255)..data.description)
   msg2(id,rgb(255,255,255)..data.description2)
 end

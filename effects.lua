@@ -80,7 +80,10 @@ function tdm.onFireEffect()
   for _,id in ipairs(player(0,"tableliving")) do
     if tdm.player[id].class ~= nil then
       if tdm.player[id].effects.fire > 0 then
-        tdm.handledamage(id, 0, 1)
+        tdm.player[id].health = tdm.player[id].health - 0.25
+        if tdm.player[id].health <= 0 then
+          parse("customkill 0 Burnt "..id)
+        end
         parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 3 3 255 165 000")
       end
     end

@@ -10,6 +10,9 @@ function tdm.healthHitSystem(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 	if source > 0 then
 		damage = damage * tdm.player[source].damagemultiplier
 	end
+	if weapon == 73 then
+		tdm.player[id].effects.fire = math.random(2,4)
+	end 
 	tdm.handledamage(id,source,damage)
   tdm.player[id].effects.combattimer = math.random(4,6)
 	return 1
@@ -19,7 +22,7 @@ function tdm.handledamage(id, source, damage)
 	if damage > 0 then
 		if tdm.player[id].effects.resistancebuff > 0 then
 			damage = damage * 0.85
-		end 
+		end
 		if tdm.player[id].effects.immunityframes > 0 then
 			parse("effect \"smoke\" "..player(id,"x").." "..player(id,"y").." 25 25 255 000 000")
 			damage = 0
