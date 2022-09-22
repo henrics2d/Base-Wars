@@ -394,3 +394,22 @@ tdm.registerTalent({
 	prerequirment = nil,
 	owned = false
 })
+
+tdm.registerTalent({
+  id = "spearonhit",
+  name = "Solar Eruption",
+  rarity = tdm.rarity.blessing,
+  chance = 4,
+  description = "Hitting an enemy has a 20% chance of throwing a follow up solar javelin",
+  description2 = "Also comes with a cool solar halo cosmetic!",
+  healthbonus = 15,
+  speedbonus = 2,
+  damagebonus = 0.1,
+  callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
+    if math.random(1,100) <= 20 then
+      tdm.spawnprojectile(source,tdm.entitytypes.solarspear)
+    end
+  end,
+  prerequirment = nil,
+  owned = false
+})

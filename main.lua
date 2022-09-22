@@ -103,7 +103,11 @@ function tdm.setPlayerClass(id,class)
 	playerdata.gui = {}
 	parse("speedmod "..id.." "..playerdata.speed)
 	if playerdata.class.img ~= nil then
-		playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
+    if playerdata.chosentalent.name ~= "Solar Eruption" then
+      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
+    else
+      playerdata.image = image(images.."solarradiance.png", 3, 0, 200 + id)
+    end
 	end
 	--
 	tdm.createRankIcon(id)

@@ -394,6 +394,31 @@ tdm.classestable[#tdm.classestable+1] = {
 	end,
 }
 
+tdm.classestable[#tdm.classestable+1] = {
+  unique = true,
+  name = "Solar Angel",
+  description = "Throw your solar javelins to tear your foes asunder!",
+  description2 = "Limited to use his sword and ability only",
+	health = 600,
+	maxhealth = 600,
+  armorpoints = 400,
+  armorid = 7,
+  damagemultiplier = 1.5,
+	basespeed = 3,
+  img = "solarangel.png",
+  gadget = {
+    name = "Solar Javelin",
+    cooldown = 4,
+    callback = function(id)
+      tdm.spawnprojectile(id,tdm.entitytypes.solarspear)
+    end
+  },
+  onSpawn = function(id)
+    parse("strip "..id.." 1")
+    parse("strip "..id.." 2")
+  end,
+}
+
 function tdm.getRandomClass()
 	local index = math.ceil(math.random() * #tdm.classestable)
 	return tdm.classestable[index]
