@@ -1,6 +1,7 @@
 local console_metatable = {}
 
-local function generate_argument(value)
+local function generate_argument(index, value)
+	checks.requireNotNil("console parse argument "..index, value)
 	local text = tostring(value)
 	if (string.find(text, " ") or text == "") then
 		text = "\""..text.."\""
@@ -9,9 +10,11 @@ local function generate_argument(value)
 end
 
 local function generate_arguments(...)
+	local index = 0
 	local arguments = ""
 	for _, value in ipairs({...}) do
-		arguments = arguments.." "..generate_argument(value)
+		index = index + 1
+		arguments = arguments.." "..generate_argument(index, value)
 	end
 	return arguments
 end
