@@ -148,7 +148,7 @@ end
 
 function tdm.ranks(killer,victim,x,y,killerobject,assistant)
   tdm.player[killer].exp = tdm.player[killer].exp + math.ceil(math.random(21,29))
-	if tdm.player[killer].exp >= tdm.player[killer].expreq and tdm.player[killer].rank ~= 21 then
+	if tdm.player[killer].exp >= tdm.player[killer].expreq and tdm.player[killer].rank ~= 22 then
 		tdm.player[killer].expreq = tdm.playerranks[tdm.player[killer].rank + 1].expreq
 		tdm.player[killer].exp = 0
 		tdm.player[killer].rank = tdm.player[killer].rank + 1
