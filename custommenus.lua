@@ -24,7 +24,7 @@ function sme.createMenu(id,func,buttonProcessor,title,nextPrev,buttons,big,param
 end
 
 function sme.open(id)
-		parameter = sme.pending[id].parameter
+	parameter = sme.pending[id].parameter
 	local menu_data = sme.pending[id].title
 		if sme.pending[id].big then
 			menu_data = menu_data.."@b"

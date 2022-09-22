@@ -11,7 +11,7 @@ function tdm.healthHitSystem(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		damage = damage * tdm.player[source].damagemultiplier
 	end
 	tdm.handledamage(id,source,damage)
-  tdm.player[id].effects.combattimer = math.random(4,6)
+	tdm.player[id].effects.combattimer = math.random(4,6)
 	return 1
 end
 
@@ -42,7 +42,7 @@ function tdm.handledamage(id, source, damage)
 			parse("customkill "..source.." Killed "..id)
 		end
 	end
-  if source > 0 then
+	if source > 0 then
 		tdm.player[source].target = id
 	end
 	percent = (tdm.player[id].health / tdm.player[id].maxhealth) * 100
