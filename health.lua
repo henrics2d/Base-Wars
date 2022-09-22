@@ -12,7 +12,7 @@ function tdm.healthHitSystem(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 	end
 	if weapon == 73 then
 		tdm.player[id].effects.fire = math.random(2,4)
-	end 
+	end
 	tdm.handledamage(id,source,damage)
 	tdm.player[id].effects.combattimer = math.random(4,6)
 	return 1
@@ -48,10 +48,15 @@ function tdm.handledamage(id, source, damage)
 	if source > 0 then
 		tdm.player[source].target = id
 	end
-	percent = (tdm.player[id].health / tdm.player[id].maxhealth) * 100
+	tdm.getPercentHealth(id)
+end
+
+function tdm.getPercentHealth(id)
+	local percent = (tdm.player[id].health / tdm.player[id].maxhealth) * 100
 	if percent > 1 then
 		parse("sethealth "..id.." "..math.ceil(percent))
 	end
+	return percent
 end
 
 function tdm.onbrokenarmor(id, source, damage)

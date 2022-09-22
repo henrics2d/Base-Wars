@@ -37,15 +37,6 @@ tdm.commands[#tdm.commands+1] = {
 
 tdm.commands[#tdm.commands+1] = {
 	locked = true,
-	permlevel = "Admin",
-	name = "Spawn Humvee (TEST)",
-	callback = function(id)
-		tdm.spawnVehicle(id,tdm.vehicletypes.humvee)
-	end
-}
-
-tdm.commands[#tdm.commands+1] = {
-	locked = true,
 	permlevel = "",
 	name = "Buy Classes",
 	callback = function(id)
@@ -95,6 +86,26 @@ tdm.commands[#tdm.commands+1] = {
 tdm.commands[#tdm.commands+1] = {
 	locked = false,
 	permlevel = "Client",
+	name = "Buy Solar Angel",
+	callback = function(id)
+		if tdm.player[id].battlescore >= 2000 then
+			tdm.player[id].battlescore = tdm.player[id].battlescore - 2000
+			tdm.deletePlayerClass(id)
+			tdm.setPlayerClass(id,tdm.classestable[15])
+			if player(id,"team") == 1 then
+				local entity = tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
+				parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
+			else
+				local entity = tdm.random_array_value(tdm.find_entity_types("Env_Item"))
+				parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
+			end
+		end
+	end
+}
+
+tdm.commands[#tdm.commands+1] = {
+	locked = false,
+	permlevel = "Client",
 	name = "Talents",
 	callback = function(id) tdm.showTalentList(id) end
 }
@@ -111,9 +122,13 @@ tdm.commands[#tdm.commands+1] = {
 	permlevel = "Tester",
 	name = "Recieve Random Talent",
 	callback = function(id)
-		local talent = tdm.givePlayerRandomNewTalent(id)
-		if (talent == nil) then
-			msg2(id, rgb(100,255,0).."All talents already aquired!")
-		end
+		if player(id,"usgn") == 129888 then
+			local talent = tdm.givePlayerRandomNewTalent(id)
+			if (talent == nil) then
+				msg2(id, rgb(100,255,0).."All talents already aquired!")
+			end
+		else
+			msg2(id, rgb(255,0,0).."You are not a tester!")
+		end 
 	end
 }

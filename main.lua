@@ -16,9 +16,7 @@ dofile(tdm.directories.data.."/commands.lua")
 dofile(tdm.directories.data.."/armors.lua")
 dofile(tdm.directories.data.."/ranks.lua")
 dofile(tdm.directories.data.."/entities.lua")
-dofile(tdm.directory.."/console.lua")
 dofile(tdm.directory.."/savingloading.lua")
-dofile(tdm.directory.."/custommenus.lua")
 dofile(tdm.directory.."/health.lua")
 dofile(tdm.directory.."/effects.lua")
 dofile(tdm.directory.."/menus.lua")
@@ -58,6 +56,10 @@ end
 addhook("die","tdm.deletePlayerClass")
 function tdm.deletePlayerClass(id)
 	parse("hudtxtclear "..id)
+	if tdm.player[id].knifeimage ~= nil then
+		freeimage(tdm.player[id].knifeimage)
+		tdm.player[id].knifeimage = nil
+	end
 	if tdm.player[id].image ~= nil then
 		freeimage(tdm.player[id].image)
 		tdm.player[id].image = nil
@@ -103,6 +105,9 @@ function tdm.setPlayerClass(id,class)
 	playerdata.gui = {}
 	parse("speedmod "..id.." "..playerdata.speed)
 	if playerdata.class.img ~= nil then
+		if playerdata.class.name == "Solar Angel" then
+			playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
+		end
     if playerdata.chosentalent.name ~= "Solar Eruption" then
       playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
     else
@@ -142,7 +147,7 @@ end
 
 function tdm.ranks(killer,victim,x,y,killerobject,assistant)
 	tdm.player[killer].exp = tdm.player[killer].exp + math.ceil(math.random(21,29))
-	if tdm.player[killer].exp >= tdm.player[killer].expreq and tdm.player[killer].rank ~= 21 then
+	if tdm.player[killer].exp >= tdm.player[killer].expreq and tdm.player[killer].rank ~= 22 then
 		tdm.player[killer].expreq = tdm.playerranks[tdm.player[killer].rank + 1].expreq
 		tdm.player[killer].exp = 0
 		tdm.player[killer].rank = tdm.player[killer].rank + 1
