@@ -4,13 +4,15 @@ tdm.registerTalent({
 	rarity = tdm.rarity.legendary,
 	chance = 10,
 	description = "Regain armor when dealing damage, scales with your weapon's damage",
-	description2 = "In a ratio of 1:8",
+	description2 = "In a ratio of 1:2",
 	healthbonus = 10,
 	speedbonus = 0,
 	damagebonus = 0.02,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		tdm.player[source].armor = tdm.player[source].armor + (hpdmg * 0.125)
-		parse("effect \"colorsmoke\" "..player(source,"x").." "..player(source,"y").." 1 1 100 100 255")
+		if weapon >= 1 and weapon <= 100 then
+			tdm.player[source].armor = tdm.player[source].armor + (hpdmg * 0.5)
+			parse("effect \"colorsmoke\" "..player(source,"x").." "..player(source,"y").." 1 1 100 100 255")
+		end
 	end,
 	prerequirment = nil,
 	owned = false
@@ -120,9 +122,11 @@ tdm.registerTalent({
 	speedbonus = 0,
 	damagebonus = 0.06,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		if math.random(1,100) <= 15 then
-			tdm.handledamage(id, source, hpdmg*1.25)
-			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 60 30 255 255 000")
+		if weapon >= 1 and weapon <= 100 then
+			if math.random(1,100) <= 15 then
+				tdm.handledamage(id, source, hpdmg*1.25)
+				parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 60 30 255 255 000")
+			end
 		end
 	end,
 	prerequirment = nil,
@@ -212,7 +216,9 @@ tdm.registerTalent({
 	speedbonus = 0,
 	damagebonus = 0.02,
 	callback = function(killer,victim,weapon,x,y,killerobject,assistant)
-		tdm.player[killer].effects.immunityframes = 1.5
+		if weapon >= 1 and weapon <= 100 then
+			tdm.player[killer].effects.immunityframes = 1.5
+		end
 	end,
 	prerequirment = nil,
 	owned = false
@@ -229,7 +235,9 @@ tdm.registerTalent({
 	speedbonus = 3,
 	damagebonus = 0.02,
 	callback = function(killer,victim,weapon,x,y,killerobject,assistant)
-		tdm.player[killer].effects.dodgeframes = 6
+		if weapon >= 1 and weapon <= 100 then
+			tdm.player[killer].effects.dodgeframes = 6
+		end
 	end,
 	prerequirment = 5,
 	owned = false
@@ -366,12 +374,14 @@ tdm.registerTalent({
 	speedbonus = 1,
 	damagebonus = 0.03,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		if tdm.player[id].effects.fire > 0 then
-			tdm.spawnprojectile(source,tdm.entitytypes.burningspear)
-			tdm.player[id].effects.fire = 0
-		end
-		if hpdmg >= 40 then
-			tdm.spawnprojectile(source,tdm.entitytypes.burningspear)
+		if weapon >= 1 and weapon <= 100 then
+			if tdm.player[id].effects.fire > 0 then
+				tdm.spawnprojectile(source,tdm.entitytypes.burningspear)
+				tdm.player[id].effects.fire = 0
+			end
+			if hpdmg >= 40 then
+				tdm.spawnprojectile(source,tdm.entitytypes.burningspear)
+			end
 		end
 	end,
 	prerequirment = nil,
@@ -389,7 +399,9 @@ tdm.registerTalent({
 	speedbonus = 0,
 	damagebonus = 0.03,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		tdm.player[id].effects.fire = 3
+		if weapon >= 1 and weapon <= 100 then
+			tdm.player[id].effects.fire = 3
+		end
 	end,
 	prerequirment = nil,
 	owned = false
@@ -406,9 +418,11 @@ tdm.registerTalent({
   speedbonus = 2,
   damagebonus = 0.1,
   callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-    if math.random(1,100) <= 20 then
-      tdm.spawnprojectile(source,tdm.entitytypes.solarspear)
-    end
+		if weapon >= 1 and weapon <= 100 then
+	    if math.random(1,100) <= 20 then
+	      tdm.spawnprojectile(source,tdm.entitytypes.solarspear)
+	    end
+		end
   end,
   prerequirment = nil,
   owned = false
