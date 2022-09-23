@@ -26,6 +26,7 @@ dofile(tdm.directory.."/bot.lua")
 dofile(tdm.directory.."/gui.lua")
 dofile(tdm.directory.."/spawns.lua")
 dofile(tdm.directories.data.."/rarities.lua")
+dofile(tdm.directories.data.."/buffsdebuffs.lua")
 dofile(tdm.directory.."/talents.lua")
 dofile(tdm.directory.."/customchat.lua")
 dofile(tdm.directories.vehicles.."/engine.lua")
@@ -73,18 +74,15 @@ function tdm.defaultSpawns(id)
 		return
 	end
 	tdm.setPlayerClass(id,tdm.player[id].defaultclass)
-	if player(id,"team") == 1 then
-		local entity = tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
-		parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-	else
-		local entity = tdm.random_array_value(tdm.find_entity_types("Env_Item"))
-		parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-	end
+	tdm.selectSpawn(id)
 end
 
 function tdm.setPlayerClass(id,class)
 	local playerdata = tdm.player[id]
 	playerdata.class = class
+	if playerdata.class == nil then
+		return
+	end
 	playerdata.health = playerdata.class.health + playerdata.chosentalent.healthbonus
 	playerdata.maxhealth = playerdata.class.maxhealth + playerdata.chosentalent.healthbonus
 	playerdata.damagemultiplier = playerdata.class.damagemultiplier + playerdata.chosentalent.damagebonus
@@ -104,7 +102,7 @@ function tdm.setPlayerClass(id,class)
 	playerdata.effects.damagebuff = 0
 	playerdata.gui = {}
 	parse("speedmod "..id.." "..playerdata.speed)
-	if playerdata.class.img ~= nil then
+	if playerdata.class.img ~= nil or playerdata.chosentalent.name == "Solar Eruption" then
 		if playerdata.class.name == "Solar Angel" then
 			playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
 		end

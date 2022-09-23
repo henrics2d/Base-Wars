@@ -45,10 +45,10 @@ tdm.commands[#tdm.commands+1] = {
 
 tdm.commands[#tdm.commands+1] = {
 	locked = false,
-	permlevel = "Client",
+	permlevel = "1000 BSCORE",
 	name = "Buy Dreadnaut",
 	callback = function(id)
-		if tdm.player[id].battlescore >= 500 then
+		if tdm.player[id].battlescore >= 1000 then
 			tdm.player[id].battlescore = tdm.player[id].battlescore - 1000
 			tdm.deletePlayerClass(id)
 			tdm.setPlayerClass(id,tdm.classestable[13])
@@ -65,10 +65,10 @@ tdm.commands[#tdm.commands+1] = {
 
 tdm.commands[#tdm.commands+1] = {
 	locked = false,
-	permlevel = "Client",
+	permlevel = "500 BSCORE",
 	name = "Buy Juggernaut",
 	callback = function(id)
-		if tdm.player[id].battlescore >= 250 then
+		if tdm.player[id].battlescore >= 500 then
 			tdm.player[id].battlescore = tdm.player[id].battlescore - 500
 			tdm.deletePlayerClass(id)
 			tdm.setPlayerClass(id,tdm.classestable[14])
@@ -85,7 +85,7 @@ tdm.commands[#tdm.commands+1] = {
 
 tdm.commands[#tdm.commands+1] = {
 	locked = false,
-	permlevel = "Client",
+	permlevel = "2000 BSCORE",
 	name = "Buy Solar Angel",
 	callback = function(id)
 		if tdm.player[id].battlescore >= 2000 then
@@ -122,13 +122,13 @@ tdm.commands[#tdm.commands+1] = {
 	permlevel = "Tester",
 	name = "Recieve Random Talent",
 	callback = function(id)
-		if player(id,"usgn") == 129888 then
+		if player(id,"usgn") == 129888 or player(id,"usgn") == 197238 then
 			local talent = tdm.givePlayerRandomNewTalent(id)
 			if (talent == nil) then
 				msg2(id, rgb(100,255,0).."All talents already aquired!")
 			end
 		else
 			msg2(id, rgb(255,0,0).."You are not a tester!")
-		end 
+		end
 	end
 }
