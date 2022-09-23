@@ -4,7 +4,7 @@ function tdm.bots(id)
 		tdm.deletePlayerClass(id)
 		tdm.setPlayerClass(id,tdm.getRandomClass())
 		tdm.player[id].chosentalent = tdm.generateRandomNewTalent(id)
-		if tdm.player[id].class.unique or tdm.player[id].rank < tdm.player[id].class.rankreq then
+		if tdm.player[id].class.unique then
 			tdm.bots(id)
 		end
 		local spawn = tdm.getBotSpawnEntity(id)
