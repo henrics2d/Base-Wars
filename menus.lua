@@ -3,12 +3,12 @@ function tdm.classmenu(id)
 	if tdm.player[id].defaultclass ~= nil then
 		return
 	end
-	sme.createMenu(id,tdm.equipClass,tdm.showClass,"Classes",true,tdm.classestable,false)
+	sme.createMenu(id,tdm.equipClass,tdm.showClass,"Classes",true,tdm.classestable,true)
 end
 
 function tdm.showClass(id,data,parameter)
-	local text = data.name.."| Health: "..data.health
-	if data.unique then
+	local text = data.name.."| Rank: "..tdm.playerranks[data.rankreq].name
+	if data.unique or tdm.player[id].rank < data.rankreq then
 		text = "("..text..")"
 	end
 	return text

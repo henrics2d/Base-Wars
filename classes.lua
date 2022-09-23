@@ -3,6 +3,7 @@ tdm.classestable = {}
 --[[
 classes.lua
 
+rankreq = the rank required to unlock this class 
 unique = is this class chooseable from the spawn menu?
 name = name of the class
 description = first line of the class' description
@@ -19,6 +20,7 @@ onSpawn = run these commands for the id that spawned with said class
 ]]
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 1,
 	unique = false,
 	name = "Soldier",
 	description = "A powerful soldier with no special abilities and moderate health",
@@ -45,6 +47,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 3,
 	unique = false,
 	name = "Scout",
 	description = "A very fast soldier with a shotgun and low health",
@@ -80,6 +83,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 3,
 	unique = false,
 	name = "Heavy",
 	description = "A heavily armored soldier with lots of armor",
@@ -105,6 +109,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 4,
 	unique = false,
 	name = "Defender",
 	description = "An extremely tanky half cyborg thats capable of providing buffs to his comrades",
@@ -134,6 +139,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 5,
 	unique = false,
 	name = "Commando",
 	description = "A veteran of war with a AUG Bullpup and a singular airstrike",
@@ -175,6 +181,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 5,
 	unique = false,
 	name = "Sniper",
 	description = "A trained professional with an anti-material sniper rifle",
@@ -205,6 +212,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 7,
 	unique = false,
 	name = "Assassin",
 	description = "A flanker with a deadly machete and scout sniper rifle",
@@ -236,6 +244,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 9,
 	unique = false,
 	name = "Automaton",
 	description = "A rogue automaton robot with many gadgets at his disposal",
@@ -264,6 +273,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 10,
 	unique = false,
 	name = "Medic",
 	description = "A medic that can heal both in an area and single targets",
@@ -288,6 +298,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 10,
 	unique = false,
 	name = "Demolitionist",
 	description = "A mercenary that can use both rockets and grenades",
@@ -314,6 +325,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 12,
 	unique = true,
 	name = "Necromancer",
 	description = "(VERY UNFINISHED) An experienced magician in the art of reviving the dead",
@@ -336,6 +348,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 12,
 	unique = true,
 	name = "Godfather",
 	description = "(VERY UNFINISHED) A top rank mafia member",
@@ -359,6 +372,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 1,
 	unique = true,
 	name = "Dreadnaut",
 	description = "Basically a walking tank...",
@@ -380,6 +394,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 1,
 	unique = true,
 	name = "Juggernaut",
 	description = "Boasts level 4 armor for cheap",
@@ -400,6 +415,7 @@ tdm.classestable[#tdm.classestable+1] = {
 }
 
 tdm.classestable[#tdm.classestable+1] = {
+	rankreq = 1,
   unique = true,
   name = "Solar Angel",
   description = "Throw your solar javelins to tear your foes asunder!",
