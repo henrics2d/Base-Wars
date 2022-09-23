@@ -46,23 +46,6 @@ function tdm.sayClass(id,txt)
 	return 1
 end
 
-function tdm.choosespawn(id)
-	sme.createMenu(id,tdm.chooseSpawnpoint,tdm.showSpawnpoint,"Spawn Points",true,tdm.spawnpoints,false)
-end
-
-function tdm.showSpawnpoint(id,data,parameter)
-	local text = data.name
-	if player(id,"team") ~= data.ownedby then
-		text = "("..data..")"
-	end
-	return text
-end
-
-function tdm.chooseSpawnpoint(id,button,data,parameter)
-	tdm.player[id].immunityframes = 3
-	parse("setpos "..id.." "..misc.tile_to_pixel(data.x).." "..misc.tile_to_pixel(data.y))
-end
-
 addhook("serveraction","tdm.serveraction")
 function tdm.serveraction(id,action)
 	if (action == 1) then
@@ -165,4 +148,5 @@ function tdm.pickSpawn(id,button,data,parameter)
 		return
 	end
 	parse("setpos "..id.." "..misc.tile_to_pixel(data.x).." "..misc.tile_to_pixel(data.y))
+	tdm.player[id].immunityframes = 3
 end

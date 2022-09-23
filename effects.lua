@@ -104,7 +104,7 @@ function tdm.onFireEffect()
 						console.customkill(0,"Burnt to Death",id)
 					end
 				end
-				parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 3 3 255 165 000")
+				parse("effect \"fire\" "..player(id,"x").." "..player(id,"y").." 3 3 255 165 000")
 			end
 		end
 	end
