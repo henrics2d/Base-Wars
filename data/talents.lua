@@ -173,12 +173,12 @@ tdm.registerTalent({
 	rarity = tdm.rarity.legendary,
 	chance = 10,
 	description = "Deal more damage the more you are hit",
-	description2 = "5% extra damage per hit (stacks up to 60%)",
+	description2 = "1% extra damage per hit",
 	healthbonus = 8,
 	speedbonus = 1,
 	damagebonus = 0,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		tdm.player[id].effects.damagebuff = tdm.player[id].effects.damagebuff + 5
+		tdm.player[id].effects.damagebuff = tdm.player[id].effects.damagebuff + 1
 	end,
 	prerequirment = nil,
 	owned = false
@@ -258,7 +258,7 @@ tdm.registerTalent({
 	description = "Just a basic speed boost increase",
 	description2 = "What else do you need?",
 	healthbonus = 0,
-	speedbonus = 5,
+	speedbonus = 3,
 	damagebonus = 0,
 	callback = nil,
 	prerequirment = nil,
@@ -288,7 +288,7 @@ tdm.registerTalent({
 	description = "A good increase to your speed",
 	description2 = "What else do you need?",
 	healthbonus = 0,
-	speedbonus = 10,
+	speedbonus = 7,
 	damagebonus = 0,
 	callback = nil,
 	prerequirment = nil,

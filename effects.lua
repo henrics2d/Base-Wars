@@ -85,10 +85,7 @@ function tdm.damageBuffEffect()
 	for _,id in ipairs(player(0,"tableliving")) do
 		if tdm.player[id].class ~= nil then
 			tdm.player[id].damagemultiplier = (tdm.player[id].effects.damagebuff / 100)	+ 1
-			if tdm.player[id].damagemultiplier >= 1.6 then
-				tdm.player[id].damagemultiplier = 1.6
-			end
-		end
+		end 
 	end
 end
 

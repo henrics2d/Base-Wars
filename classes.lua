@@ -61,7 +61,8 @@ tdm.classestable[#tdm.classestable+1] = {
 		cooldown = 15,
 		callback = function(id)
 			msg2(id,rgb(255,0,0).."I feel hyper!@C")
-			tdm.player[id].damagemultiplier = 1.15
+			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 5 25 255 000 000")
+			tdm.player[id].damagemultiplier = 1.40
 			parse("speedmod "..id.." 32")
 			timer2(5000,{id},function(id)
 				msg2(id,rgb(255,0,0).."Boost over.@C")
@@ -149,6 +150,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		cooldown = 60,
 		callback = function(id)
 			msg(rgb(255,0,0).."Commando "..player(id,"name").." has called to arms!")
+			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 1 100 255 000 000")
 			for _,victim in ipairs(player(0,"tableliving")) do
 				local px = player(id,"x")
 				local py = player(id,"y")
@@ -188,6 +190,8 @@ tdm.classestable[#tdm.classestable+1] = {
 		name = "Escape Plan",
 		cooldown = 30,
 		callback = function(id)
+			parse("effect \"smoke\" "..player(id,"x").." "..player(id,"y").." 1 100 255 000 000")
+			tdm.player[id].immunityframes = 0.5
 			parse("speedmod "..id.." 25")
 			timer2(4000,{id},function(id)
 				parse("speedmod "..id.." 0")
@@ -216,6 +220,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		name = "Nail-Biting Accuracy",
 		cooldown = 35,
 		callback = function(id)
+			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 5 25 255 000 000")
 			tdm.player[id].damagemultiplier = 100
 			msg2(id,rgb(255,0,0).."Focus, Concentrate!@C")
 			timer2(1000,{id},function(id)
