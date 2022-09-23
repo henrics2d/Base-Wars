@@ -150,7 +150,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		cooldown = 60,
 		callback = function(id)
 			msg(rgb(255,0,0).."Commando "..player(id,"name").." has called to arms!")
-			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 1 100 255 000 000")
+			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 15 25 255 000 000")
 			for _,victim in ipairs(player(0,"tableliving")) do
 				local px = player(id,"x")
 				local py = player(id,"y")
@@ -190,7 +190,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		name = "Escape Plan",
 		cooldown = 30,
 		callback = function(id)
-			parse("effect \"smoke\" "..player(id,"x").." "..player(id,"y").." 1 100 255 000 000")
+			parse("effect \"smoke\" "..player(id,"x").." "..player(id,"y").." 50 30 255 000 000")
 			tdm.player[id].immunityframes = 0.5
 			parse("speedmod "..id.." 25")
 			timer2(4000,{id},function(id)
