@@ -1,3 +1,12 @@
+addhook("second","tdm.solarAngelParticles")
+function tdm.solarAngelParticles()
+	for _,id in ipairs(player(0,"table")) do
+		if tdm.player[id].class.name == "Solar Angel" or tdm.player[id].chosentalent.name == "Solar Eruption" then
+			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 1 1 255 255 128")
+		end
+	end
+end
+
 addhook("select","tdm.solarAngelCosmetics")
 function tdm.solarAngelCosmetics(id,type,mode)
   if tdm.player[id].class == nil then
@@ -85,7 +94,7 @@ function tdm.damageBuffEffect()
 	for _,id in ipairs(player(0,"tableliving")) do
 		if tdm.player[id].class ~= nil then
 			tdm.player[id].damagemultiplier = (tdm.player[id].effects.damagebuff / 100)	+ 1
-		end 
+		end
 	end
 end
 

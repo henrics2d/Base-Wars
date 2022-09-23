@@ -117,13 +117,13 @@ tdm.registerTalent({
 	rarity = tdm.rarity.rare,
 	chance = 30,
 	description = "Call forth a strike from the heavens on your opponents",
-	description2 = "15% chance of occuring everytime you hit someone",
+	description2 = "Has a chance of occuring everytime you hit someone",
 	healthbonus = 5,
 	speedbonus = 0,
 	damagebonus = 0.06,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if weapon >= 1 and weapon <= 100 then
-			if math.random(1,100) <= 15 then
+			if math.random(1,150) <= (hpdmg / 0.8)  then
 				tdm.handledamage(id, source, hpdmg*1.25)
 				parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 60 30 255 255 000")
 			end
@@ -412,14 +412,14 @@ tdm.registerTalent({
   name = "Solar Eruption",
   rarity = tdm.rarity.blessing,
   chance = 4,
-  description = "Hitting an enemy has a 20% chance of throwing a follow up solar javelin",
+  description = "Hitting an enemy has a chance of throwing a follow up solar javelin",
   description2 = "Also comes with a cool solar halo cosmetic!",
   healthbonus = 15,
   speedbonus = 2,
   damagebonus = 0.1,
   callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if weapon >= 1 and weapon <= 100 then
-	    if math.random(1,100) <= 20 then
+	    if math.random(1,150) <= hpdmg then
 	      tdm.spawnprojectile(source,tdm.entitytypes.solarspear)
 	    end
 		end
