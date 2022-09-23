@@ -5,7 +5,7 @@ tdm.registerTalent({
 	chance = 10,
 	description = "Regain armor when dealing damage, scales with your weapon's damage",
 	description2 = "In a ratio of 1:8",
-	healthbonus = 3,
+	healthbonus = 10,
 	speedbonus = 0,
 	damagebonus = 0.02,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -34,15 +34,15 @@ tdm.registerTalent({
 tdm.registerTalent({
 	id = "speedonhit",
 	name = "Hermes' Gun",
-	rarity = tdm.rarity.common,
-	chance = 100,
-	description = "Gain a very slight speed boost for shooting people",
+	rarity = tdm.rarity.rare,
+	chance = 30,
+	description = "Gain a slight speed boost for shooting people",
 	description2 = "Speed gain depends on the damage done",
-	healthbonus = 1,
+	healthbonus = 5,
 	speedbonus = 1,
-	damagebonus = 0.01,
+	damagebonus = 0.04,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		tdm.player[source].speed = tdm.player[source].speed + (hpdmg * 0.0015)
+		tdm.player[source].speed = tdm.player[source].speed + (hpdmg * 0.015)
 		parse("speedmod "..source.." "..tdm.player[source].speed)
 	end,
 	prerequirment = nil,

@@ -89,7 +89,7 @@ tdm.entitytypes.burningspear = {
 	onCreate = function(entity)
 	end,
 	onUpdate = function(entity)
-		parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 10 10 255 255 000")
+		parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 2 4 255 128 000")
 	end,
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then
@@ -100,7 +100,7 @@ tdm.entitytypes.burningspear = {
 		end
 	end,
 	onWallCollision = function(entity)
-		parse("explosion "..entity.position.x.." "..entity.position.y.." 10 10 "..entity.owner)
+		parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 6 12 255 000 000")
 	end,
 	onDespawn = function(entity)
 		parse("explosion "..entity.position.x.." "..entity.position.y.." 30 0 "..entity.owner)
@@ -116,7 +116,7 @@ tdm.entitytypes.solarspear = {
 	onCreate = function(entity)
 	end,
 	onUpdate = function(entity)
-		parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 10 10 255 255 255")
+		parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 5 5 255 255 100")
 	end,
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then

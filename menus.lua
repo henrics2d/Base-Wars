@@ -59,6 +59,7 @@ function tdm.showSpawnpoint(id,data,parameter)
 end
 
 function tdm.chooseSpawnpoint(id,button,data,parameter)
+	tdm.player[id].immunityframes = 3
 	parse("setpos "..id.." "..misc.tile_to_pixel(data.x).." "..misc.tile_to_pixel(data.y))
 end
 
