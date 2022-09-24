@@ -9,7 +9,11 @@ end
 function tdm.updateBaseStats(id)
 	local playerdata = tdm.player[id]
 	if playerdata.class ~= nil then
-		console.hudtxt2(id,1,rgb(255,255,128).."HP: "..rgb(255,255,255)..math.ceil(playerdata.health).."/"..math.ceil(playerdata.maxhealth),player(id,"screenw") / 2.25,player(id,"screenh") / 1.5,0,0,25)
+		if (math.ceil(playerdata.health) / math.ceil(playerdata.maxhealth)) * 100 < 20 then
+			console.hudtxt2(id,1,rgb(255,0,0).."(!!!) HP: "..math.ceil(playerdata.health).."/"..math.ceil(playerdata.maxhealth),player(id,"screenw") / 2.25,player(id,"screenh") / 1.5,0,0,25)
+		else
+			console.hudtxt2(id,1,rgb(255,255,128).."HP: "..rgb(255,255,255)..math.ceil(playerdata.health).."/"..math.ceil(playerdata.maxhealth),player(id,"screenw") / 2.25,player(id,"screenh") / 1.5,0,0,25)
+		end
 		console.hudtxt2(id,2,rgb(128,128,255).."AP: "..rgb(255,255,255)..math.ceil(playerdata.armor),player(id,"screenw") / 2.25,player(id,"screenh") / 1.44,0,0,25)
 		console.hudtxt2(id,3,rgb(128,128,255).."Armor: "..rgb(255,255,255)..playerdata.armortype.name,player(id,"screenw") / 2.25,player(id,"screenh") / 1.38,0,0,25)
 	end
@@ -77,8 +81,6 @@ function tdm.getPlayerTarget(id)
 	if tdm.player[id].target == nil then
 		console.hudtxt2(id,11,"",2,270)
 		console.hudtxt2(id,12,"",2,270)
-		parse(' hudtxt2 '..id..' 11 "" 2 270')
-		parse(' hudtxt2 '..id..' 12 "" 2 270')
 		return nil
 	end
 	if player(tdm.player[id].target, "health") <= 0 then
