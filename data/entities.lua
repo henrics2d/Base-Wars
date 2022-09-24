@@ -1,59 +1,5 @@
 tdm.entitytypes = {}
 
-tdm.entitytypes.bullet = {
-	name = "Chaingun Bullet",
-	image = "gfx/henristdm/bullet.png",
-	speed = 100,
-	lifetime = 3,
-	size = 5,
-	onCreate = function(entity)
-		parse("sv_soundpos henristdm/chaingun.wav "..player(entity.owner,"x").." "..player(entity.owner,"y"))
-	end,
-	onUpdate = function(entity)
-	end,
-	onPlayerCollsion = function(entity,id)
-		if (player(entity.owner, "team") ~= player(id, "team")) then
-			tdm.handledamage(id, entity.owner, math.random(19,21))
-			tdm.player[id].effects.combattimer = math.random(4,6)
-			entity.alive = false
-		end
-	end,
-	onWallCollision = function(entity)
-		entity.alive = false
-	end,
-	onDespawn = function(entity) end
-}
-
-tdm.entitytypes.vdagger = {
-	name = "Vampire Knives",
-	image = "gfx/henristdm/vdagger.png",
-	speed = 45,
-	lifetime = 5,
-	size = 14,
-	onCreate = function(entity)
-		entity.rotate = true
-		imagescale(entity.image,0.75,0.9)
-	end,
-	onUpdate = function(entity)
-	end,
-	onPlayerCollsion = function(entity,id)
-		if (player(entity.owner, "team") ~= player(id, "team")) then
-			tdm.handledamage(id, entity.owner, math.random(413,547))
-			tdm.player[id].effects.combattimer = math.random(4,6)
-			tdm.player[entity.owner].health = tdm.player[entity.owner].health + math.random(206,278)
-			if tdm.player[entity.owner].health >= tdm.player[entity.owner].maxhealth then
-				tdm.player[entity.owner].maxhealth = tdm.player[entity.owner].maxhealth + math.random(20,27)
-				tdm.player[entity.owner].health = tdm.player[entity.owner].maxhealth
-			end
-			entity.alive = false
-		end
-	end,
-	onWallCollision = function(entity)
-		entity.alive = false
-	end,
-	onDespawn = function(entity) end
-}
-
 tdm.entitytypes.igrenade = {
 	name = "Impact Grenade",
 	image = "gfx/henristdm/inade.png",
@@ -76,7 +22,7 @@ tdm.entitytypes.igrenade = {
 		entity.alive = false
 	end,
 	onDespawn = function(entity)
-		parse("explosion "..entity.position.x.." "..entity.position.y.." 85 550 "..entity.owner)
+		console.explosion(entity.position.x,entity.position.y,85,150,entity.owner)
 	end
 }
 
@@ -89,7 +35,7 @@ tdm.entitytypes.burningspear = {
 	onCreate = function(entity)
 	end,
 	onUpdate = function(entity)
-		parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 2 4 255 128 000")
+		console.effect("\"flare\"",entity.position.x,entity.position.y,2,4,255,128,000)
 	end,
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then
@@ -100,10 +46,10 @@ tdm.entitytypes.burningspear = {
 		end
 	end,
 	onWallCollision = function(entity)
-		parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 6 12 255 000 000")
+		console.effect("\"flare\"",entity.position.x,entity.position.y,6,12,255,128,000)
 	end,
 	onDespawn = function(entity)
-		parse("explosion "..entity.position.x.." "..entity.position.y.." 30 0 "..entity.owner)
+		console.explosion(entity.position.x,entity.position.y,50,0,entity.owner)
 	end
 }
 
@@ -116,7 +62,7 @@ tdm.entitytypes.solarspear = {
 	onCreate = function(entity)
 	end,
 	onUpdate = function(entity)
-		parse("effect \"flare\" "..entity.position.x.." "..entity.position.y.." 5 5 255 255 100")
+		console.effect("\"flare\"",entity.position.x,entity.position.y,5,5,255,255,128)
 	end,
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then
@@ -127,9 +73,10 @@ tdm.entitytypes.solarspear = {
 		end
 	end,
 	onWallCollision = function(entity)
+		console.effect("\"flare\"",entity.position.x,entity.position.y,10,15,255,255,128)
 	end,
 	onDespawn = function(entity)
-		parse("explosion "..entity.position.x.." "..entity.position.y.." 30 0 "..entity.owner)
+		console.explosion(entity.position.x,entity.position.y,65,15,entity.owner)
 	end
 }
 

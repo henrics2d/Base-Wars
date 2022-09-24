@@ -27,7 +27,6 @@ tdm.vehicletypes.humvee = {
 		vehicle.alive = false
 	end,
 	onDespawn = function(entity)
-		--parse("explosion "..entity.position.x.." "..entity.position.y.." 85 550 "..entity.owner)
 	end
 }
 

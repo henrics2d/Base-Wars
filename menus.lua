@@ -83,7 +83,7 @@ function tdm.confirmDefaultClass(id,data)
 	msg2(id,rgb(255,255,128)..data.description2)
 	msg2(id,rgb(255,255,128)..data.name..rgb(255,255,255).." has been set as your default class!")
 	tdm.player[id].defaultclass = data
-	parse("customkill 0 Suicide "..id)
+	console.customkill(0,"Is now a "..data.name,id)
 end
 
 function tdm.optionDefaultClass(id)
@@ -147,6 +147,6 @@ function tdm.pickSpawn(id,button,data,parameter)
 	if player(id,"team") ~= entity(data.x,data.y,"int0") then
 		return
 	end
-	parse("setpos "..id.." "..misc.tile_to_pixel(data.x).." "..misc.tile_to_pixel(data.y))
+	console.setpos(id,misc.tile_to_pixel(data.x),misc.tile_to_pixel(data.y))
 	tdm.player[id].immunityframes = 3
 end

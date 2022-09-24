@@ -5,7 +5,7 @@ function tdm.solarAngelParticles()
 			return
 		end
 		if tdm.player[id].class.name == "Solar Angel" or tdm.player[id].chosentalent.name == "Solar Eruption" then
-			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 1 1 255 255 128")
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,255,255,128)
 		end
 	end
 end
@@ -87,7 +87,7 @@ function tdm.dodgeBoostEffect()
 	for _,id in ipairs(player(0,"tableliving")) do
 		if tdm.player[id].class ~= nil then
 			if tdm.player[id].effects.dodgeboost > 0 then
-				parse("speedmod "..id.." "..tdm.player[id].speed+tdm.player[id].effects.dodgeboost)
+				console.speedmod(id,tdm.player[id].speed + tdm.player[id].effects.dodgeboost)
 			end
 		end
 	end
@@ -113,7 +113,7 @@ function tdm.onFireEffect()
 						console.customkill(0,"Burnt to Death",id)
 					end
 				end
-				parse("effect \"fire\" "..player(id,"x").." "..player(id,"y").." 3 3 255 165 000")
+				console.effect("\"fire\"",player(id,"x"),player(id,"y"),3,3,0,128,255)
 			end
 		end
 	end

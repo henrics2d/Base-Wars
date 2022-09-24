@@ -75,6 +75,8 @@ end
 
 function tdm.getPlayerTarget(id)
 	if tdm.player[id].target == nil then
+		console.hudtxt2(id,11,"",2,270)
+		console.hudtxt2(id,12,"",2,270)
 		parse(' hudtxt2 '..id..' 11 "" 2 270')
 		parse(' hudtxt2 '..id..' 12 "" 2 270')
 		return nil

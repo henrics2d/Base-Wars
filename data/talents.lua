@@ -11,7 +11,7 @@ tdm.registerTalent({
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if weapon >= 1 and weapon <= 100 then
 			tdm.player[source].armor = tdm.player[source].armor + (hpdmg * 0.5)
-			parse("effect \"colorsmoke\" "..player(source,"x").." "..player(source,"y").." 1 1 100 100 255")
+			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),1,1,0,128,255)
 		end
 	end,
 	prerequirment = nil,
@@ -45,7 +45,7 @@ tdm.registerTalent({
 	damagebonus = 0.04,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		tdm.player[source].speed = tdm.player[source].speed + (hpdmg * 0.015)
-		parse("speedmod "..source.." "..tdm.player[source].speed)
+		console.speedmod(source,tdm.player[source].speed + (hpdmg * 0.015))
 	end,
 	prerequirment = nil,
 	owned = false
@@ -64,7 +64,7 @@ tdm.registerTalent({
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if math.random(1,100) <= 10 then
 			tdm.handledamage(id, source, hpdmg*0.25)
-			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 5 5 255 000 000")
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),5,5,255,0,0)
 		end
 	end,
 	prerequirment = nil,
@@ -102,7 +102,7 @@ tdm.registerTalent({
 	damagebonus = 0.01,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if math.random(1,100) <= 15 then
-			parse("effect \"colorsmoke\" "..player(id,"x").." "..player(id,"y").." 25 30 128 128 128")
+			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),25,30,128,128,128)
 			tdm.player[id].effects.immunityframes = 0.15
 			tdm.player[id].effects.dodgeboost = 8
 		end
@@ -125,7 +125,7 @@ tdm.registerTalent({
 		if weapon >= 1 and weapon <= 100 then
 			if math.random(1,150) <= (hpdmg / 0.8)  then
 				tdm.handledamage(id, source, hpdmg*1.25)
-				parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 60 30 255 255 000")
+				console.effect("\"flare\"",player(id,"x"),player(id,"y"),60,30,255,255,255)
 			end
 		end
 	end,
@@ -145,7 +145,7 @@ tdm.registerTalent({
 	damagebonus = 0.02,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if math.random(1,100) <= 20 then
-			parse("effect \"colorsmoke\" "..player(id,"x").." "..player(id,"y").." 25 30 128 128 128")
+			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),25,30,255,255,255)
 			tdm.player[id].effects.immunityframes = 0.15
 			tdm.player[id].effects.dodgeboost = 13
 		end
@@ -199,7 +199,7 @@ tdm.registerTalent({
 	speedbonus = 0,
 	damagebonus = 0.04,
 	callback = function(killer,victim,weapon,x,y,killerobject,assistant)
-		parse("explosion "..player(victim,"x").." "..player(victim,"y").." 125 60 "..killer)
+		console.explosion(player(victim,"x"),player(victim,"y"),125,60,killer)
 	end,
 	prerequirment = nil,
 	owned = false

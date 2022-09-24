@@ -22,7 +22,7 @@ tdm.commands[#tdm.commands+1] = {
 	permlevel = "Client",
 	name = "Reset to spawn",
 	callback = function(id)
-		parse("customkill 0 Suicide "..id)
+		console.customkill(0,"Reset to spawn",id)
 	end
 }
 
@@ -52,13 +52,7 @@ tdm.commands[#tdm.commands+1] = {
 			tdm.player[id].battlescore = tdm.player[id].battlescore - 1000
 			tdm.deletePlayerClass(id)
 			tdm.setPlayerClass(id,tdm.classestable[13])
-			if player(id,"team") == 1 then
-				local entity = tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
-				parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-			else
-				local entity = tdm.random_array_value(tdm.find_entity_types("Env_Item"))
-				parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-			end
+			tdm.selectSpawn(id)
 		end
 	end
 }
@@ -72,13 +66,7 @@ tdm.commands[#tdm.commands+1] = {
 			tdm.player[id].battlescore = tdm.player[id].battlescore - 500
 			tdm.deletePlayerClass(id)
 			tdm.setPlayerClass(id,tdm.classestable[14])
-			if player(id,"team") == 1 then
-				local entity = tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
-				parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-			else
-				local entity = tdm.random_array_value(tdm.find_entity_types("Env_Item"))
-				parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-			end
+			tdm.selectSpawn(id)
 		end
 	end
 }
@@ -92,13 +80,7 @@ tdm.commands[#tdm.commands+1] = {
 			tdm.player[id].battlescore = tdm.player[id].battlescore - 2000
 			tdm.deletePlayerClass(id)
 			tdm.setPlayerClass(id,tdm.classestable[15])
-			if player(id,"team") == 1 then
-				local entity = tdm.random_array_value(tdm.find_entity_types("Env_Cube3D"))
-				parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-			else
-				local entity = tdm.random_array_value(tdm.find_entity_types("Env_Item"))
-				parse("setpos "..id.." "..misc.tile_to_pixel(entity.x).." "..misc.tile_to_pixel(entity.y))
-			end
+			tdm.selectSpawn(id)
 		end
 	end
 }

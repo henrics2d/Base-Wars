@@ -3,7 +3,7 @@ tdm.classestable = {}
 --[[
 classes.lua
 
-rankreq = the rank required to unlock this class 
+rankreq = the rank required to unlock this class
 unique = is this class chooseable from the spawn menu?
 name = name of the class
 description = first line of the class' description
@@ -35,14 +35,13 @@ tdm.classestable[#tdm.classestable+1] = {
 	gadget = nil,
 	onSpawn = function(id)
 		if player(id, "team") == 1 then
-			parse("strip "..id.." 2")
+			console.strip(id,2)
 		else
-			parse("strip "..id.." 1")
+			console.strip(id,1)
 		end
-		parse("equip "..id.." 30")
-		parse("equip "..id.." 32")
-		parse("equip "..id.." 51")
-		parse("equip "..id.." 3")
+		console.equip(id,32)
+		console.equip(id,51)
+		console.equip(id,3)
 	end,
 }
 
@@ -64,21 +63,21 @@ tdm.classestable[#tdm.classestable+1] = {
 		cooldown = 15,
 		callback = function(id)
 			msg2(id,rgb(255,0,0).."I feel hyper!@C")
-			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 5 25 255 000 000")
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),5,25,255,000,000)
 			tdm.player[id].damagemultiplier = 1.40
-			parse("speedmod "..id.." 32")
+			console.speedmod(id,32)
 			timer2(5000,{id},function(id)
 				msg2(id,rgb(255,0,0).."Boost over.@C")
-				parse("speedmod "..id.." 8")
+				console.speedmod(id,tdm.player[id].speed)
 				tdm.player[id].damagemultiplier = 1
 			end)
 		end
 	},
 	onSpawn = function(id)
-		parse("strip "..id.." ".."2")
-		parse("strip "..id.." ".."1")
-		parse("equip "..id.." ".."3")
-		parse("equip "..id.." ".."10")
+		console.strip(id,2)
+		console.strip(id,1)
+		console.equip(id,3)
+		console.equip(id,10)
 	end,
 }
 
@@ -97,14 +96,7 @@ tdm.classestable[#tdm.classestable+1] = {
 	img = "heavy.png",
 	gadget = nil,
 	onSpawn = function(id)
-		if player(id, "team") == 1 then
-			parse("strip "..id.." ".."2")
-			parse("equip "..id.." ".."3")
-		else
-			parse("strip "..id.." ".."1")
-			parse("equip "..id.." ".."4")
-		end
-		parse("equip "..id.." ".."40")
+		console.equip(id,40)
 	end,
 }
 
@@ -129,12 +121,9 @@ tdm.classestable[#tdm.classestable+1] = {
 		end
 	},
 	onSpawn = function(id)
-		if player(id, "team") == 1 then
-			parse("strip "..id.." ".."2")
-		else
-			parse("strip "..id.." ".."1")
-		end
-		parse("equip "..id.." 6")
+		console.strip(id,1)
+		console.strip(id,2)
+		console.equip(id,6)
 	end,
 }
 
@@ -156,7 +145,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		cooldown = 60,
 		callback = function(id)
 			msg(rgb(255,0,0).."Commando "..player(id,"name").." has called to arms!")
-			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 15 25 255 000 000")
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),15,50,255,000,000)
 			for _,victim in ipairs(player(0,"tableliving")) do
 				local px = player(id,"x")
 				local py = player(id,"y")
@@ -175,8 +164,8 @@ tdm.classestable[#tdm.classestable+1] = {
 		end
 	},
 	onSpawn = function(id)
-		parse("equip "..id.." ".."76")
-		parse("equip "..id.." ".."33")
+		console.equip(id,76)
+		console.equip(id,33)
 	end,
 }
 
@@ -197,17 +186,17 @@ tdm.classestable[#tdm.classestable+1] = {
 		name = "Escape Plan",
 		cooldown = 30,
 		callback = function(id)
-			parse("effect \"smoke\" "..player(id,"x").." "..player(id,"y").." 50 30 255 000 000")
+			console.effect("\"smoke\"",player(id,"x"),player(id,"y"),50,35,255,000,000)
 			tdm.player[id].immunityframes = 0.5
-			parse("speedmod "..id.." 25")
+			console.speedmod(id,24)
 			timer2(4000,{id},function(id)
-				parse("speedmod "..id.." 0")
+				console.speedmod(id,tdm.player[id].speed)
 			end)
 		end
 	},
 	onSpawn = function(id)
-		parse("equip "..id.." ".."35")
-		parse("equip "..id.." ".."52")
+		console.equip(id,35)
+		console.equip(id,52)
 	end,
 }
 
@@ -228,18 +217,18 @@ tdm.classestable[#tdm.classestable+1] = {
 		name = "Nail-Biting Accuracy",
 		cooldown = 35,
 		callback = function(id)
-			parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 5 25 255 000 000")
+			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),15,25,255,128,000)
 			tdm.player[id].damagemultiplier = 100
 			msg2(id,rgb(255,0,0).."Focus, Concentrate!@C")
-			timer2(1000,{id},function(id)
+			timer2(2500,{id},function(id)
 				tdm.player[id].damagemultiplier = tdm.player[id].class.damagemultiplier
 				msg2(id,rgb(255,0,0).."Kill period over.@C")
 			end)
 		end
 	},
 	onSpawn = function(id)
-		parse("equip "..id.." ".."69")
-		parse("equip "..id.." ".."34")
+		console.equip(id,69)
+		console.equip(id,34)
 	end,
 }
 
@@ -260,15 +249,16 @@ tdm.classestable[#tdm.classestable+1] = {
 		name = "Refill Supply",
 		cooldown = 10,
 		callback = function(id)
-			parse("equip "..id.." 51")
-			parse("equip "..id.." 73")
-			parse("equip "..id.." 72")
+			console.equip(id,51)
+			console.equip(id,73)
+			console.equip(id,72)
 		end
 	},
 	onSpawn = function(id)
-		parse("equip "..id.." ".."20")
-		parse("equip "..id.." ".."73")
-		parse("equip "..id.." ".."72")
+		console.equip(id,20)
+		console.equip(id,51)
+		console.equip(id,73)
+		console.equip(id,72)
 	end,
 }
 
@@ -293,7 +283,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		end
 	},
 	onSpawn = function(id)
-		parse("equip "..id.." ".."22")
+		console.equip(id,22)
 	end,
 }
 
@@ -318,9 +308,9 @@ tdm.classestable[#tdm.classestable+1] = {
 		end
 	},
 	onSpawn = function(id)
-		parse("equip "..id.." ".."48")
-		parse("equip "..id.." ".."49")
-		parse("equip "..id.." ".."51")
+		console.equip(id,48)
+		console.equip(id,49)
+		console.equip(id,51)
 	end,
 }
 
@@ -367,7 +357,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		end
 	},
 	onSpawn = function(id)
-		parse("equip "..id.." 38")
+		console.equip(id,38)
 	end,
 }
 
@@ -386,10 +376,7 @@ tdm.classestable[#tdm.classestable+1] = {
 	img = "juggernaut.png",
 	gadget = nil,
 	onSpawn = function(id)
-		parse("equip "..id.." 90")
-		parse("equip "..id.." 47")
-		parse("strip "..id.." 1")
-		parse("strip "..id.." 2")
+		console.equip(id,90)
 	end,
 }
 
@@ -408,9 +395,7 @@ tdm.classestable[#tdm.classestable+1] = {
 	img = "minijug.png",
 	gadget = nil,
 	onSpawn = function(id)
-		parse("equip "..id.." 40")
-		parse("strip "..id.." 1")
-		parse("strip "..id.." 2")
+		console.equip(id,40)
 	end,
 }
 
@@ -435,8 +420,6 @@ tdm.classestable[#tdm.classestable+1] = {
     end
   },
   onSpawn = function(id)
-    parse("strip "..id.." 1")
-    parse("strip "..id.." 2")
   end,
 }
 

@@ -24,12 +24,12 @@ function tdm.handledamage(id, source, damage)
 			damage = damage * 0.85
 		end
 		if tdm.player[id].effects.immunityframes > 0 then
-			parse("effect \"smoke\" "..player(id,"x").." "..player(id,"y").." 15 15 255 000 000")
+			console.effect("\"smoke\"",player(id,"x"),player(id,"y"),10,10,0,128,255)
 			damage = 0
 		end
 		if tdm.player[id].effects.dodgeframes > 0 then
 			if math.random(1,100) <= 50 then
-				parse("effect \"colorsmoke\" "..player(id,"x").." "..player(id,"y").." 15 15 255 255 255")
+				console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),15,15,255,255,255)
 				damage = 0
 			end
 		end
@@ -42,7 +42,21 @@ function tdm.handledamage(id, source, damage)
 			tdm.player[id].armor = 0
 		end
 		if tdm.player[id].health <= 0 then
-			parse("customkill "..source.." Killed "..id)
+			if math.random(1,100) <= 20 then
+				console.customkill(source,"Shot down",id)
+			end
+			if math.random(1,100) <= 40 then
+				console.customkill(source,"Pulvurized",id)
+			end
+			if math.random(1,100) <= 60 then
+				console.customkill(source,"Destroyed",id)
+			end
+			if math.random(1,100) <= 80 then
+				console.customkill(source,"Made mince meat of",id)
+			end
+			if math.random(1,100) <= 100 then
+				console.customkill(source,"Popped off on",id)
+			end
 		end
 	end
 	if source > 0 then
@@ -54,7 +68,7 @@ end
 function tdm.getPercentHealth(id)
 	local percent = (tdm.player[id].health / tdm.player[id].maxhealth) * 100
 	if percent > 1 then
-		parse("sethealth "..id.." "..math.ceil(percent))
+		console.sethealth(id,math.ceil(percent))
 	end
 	return percent
 end
@@ -63,9 +77,8 @@ function tdm.onbrokenarmor(id, source, damage)
 	if damage > 0 then
 		tdm.player[id].health = tdm.player[id].health - damage
 		tdm.player[id].armor = tdm.player[id].armor - damage
-		parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 1 1 255 100 100")
-		parse("sv_sound2 "..id.." henristdm/hphit.wav")
-		parse("sv_sound2 "..source.." henristdm/hphit.wav")
+		console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,255,100,100)
+		console.sv_sound2(id,"henristdm/hphit.wav")
 	end
 end
 
@@ -73,9 +86,8 @@ function tdm.onarmorhit(id, source, damage)
 	if damage < tdm.player[id].armortype.resistance then
 		tdm.player[id].armor = tdm.player[id].armor - tdm.player[id].armortype.damageondink * (damage * 0.01)
 		tdm.player[id].health = tdm.player[id].health - tdm.player[id].armortype.damageonresist * (damage * 0.01)
-		parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 1 1 100 100 255")
-		parse("sv_sound2 "..id.." henristdm/armordink.wav")
-		parse("sv_sound2 "..source.." henristdm/armordink.wav")
+		console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,0,0,255)
+		console.sv_sound2(id,"henristdm/armordink.wav")
 	else
 		tdm.onbrokenarmor(id, source, damage)
 	end
