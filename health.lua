@@ -42,21 +42,7 @@ function tdm.handledamage(id, source, damage)
 			tdm.player[id].armor = 0
 		end
 		if tdm.player[id].health <= 0 then
-			if math.random(1,100) <= 20 then
-				console.customkill(source,"Shot down",id)
-			end
-			if math.random(1,100) <= 40 then
-				console.customkill(source,"Pulvurized",id)
-			end
-			if math.random(1,100) <= 60 then
-				console.customkill(source,"Destroyed",id)
-			end
-			if math.random(1,100) <= 80 then
-				console.customkill(source,"Made mince meat of",id)
-			end
-			if math.random(1,100) <= 100 then
-				console.customkill(source,"Popped off on",id)
-			end
+			console.customkill(source,tdm.generateRandomDeath(),id)
 		end
 	end
 	if source > 0 then
