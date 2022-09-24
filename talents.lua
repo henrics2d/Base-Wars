@@ -5,7 +5,7 @@ function tdm.hitTalents(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 	local pid = tdm.player[id].chosentalent
 	local sourceid = tdm.player[source].chosentalent
 	if sourceid ~= nil then
-		if sourceid.name == "Engage" or sourceid.name == "Hermes' Gun" or sourceid.name == "Critical Attack" or sourceid.name == "Heavens' Striker" or sourceid.name == "Hell's Partisan" or sourceid.name == "Meteor Shot" or sourceid.name == "Solar Eruption" then
+		if sourceid.name == "Engage" or sourceid.name == "Hermes' Gun" or sourceid.name == "Critical Attack" or sourceid.name == "Heavens' Striker" or sourceid.name == "Hell's Partisan" or sourceid.name == "Meteor Shot" or sourceid.name == "Solar Blessing" or sourceid.name == "Brimstone Curse" then
 			sourceid.callback(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		end
 		if pid.name == "Tap Dancer" or pid.name == "Swift Rebound" or pid.name == "Evasive Expert" or pid.name == "Exo-Skeleton" or pid.name == "Destructive Recovery" then

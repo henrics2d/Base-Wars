@@ -4,8 +4,11 @@ function tdm.solarAngelParticles()
 		if tdm.player[id].class == nil then
 			return
 		end
-		if tdm.player[id].class.name == "Solar Angel" or tdm.player[id].chosentalent.name == "Solar Eruption" then
+		if tdm.player[id].class.name == "Solar Angel" or tdm.player[id].chosentalent.name == "Solar Blessing" then
 			console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,255,255,128)
+		end
+		if tdm.player[id].chosentalent.name == "Brimstone Curse" then
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,255,000,000)
 		end
 	end
 end
@@ -114,6 +117,23 @@ function tdm.onFireEffect()
 					end
 				end
 				console.effect("\"fire\"",player(id,"x"),player(id,"y"),3,3,0,128,255)
+			end
+		end
+	end
+end
+
+function tdm.onBrimstoneFireEffect()
+	for _,id in ipairs(player(0,"tableliving")) do
+		if tdm.player[id].class ~= nil then
+			if tdm.player[id].effects.brimstonefire > 0 then
+				tdm.player[id].health = tdm.player[id].health - 4
+				if tdm.player[id].health <= 0 then
+					console.customkill(0,"Is now all but ashes",id)
+				end
+				if tdm.player[id].effects.brimstonefire == 0.1 then
+					console.customkill(0,"Is now all but ashes",id)
+				end
+				console.effect("\"flare\"",player(id,"x"),player(id,"y"),3,3,255,0,0)
 			end
 		end
 	end

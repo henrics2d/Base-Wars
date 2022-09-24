@@ -101,17 +101,22 @@ function tdm.setPlayerClass(id,class)
 	playerdata.effects.dodgeboost = 0
 	playerdata.effects.resistancebuff = 0
 	playerdata.effects.damagebuff = 0
+	playerdata.effects.brimstonefire = 0
 	playerdata.gui = {}
 	console.speedmod(id,playerdata.speed)
-	if playerdata.class.img ~= nil or playerdata.chosentalent.name == "Solar Eruption" then
+	if playerdata.class.img ~= nil or playerdata.chosentalent.name == "Solar Blessing" or playerdata.chosentalent.name == "Brimstone Curse" then
 		if playerdata.class.name == "Solar Angel" then
 			playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
 		end
-    if playerdata.chosentalent.name ~= "Solar Eruption" then
-      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
-    else
-      playerdata.image = image(images.."solarradiance.png", 3, 0, 200 + id)
-    end
+		if playerdata.chosentalent.name == "Brimstone Curse" then
+			playerdata.image = image(images.."brimstonehalo.png", 3, 0, 200 + id)
+		else
+	    if playerdata.chosentalent.name ~= "Solar Blessing" then
+	      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
+	    else
+	      playerdata.image = image(images.."solarradiance.png", 3, 0, 200 + id)
+	    end
+		end 
 	end
 	--
 	tdm.createRankIcon(id)

@@ -65,7 +65,7 @@ tdm.deathmsgs[#tdm.deathmsgs+1] = {
 }
 
 tdm.deathmsgs[#tdm.deathmsgs+1] = {
-	msg = "Brimstone lasered",
+	msg = "Brimstone blasted",
 	chance = 5
 }
 

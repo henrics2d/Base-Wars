@@ -409,7 +409,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   id = "spearonhit",
-  name = "Solar Eruption",
+  name = "Solar Blessing",
   rarity = tdm.rarity.blessing,
   chance = 4,
   description = "Hitting an enemy has a chance of throwing a follow up solar javelin",
@@ -421,6 +421,33 @@ tdm.registerTalent({
 		if weapon >= 1 and weapon <= 100 then
 	    if math.random(1,150) <= hpdmg then
 	      tdm.spawnprojectile(source,tdm.entitytypes.solarspear)
+	    end
+		end
+  end,
+  prerequirment = nil,
+  owned = false
+})
+
+tdm.registerTalent({
+  id = "spearonhit",
+  name = "Brimstone Curse",
+  rarity = tdm.rarity.curse,
+  chance = 4,
+  description = "Hitting an enemy has a chance of throwing a brimstone blast or applying the Brimstone Flames debuff",
+  description2 = "However, this debuff also has a low chance of being applied to yourself, comes with a cosmetic",
+  healthbonus = 0,
+  speedbonus = 2,
+  damagebonus = 0.15,
+  callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
+		if weapon >= 1 and weapon <= 100 then
+	    if math.random(1,100) <= hpdmg then
+	      tdm.spawnprojectile(source,tdm.entitytypes.brimstoneblast)
+	    end
+			if math.random(1,150) <= hpdmg then
+	      tdm.player[id].effects.brimstonefire = 8
+	    end
+			if math.random(1,2500) <= hpdmg then
+				tdm.player[source].effects.brimstonefire = 8
 	    end
 		end
   end,

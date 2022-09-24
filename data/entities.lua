@@ -80,6 +80,33 @@ tdm.entitytypes.solarspear = {
 	end
 }
 
+tdm.entitytypes.brimstoneblast = {
+	name = "Brimstone Blast",
+	image = "gfx/henristdm/brimstone.png",
+	speed = 52,
+	lifetime = 2,
+	size = 21,
+	onCreate = function(entity)
+	end,
+	onUpdate = function(entity)
+		console.effect("\"flare\"",entity.position.x,entity.position.y,3,3,255,000,000)
+	end,
+	onPlayerCollsion = function(entity,id)
+		if (player(entity.owner, "team") ~= player(id, "team")) then
+			tdm.handledamage(id, entity.owner, 125)
+			tdm.player[id].effects.combattimer = math.random(15,20)
+			tdm.player[id].effects.brimstonefire = 8
+			entity.alive = false
+		end
+	end,
+	onWallCollision = function(entity)
+		console.effect("\"flare\"",entity.position.x,entity.position.y,10,15,000,000,000)
+	end,
+	onDespawn = function(entity)
+		console.explosion(entity.position.x,entity.position.y,65,40,entity.owner)
+	end
+}
+
 tdm.entitytypes.hbeacon = {
 	name = "Healing Beacon",
 	image = "gfx/henristdm/beacon.png",
