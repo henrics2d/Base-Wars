@@ -39,7 +39,7 @@ tdm.player = {}
 addhook("leave","tdm.deleteAllImages")
 function tdm.deleteAllImages(id)
 	tdm.deletePlayerClass(id)
-end 
+end
 
 addhook("die","tdm.saveondeath")
 function tdm.saveondeath(id)
@@ -67,10 +67,6 @@ function tdm.deletePlayerClass(id)
 	if tdm.player[id].knifeimage ~= nil then
 		freeimage(tdm.player[id].knifeimage)
 		tdm.player[id].knifeimage = nil
-	end
-	if tdm.player[id].m134image ~= nil then
-		freeimage(tdm.player[id].m134image)
-		tdm.player[id].m134image = nil
 	end
 	if tdm.player[id].image ~= nil then
 		freeimage(tdm.player[id].image)
@@ -128,9 +124,6 @@ function tdm.createClassImg(id)
 	if playerdata.class.img ~= nil or playerdata.chosentalent.name == "Blessing of the Solar Angel" or playerdata.chosentalent.name == "Curse of the Brimstone Witch" then
 		if playerdata.class.name == "Solar Angel" then
 			playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
-		end
-		if playerdata.class.name == "Dreadnaut" then
-			playerdata.m134image = image(images.."dreadmini.png", 3, 0, 200 + id)
 		end
 		if playerdata.chosentalent.name == "Curse of the Brimstone Witch" then
 			playerdata.image = image(images.."brimstonehalo.png", 3, 0, 200 + id)

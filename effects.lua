@@ -30,21 +30,6 @@ function tdm.solarAngelCosmetics(id,type,mode)
   end
 end
 
-addhook("select","tdm.dreadnautCosmetics")
-function tdm.dreadnautCosmetics(id,type,mode)
-  if tdm.player[id].class == nil then
-    return
-  end
-  if tdm.player[id].class.name == "Dreadnaut" then
-    if type == 90 then
-      freeimage(tdm.player[id].m134image)
-    else
-      freeimage(tdm.player[id].m134image)
-      tdm.player[id].m134image = image(images.."dreadmini.png", 3, 0, 200 + id)
-    end
-  end
-end
-
 function tdm.regeneration()
 	local players = player(0,"tableliving")
 	for _,id in ipairs(players) do

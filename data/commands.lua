@@ -10,14 +10,6 @@ callback = execute these when activated
 ]]
 
 tdm.commands[#tdm.commands+1] = {
-	locked = true,
-	permlevel = "",
-	name = "Client Commands",
-	callback = function(id)
-	end
-}
-
-tdm.commands[#tdm.commands+1] = {
 	locked = false,
 	permlevel = "Client",
 	name = "Reset to spawn",
@@ -36,11 +28,17 @@ tdm.commands[#tdm.commands+1] = {
 }
 
 tdm.commands[#tdm.commands+1] = {
-	locked = true,
-	permlevel = "",
-	name = "Buy Classes",
-	callback = function(id)
-	end
+	locked = false,
+	permlevel = "Client",
+	name = "Talents",
+	callback = function(id) tdm.showTalentList(id) end
+}
+
+tdm.commands[#tdm.commands+1] = {
+	locked = false,
+	permlevel = "Client",
+	name = "Owned Talents",
+	callback = function(id) tdm.pickTalentList(id) end
 }
 
 tdm.commands[#tdm.commands+1] = {
@@ -83,20 +81,6 @@ tdm.commands[#tdm.commands+1] = {
 			tdm.selectSpawn(id)
 		end
 	end
-}
-
-tdm.commands[#tdm.commands+1] = {
-	locked = false,
-	permlevel = "Client",
-	name = "Talents",
-	callback = function(id) tdm.showTalentList(id) end
-}
-
-tdm.commands[#tdm.commands+1] = {
-	locked = false,
-	permlevel = "Client",
-	name = "Owned Talents",
-	callback = function(id) tdm.pickTalentList(id) end
 }
 
 tdm.commands[#tdm.commands+1] = {
