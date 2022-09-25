@@ -409,7 +409,7 @@ tdm.registerTalent({
 
 tdm.registerTalent({
   id = "spearonhit",
-  name = "Solar Blessing",
+  name = "Blessing of the Solar Angel",
   rarity = tdm.rarity.blessing,
   chance = 4,
   description = "Hitting an enemy has a chance of throwing a follow up solar javelin",
@@ -429,8 +429,8 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
-  id = "spearonhit",
-  name = "Brimstone Curse",
+  id = "curseonhit",
+  name = "Curse of the Brimstone Witch",
   rarity = tdm.rarity.curse,
   chance = 4,
   description = "Hitting an enemy has a chance of throwing a brimstone blast or applying the Brimstone Flames debuff",
@@ -447,7 +447,7 @@ tdm.registerTalent({
 	      tdm.player[id].effects.brimstonefire = 8
 	    end
 			if math.random(1,2500) <= hpdmg then
-				tdm.player[source].effects.brimstonefire = 8
+				tdm.player[source].effects.brimstonefire = 6
 	    end
 		end
   end,

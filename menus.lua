@@ -39,7 +39,7 @@ function tdm.sayClass(id,txt)
 		end
 		if (txt == "N") or (txt == "n") then
 			msg2(id,rgb(255,255,255).."Action "..rgb(255,000,000).."Cancelled.")
-			sme.createMenu(id,tdm.equipClass,tdm.showClass,"Classes",true,tdm.classestable,false)
+			sme.createMenu(id,tdm.equipClass,tdm.showClass,"Classes",true,tdm.classestable,true)
 			return 1
 		end
 	end
@@ -93,7 +93,7 @@ end
 
 
 function tdm.showTalentList(id)
-	sme.createMenu(id,tdm.talentDescription,tdm.showTalent,"Talents",true,tdm.talents,false)
+	sme.createMenu(id,tdm.talentDescription,tdm.showTalent,"Talents",true,tdm.talents,true)
 end
 
 function tdm.showTalent(id,data,parameter)
@@ -109,7 +109,7 @@ function tdm.talentDescription(id,button,data,parameter)
 end
 
 function tdm.pickTalentList(id)
-	sme.createMenu(id,tdm.pickTalent,tdm.showTalentUnlocked,"Owned Talents",true,tdm.listPlayersTalents(id),false)
+	sme.createMenu(id,tdm.pickTalent,tdm.showTalentUnlocked,"Owned Talents",true,tdm.listPlayersTalents(id),true)
 end
 
 function tdm.showTalentUnlocked(id,data,parameter)
@@ -122,7 +122,7 @@ function tdm.pickTalent(id,button,data,parameter)
 end
 
 function tdm.showTalentStats(id,data,parameter)
-	msg2(id,rgb(255,255,128).."Talent "..data.name)
+	msg2(id,rgb(255,255,128).."Talent: "..rgb(255,255,255)..data.name)
 	msg2(id,data.rarity.color..data.rarity.name)
 	msg2(id,rgb(255,255,255)..data.healthbonus.." extra health")
 	msg2(id,rgb(255,255,255)..data.speedbonus.." extra base speed")

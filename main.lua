@@ -26,7 +26,8 @@ dofile(tdm.directory.."/bot.lua")
 dofile(tdm.directory.."/gui.lua")
 dofile(tdm.directory.."/spawns.lua")
 dofile(tdm.directories.data.."/rarities.lua")
-dofile(tdm.directories.data.."/buffsanddebuffs.lua")
+dofile(tdm.directory.."/buffsanddebuffs.lua")
+dofile(tdm.directories.data.."/buffsdebuffs.lua")
 dofile(tdm.directories.data.."/deathmessages.lua")
 dofile(tdm.directory.."/talents.lua")
 dofile(tdm.directory.."/customchat.lua")
@@ -34,6 +35,11 @@ dofile(tdm.directories.vehicles.."/engine.lua")
 dofile(tdm.directories.customnpc.."/engine.lua")
 
 tdm.player = {}
+
+addhook("leave","tdm.deleteAllImages")
+function tdm.deleteAllImages(id)
+	tdm.deletePlayerClass(id)
+end 
 
 addhook("die","tdm.saveondeath")
 function tdm.saveondeath(id)
@@ -61,6 +67,10 @@ function tdm.deletePlayerClass(id)
 	if tdm.player[id].knifeimage ~= nil then
 		freeimage(tdm.player[id].knifeimage)
 		tdm.player[id].knifeimage = nil
+	end
+	if tdm.player[id].m134image ~= nil then
+		freeimage(tdm.player[id].m134image)
+		tdm.player[id].m134image = nil
 	end
 	if tdm.player[id].image ~= nil then
 		freeimage(tdm.player[id].image)
@@ -92,37 +102,46 @@ function tdm.setPlayerClass(id,class)
 	playerdata.speed = playerdata.class.basespeed + playerdata.chosentalent.speedbonus
 	playerdata.abilitycooldown = 0
 	playerdata.effects = {}
+	playerdata.effects.acid = 0
+	playerdata.effects.brimstonefire = 0
 	playerdata.effects.combattimer = 0
-	playerdata.effects.immunityframes = 2.5
-	playerdata.effects.dodgeframes = 0
-	playerdata.effects.fire = 0
-	playerdata.effects.poison = 0
-	playerdata.effects.acidvenom = 0
 	playerdata.effects.dodgeboost = 0
 	playerdata.effects.resistancebuff = 0
 	playerdata.effects.damagebuff = 0
-	playerdata.effects.brimstonefire = 0
+	playerdata.effects.immunityframes = 0
+	playerdata.effects.dodgeframes = 0
+	playerdata.effects.poison = 0
+	playerdata.effects.fire = 0
 	playerdata.gui = {}
 	console.speedmod(id,playerdata.speed)
-	if playerdata.class.img ~= nil or playerdata.chosentalent.name == "Solar Blessing" or playerdata.chosentalent.name == "Brimstone Curse" then
-		if playerdata.class.name == "Solar Angel" then
-			playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
-		end
-		if playerdata.chosentalent.name == "Brimstone Curse" then
-			playerdata.image = image(images.."brimstonehalo.png", 3, 0, 200 + id)
-		else
-	    if playerdata.chosentalent.name ~= "Solar Blessing" then
-	      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
-	    else
-	      playerdata.image = image(images.."solarradiance.png", 3, 0, 200 + id)
-	    end
-		end 
-	end
+	--
+	tdm.createClassImg(id)
 	--
 	tdm.createRankIcon(id)
 	console.equip(id,74)
 	console.equip(id,47)
 	playerdata.class.onSpawn(id)
+end
+
+function tdm.createClassImg(id)
+	local playerdata = tdm.player[id]
+	if playerdata.class.img ~= nil or playerdata.chosentalent.name == "Blessing of the Solar Angel" or playerdata.chosentalent.name == "Curse of the Brimstone Witch" then
+		if playerdata.class.name == "Solar Angel" then
+			playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
+		end
+		if playerdata.class.name == "Dreadnaut" then
+			playerdata.m134image = image(images.."dreadmini.png", 3, 0, 200 + id)
+		end
+		if playerdata.chosentalent.name == "Curse of the Brimstone Witch" then
+			playerdata.image = image(images.."brimstonehalo.png", 3, 0, 200 + id)
+		else
+	    if playerdata.chosentalent.name ~= "Blessing of the Solar Angel" then
+	      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
+	    else
+	      playerdata.image = image(images.."solarradiance.png", 3, 0, 200 + id)
+	    end
+		end
+	end
 end
 
 addhook("ms100","tdm.ms100")
@@ -134,6 +153,7 @@ function tdm.ms100()
 	tdm.dodgeBoostEffect()
 	tdm.damageBuffEffect()
 	tdm.onFireEffect()
+	tdm.onBrimstoneFireEffect()
 end
 
 addhook("kill","tdm.kill")

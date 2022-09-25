@@ -74,6 +74,7 @@ function tdm.onarmorhit(id, source, damage)
 		tdm.player[id].health = tdm.player[id].health - tdm.player[id].armortype.damageonresist * (damage * 0.01)
 		console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,0,0,255)
 		console.sv_sound2(id,"henristdm/armordink.wav")
+		console.sv_sound2(source,"henristdm/armordink.wav")
 	else
 		tdm.onbrokenarmor(id, source, damage)
 	end

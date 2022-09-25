@@ -1,14 +1,15 @@
 addhook("second","tdm.solarAngelParticles")
 function tdm.solarAngelParticles()
-	for _,id in ipairs(player(0,"table")) do
+	for _,id in ipairs(player(0,"tableliving")) do
 		if tdm.player[id].class == nil then
 			return
 		end
-		if tdm.player[id].class.name == "Solar Angel" or tdm.player[id].chosentalent.name == "Solar Blessing" then
-			console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,255,255,128)
+		if tdm.player[id].class.name == "Solar Angel" or tdm.player[id].chosentalent.name == "Blessing of the Solar Angel" then
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),2,2,255,255,128)
 		end
-		if tdm.player[id].chosentalent.name == "Brimstone Curse" then
-			console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,255,000,000)
+		if tdm.player[id].chosentalent.name == "Curse of the Brimstone Witch" then
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),3,3,255,000,000)
+			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),1,1,255,000,000)
 		end
 	end
 end
@@ -29,6 +30,21 @@ function tdm.solarAngelCosmetics(id,type,mode)
   end
 end
 
+addhook("select","tdm.dreadnautCosmetics")
+function tdm.dreadnautCosmetics(id,type,mode)
+  if tdm.player[id].class == nil then
+    return
+  end
+  if tdm.player[id].class.name == "Dreadnaut" then
+    if type == 90 then
+      freeimage(tdm.player[id].m134image)
+    else
+      freeimage(tdm.player[id].m134image)
+      tdm.player[id].m134image = image(images.."dreadmini.png", 3, 0, 200 + id)
+    end
+  end
+end
+
 function tdm.regeneration()
 	local players = player(0,"tableliving")
 	for _,id in ipairs(players) do
@@ -43,7 +59,7 @@ function tdm.regeneratePlayer(id)
 	if tdm.player[id].effects.combattimer > 0 then
 		return
 	end
-	tdm.player[id].health = tdm.player[id].health + tdm.player[id].maxhealth / math.random(16,24)
+	tdm.player[id].health = tdm.player[id].health + tdm.player[id].maxhealth / math.random(32,48)
 	if tdm.player[id].health >= tdm.player[id].maxhealth then
 		tdm.player[id].health = tdm.player[id].maxhealth
 	end
@@ -112,6 +128,7 @@ function tdm.onFireEffect()
 					tdm.player[id].armor = tdm.player[id].armor - 1
 				else
 					tdm.player[id].health = tdm.player[id].health - 1.5
+					tdm.player[id].effects.combattimer = math.random(4,6)
 					if tdm.player[id].health <= 0 then
 						console.customkill(0,"Burnt to Death",id)
 					end
@@ -126,14 +143,13 @@ function tdm.onBrimstoneFireEffect()
 	for _,id in ipairs(player(0,"tableliving")) do
 		if tdm.player[id].class ~= nil then
 			if tdm.player[id].effects.brimstonefire > 0 then
-				tdm.player[id].health = tdm.player[id].health - 4
+				tdm.player[id].effects.combattimer = math.random(4,6)
+				tdm.player[id].health = tdm.player[id].health - 3
 				if tdm.player[id].health <= 0 then
 					console.customkill(0,"Is now all but ashes",id)
 				end
-				if tdm.player[id].effects.brimstonefire == 0.1 then
-					console.customkill(0,"Is now all but ashes",id)
-				end
-				console.effect("\"flare\"",player(id,"x"),player(id,"y"),3,3,255,0,0)
+				console.effect("\"flare\"",player(id,"x"),player(id,"y"),6,6,255,0,0)
+				console.effect("\"smoke\"",player(id,"x"),player(id,"y"),6,6,255,0,0)
 			end
 		end
 	end

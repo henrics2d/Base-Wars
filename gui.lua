@@ -9,7 +9,7 @@ end
 function tdm.updateBaseStats(id)
 	local playerdata = tdm.player[id]
 	if playerdata.class ~= nil then
-		if (math.ceil(playerdata.health) / math.ceil(playerdata.maxhealth)) * 100 < 20 then
+		if (math.ceil(playerdata.health) / math.ceil(playerdata.maxhealth)) * 100 <= 35 then
 			console.hudtxt2(id,1,rgb(255,0,0).."(!!!) HP: "..math.ceil(playerdata.health).."/"..math.ceil(playerdata.maxhealth),player(id,"screenw") / 2.25,player(id,"screenh") / 1.5,0,0,25)
 		else
 			console.hudtxt2(id,1,rgb(255,255,128).."HP: "..rgb(255,255,255)..math.ceil(playerdata.health).."/"..math.ceil(playerdata.maxhealth),player(id,"screenw") / 2.25,player(id,"screenh") / 1.5,0,0,25)
