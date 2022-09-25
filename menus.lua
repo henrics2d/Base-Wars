@@ -124,7 +124,7 @@ end
 function tdm.showTalentStats(id,data,parameter)
 	msg2(id,rgb(255,255,128).."Talent: "..rgb(255,255,255)..data.name)
 	msg2(id,data.rarity.color..data.rarity.name)
-	msg2(id,rgb(255,255,255)..data.healthbonus.." extra health")
+	msg2(id,rgb(255,255,255)..data.healthbonus * 100 .."% extra health")
 	msg2(id,rgb(255,255,255)..data.speedbonus.." extra base speed")
 	msg2(id,rgb(255,255,255)..data.damagebonus * 100 .."% extra damage")
 	msg2(id,rgb(255,255,255).."Talent "..rgb(000,255,000).."Equipped!")

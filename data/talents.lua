@@ -5,7 +5,7 @@ tdm.registerTalent({
 	chance = 10,
 	description = "Regain armor when dealing damage, scales with your weapon's damage",
 	description2 = "In a ratio of 1:2",
-	healthbonus = 10,
+	healthbonus = 0.05,
 	speedbonus = 0,
 	damagebonus = 0.02,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -25,7 +25,7 @@ tdm.registerTalent({
 	chance = 100,
 	description = "It's just extra health",
 	description2 = "What else do you need?",
-	healthbonus = 25,
+	healthbonus = 0.15,
 	speedbonus = 0,
 	damagebonus = 0,
 	callback = nil,
@@ -40,7 +40,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "Gain a slight speed boost for shooting people",
 	description2 = "Speed gain depends on the damage done",
-	healthbonus = 5,
+	healthbonus = 0.025,
 	speedbonus = 1,
 	damagebonus = 0.04,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -58,7 +58,7 @@ tdm.registerTalent({
 	chance = 100,
 	description = "Gain the ability to perform random critical attacks",
 	description2 = "Critical attacks deal 1.25x damage",
-	healthbonus = 3,
+	healthbonus = 0.015,
 	speedbonus = 0,
 	damagebonus = 0.05,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -78,7 +78,7 @@ tdm.registerTalent({
 	chance = 100,
 	description = "Gain a very slight chance to dodge attacks",
 	description2 = "After a succesful dodge gain a brief period of immunity",
-	healthbonus = 5,
+	healthbonus = 0.025,
 	speedbonus = 1,
 	damagebonus = 0,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -97,7 +97,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "Basically Tap Dancer but better",
 	description2 = "Gain a speed boost after a succesful dodge",
-	healthbonus = 6,
+	healthbonus = 0.03,
 	speedbonus = 1,
 	damagebonus = 0.01,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -118,7 +118,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "Call forth a strike from the heavens on your opponents",
 	description2 = "Has a chance of occuring everytime you hit someone",
-	healthbonus = 5,
+	healthbonus = 0.028,
 	speedbonus = 0,
 	damagebonus = 0.06,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -140,7 +140,7 @@ tdm.registerTalent({
 	chance = 10,
 	description = "Increases your dodge chances",
 	description2 = "Also increases your speed boost on dodge",
-	healthbonus = 7,
+	healthbonus = 0.035,
 	speedbonus = 2,
 	damagebonus = 0.02,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -160,8 +160,8 @@ tdm.registerTalent({
 	rarity = tdm.rarity.legendary,
 	chance = 10,
 	description = "You naturally resist 15% of all damage",
-	description2 = "Also comes with an extra 20 hp!",
-	healthbonus = 20,
+	description2 = "Also comes with an extra 10% hp!",
+	healthbonus = 0.1,
 	speedbonus = 0,
 	damagebonus = 0,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -178,7 +178,7 @@ tdm.registerTalent({
 	chance = 10,
 	description = "Deal more damage the more you are hit",
 	description2 = "1% extra damage per hit",
-	healthbonus = 8,
+	healthbonus = 0.04,
 	speedbonus = 1,
 	damagebonus = 0,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -195,7 +195,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "Create an explosion whenever you kill someone",
 	description2 = "The explosion happens on their death location, deals mild damage",
-	healthbonus = 1,
+	healthbonus = 0.01,
 	speedbonus = 0,
 	damagebonus = 0.04,
 	callback = function(killer,victim,weapon,x,y,killerobject,assistant)
@@ -212,7 +212,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "Gain a brief period of immunity after killing someone",
 	description2 = "Immunity lasts 1.5 seconds",
-	healthbonus = 5,
+	healthbonus = 0.025,
 	speedbonus = 0,
 	damagebonus = 0.02,
 	callback = function(killer,victim,weapon,x,y,killerobject,assistant)
@@ -280,7 +280,7 @@ tdm.registerTalent({
 	chance = 100,
 	description = "A basic boost to all stats",
 	description2 = "What else do you need?",
-	healthbonus = 10,
+	healthbonus = 0.05,
 	speedbonus = 2,
 	damagebonus = 0.05,
 	callback = nil,
@@ -310,7 +310,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "A good increase to your health",
 	description2 = "What else do you need?",
-	healthbonus = 50,
+	healthbonus = 0.2,
 	speedbonus = 0,
 	damagebonus = 0,
 	callback = nil,
@@ -340,7 +340,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "A good increase to all your stats",
 	description2 = "What else do you need?",
-	healthbonus = 20,
+	healthbonus = 0.13,
 	speedbonus = 4,
 	damagebonus = 0.07,
 	callback = nil,
@@ -370,7 +370,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "Hitting an enemy whos on fire or with 40+ damage causes you to throw a followup burning spear",
 	description2 = "Extinguishes enemy fire on succesful fiery hits",
-	healthbonus = 4,
+	healthbonus = 0.02,
 	speedbonus = 1,
 	damagebonus = 0.03,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -395,7 +395,7 @@ tdm.registerTalent({
 	chance = 30,
 	description = "All your attacks apply the On Fire! debuff",
 	description2 = "Deals 15 damage per second to unarmored targets",
-	healthbonus = 6,
+	healthbonus = 0.03,
 	speedbonus = 0,
 	damagebonus = 0.03,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
@@ -414,7 +414,7 @@ tdm.registerTalent({
   chance = 4,
   description = "Hitting an enemy has a chance of throwing a follow up solar javelin",
   description2 = "Also comes with a cool solar halo cosmetic!",
-  healthbonus = 15,
+  healthbonus = 0.1,
   speedbonus = 2,
   damagebonus = 0.1,
   callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)

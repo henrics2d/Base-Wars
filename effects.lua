@@ -30,27 +30,6 @@ function tdm.solarAngelCosmetics(id,type,mode)
   end
 end
 
-function tdm.regeneration()
-	local players = player(0,"tableliving")
-	for _,id in ipairs(players) do
-		tdm.regeneratePlayer(id)
-	end
-end
-
-function tdm.regeneratePlayer(id)
-	if tdm.player[id].class == nil then
-		return
-	end
-	if tdm.player[id].effects.combattimer > 0 then
-		return
-	end
-	tdm.player[id].health = tdm.player[id].health + tdm.player[id].maxhealth / math.random(32,48)
-	if tdm.player[id].health >= tdm.player[id].maxhealth then
-		tdm.player[id].health = tdm.player[id].maxhealth
-	end
-	tdm.handledamage(id, 0, 0)
-end
-
 addbind("space")
 addhook("key","tdm.key")
 function tdm.key(id,key,state)
@@ -82,73 +61,6 @@ function tdm.abilityCountdown()
 			tdm.player[id].abilitycooldown = tdm.player[id].abilitycooldown - 0.1
 			if tdm.player[id].abilitycooldown < 0 then
 				tdm.player[id].abilitycooldown = 0
-			end
-		end
-	end
-end
-
-function tdm.dodgeBoostEffect()
-	for _,id in ipairs(player(0,"tableliving")) do
-		if tdm.player[id].class ~= nil then
-			if tdm.player[id].effects.dodgeboost > 0 then
-				console.speedmod(id,tdm.player[id].speed + tdm.player[id].effects.dodgeboost)
-			end
-		end
-	end
-end
-
-function tdm.damageBuffEffect()
-	for _,id in ipairs(player(0,"tableliving")) do
-		if tdm.player[id].class ~= nil then
-			tdm.player[id].damagemultiplier = tdm.player[id].damagemultiplier + (tdm.player[id].effects.damagebuff / 100)
-		end
-	end
-end
-
-function tdm.onFireEffect()
-	for _,id in ipairs(player(0,"tableliving")) do
-		if tdm.player[id].class ~= nil then
-			if tdm.player[id].effects.fire > 0 then
-				if tdm.player[id].armor > 0 then
-					tdm.player[id].armor = tdm.player[id].armor - 1
-				else
-					tdm.player[id].health = tdm.player[id].health - 1.5
-					tdm.player[id].effects.combattimer = math.random(4,6)
-					if tdm.player[id].health <= 0 then
-						console.customkill(0,"Burnt to Death",id)
-					end
-				end
-				console.effect("\"fire\"",player(id,"x"),player(id,"y"),3,3,0,128,255)
-			end
-		end
-	end
-end
-
-function tdm.onBrimstoneFireEffect()
-	for _,id in ipairs(player(0,"tableliving")) do
-		if tdm.player[id].class ~= nil then
-			if tdm.player[id].effects.brimstonefire > 0 then
-				tdm.player[id].effects.combattimer = math.random(4,6)
-				tdm.player[id].health = tdm.player[id].health - 3
-				if tdm.player[id].health <= 0 then
-					console.customkill(0,"Is now all but ashes",id)
-				end
-				console.effect("\"flare\"",player(id,"x"),player(id,"y"),6,6,255,0,0)
-				console.effect("\"smoke\"",player(id,"x"),player(id,"y"),6,6,255,0,0)
-			end
-		end
-	end
-end
-
-function tdm.effectsCounterUpdate()
-	for id,playerdata in pairs(tdm.player) do
-		if playerdata.class ~= nil then
-			for effect,value in pairs(playerdata.effects) do
-				value = value - 0.1
-				if value < 0 then
-					value = 0
-				end
-				playerdata.effects[effect] = value
 			end
 		end
 	end

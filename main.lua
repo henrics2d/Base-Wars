@@ -77,6 +77,7 @@ end
 
 addhook("spawn","tdm.defaultSpawns")
 function tdm.defaultSpawns(id)
+	tdm.player[id].effects = {}
 	if tdm.player[id].defaultclass == nil then
 		return
 	end
@@ -90,24 +91,13 @@ function tdm.setPlayerClass(id,class)
 	if playerdata.class == nil then
 		return
 	end
-	playerdata.health = playerdata.class.health + playerdata.chosentalent.healthbonus
-	playerdata.maxhealth = playerdata.class.maxhealth + playerdata.chosentalent.healthbonus
+	playerdata.health = playerdata.class.health * (playerdata.chosentalent.healthbonus + 1)
+	playerdata.maxhealth = playerdata.class.maxhealth * (playerdata.chosentalent.healthbonus + 1)
 	playerdata.damagemultiplier = playerdata.class.damagemultiplier + playerdata.chosentalent.damagebonus
 	playerdata.armor = playerdata.class.armorpoints
 	playerdata.armortype = tdm.armorstable[playerdata.class.armorid]
 	playerdata.speed = playerdata.class.basespeed + playerdata.chosentalent.speedbonus
 	playerdata.abilitycooldown = 0
-	playerdata.effects = {}
-	playerdata.effects.acid = 0
-	playerdata.effects.brimstonefire = 0
-	playerdata.effects.combattimer = 0
-	playerdata.effects.dodgeboost = 0
-	playerdata.effects.resistancebuff = 0
-	playerdata.effects.damagebuff = 0
-	playerdata.effects.immunityframes = 0
-	playerdata.effects.dodgeframes = 0
-	playerdata.effects.poison = 0
-	playerdata.effects.fire = 0
 	playerdata.gui = {}
 	console.speedmod(id,playerdata.speed)
 	--
@@ -140,13 +130,7 @@ end
 addhook("ms100","tdm.ms100")
 function tdm.ms100()
 	tdm.updateAllPlayerUi()
-	tdm.regeneration()
 	tdm.abilityCountdown()
-	tdm.effectsCounterUpdate()
-	tdm.dodgeBoostEffect()
-	tdm.damageBuffEffect()
-	tdm.onFireEffect()
-	tdm.onBrimstoneFireEffect()
 end
 
 addhook("kill","tdm.kill")
