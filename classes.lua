@@ -8,7 +8,7 @@ unique = is this class chooseable from the spawn menu?
 name = name of the class
 description = first line of the class' description
 description2 = second line of the class' description
-health = the class' health value (can be regenerated, damaged, dinked)
+health = the class' health value (can be regenerated, damagesd, dinked)
 maxhealth = the class' max health value (static)
 armorpoints = the class' armor value (can be damaged, dinked, buffed via a defender by default)
 armorid = id of the armor that is used (eg.: 1 for Basic Vest, 3 for Full Body Armor)
@@ -124,6 +124,7 @@ tdm.classestable[#tdm.classestable+1] = {
 		console.strip(id,1)
 		console.strip(id,2)
 		console.equip(id,6)
+		console.equip(id,21)
 	end,
 }
 

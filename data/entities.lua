@@ -29,7 +29,7 @@ tdm.entitytypes.igrenade = {
 tdm.entitytypes.burningspear = {
 	name = "Burning Spear",
 	image = "gfx/henristdm/burningspear.png",
-	speed = 40,
+	speed = 50,
 	lifetime = 5,
 	size = 12,
 	onCreate = function(entity)
@@ -56,7 +56,7 @@ tdm.entitytypes.burningspear = {
 tdm.entitytypes.solarspear = {
 	name = "Solar Spear",
 	image = "gfx/henristdm/solarspear.png",
-	speed = 45,
+	speed = 60,
 	lifetime = 5,
 	size = 18,
 	onCreate = function(entity)
@@ -143,13 +143,15 @@ tdm.entitytypes.megashield = {
 	lifetime = 15,
 	size = 120,
 	onCreate = function(entity)
-		imagehitzone(entity.image,104,-60,-20,120,40)
+		imagehitzone(entity.image,103,-60,-10,120,20)
 	end,
 	onUpdate = function(entity)
+		console.effect("\"flare\"",entity.position.x,entity.position.y,2,8,100,100,255)
 	end,
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then
 			tdm.handledamage(id,entity.owner,15)
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),15,15,100,100,255)
 		end
 	end,
 	onWallCollision = function(entity)
