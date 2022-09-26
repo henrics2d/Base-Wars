@@ -35,11 +35,6 @@ tdm.deathmsgs[#tdm.deathmsgs+1] = {
 }
 
 tdm.deathmsgs[#tdm.deathmsgs+1] = {
-	msg = "Made mince meat of",
-	chance = 100
-}
-
-tdm.deathmsgs[#tdm.deathmsgs+1] = {
 	msg = "Pulvurized",
 	chance = 100
 }

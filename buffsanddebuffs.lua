@@ -7,7 +7,7 @@ function tdm.applydb(id,type)
 	db.maxduration = db.type.duration
 	local current = tdm.finddb(id,type)
 	if current == nil then
-		db.image = image(db.type.image, (player(id,"screenw") / 2), (player(id,"screenh") - player(id,"screenh")) - 32, 2, id)
+		db.image = image(db.type.image, 200, (player(id,"screenh") - player(id,"screenh")) - 32, 2, id)
 		db.type.onCreate(db)
 		local playerdata = tdm.player[id]
 		playerdata.effects[#playerdata.effects + 1] = db
@@ -60,7 +60,7 @@ end
 
 function tdm.shiftguidbs(id)
 	for index,db in ipairs(tdm.player[id].effects) do
-		local x = (player(id,"screenw") / 2) + (index * 40)
+		local x = 200 + (index * 40)
 		local y = (player(id,"screenh") - player(id,"screenh")) + 64
 		tween_move(db.image,500,x,y,0)
 	end
