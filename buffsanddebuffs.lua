@@ -47,7 +47,7 @@ function tdm.updatedbs()
 			tween_alpha(db.image,100,alpha)
 			-- deactivate
 			if db.active == false then
-				db.type.onDespawn(db)
+				db.type.onDespawn(id)
 				freeimage(db.image)
 				playerdata.effects[index] = playerdata.effects[#playerdata.effects]
 				playerdata.effects[#playerdata.effects] = nil

@@ -11,23 +11,23 @@ function tdm.healthHitSystem(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		damage = damage * tdm.player[source].damagemultiplier
 	end
 	if weapon == 73 then
-		tdm.player[id].effects.fire = math.random(2,4)
+		tdm.applydb(id,tdm.dbtypes.fire)
 	end
 	tdm.handledamage(id,source,damage)
-	tdm.player[id].effects.combattimer = math.random(4,6)
+	tdm.applydb(id,tdm.dbtypes.combattag)
 	return 1
 end
 
 function tdm.handledamage(id, source, damage)
 	if damage > 0 then
-		if tdm.player[id].effects.resistancebuff > 0 then
+		if tdm.finddb(id,tdm.dbtypes.endurance) ~= nil then
 			damage = damage * 0.85
 		end
-		if tdm.player[id].effects.immunityframes > 0 then
+		if tdm.finddb(id,tdm.dbtypes.immunity) ~= nil then
 			console.effect("\"smoke\"",player(id,"x"),player(id,"y"),10,10,0,128,255)
 			damage = 0
 		end
-		if tdm.player[id].effects.dodgeframes > 0 then
+		if tdm.finddb(id,tdm.dbtypes.dodge) ~= nil then
 			if math.random(1,100) <= 50 then
 				console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),15,15,255,255,255)
 				damage = 0

@@ -64,6 +64,13 @@ end
 addhook("die","tdm.deletePlayerClass")
 function tdm.deletePlayerClass(id)
 	console.hudtxtclear(id)
+	if tdm.player[id].effects ~= nil then
+		for _,db in ipairs(tdm.player[id].effects) do
+			if db.image ~= nil then
+				freeimage(db.image)
+			end
+		end
+	end 
 	if tdm.player[id].knifeimage ~= nil then
 		freeimage(tdm.player[id].knifeimage)
 		tdm.player[id].knifeimage = nil
@@ -131,6 +138,7 @@ addhook("ms100","tdm.ms100")
 function tdm.ms100()
 	tdm.updateAllPlayerUi()
 	tdm.abilityCountdown()
+	tdm.regeneration()
 end
 
 addhook("kill","tdm.kill")

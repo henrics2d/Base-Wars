@@ -14,7 +14,7 @@ tdm.entitytypes.igrenade = {
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then
 			tdm.handledamage(id, entity.owner, 125)
-			tdm.player[id].effects.combattimer = math.random(4,6)
+			tdm.applydb(id,tdm.dbtypes.combattag)
 			entity.alive = false
 		end
 	end,
@@ -40,8 +40,8 @@ tdm.entitytypes.burningspear = {
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then
 			tdm.handledamage(id, entity.owner, 80)
-			tdm.player[id].effects.combattimer = math.random(12,18)
-			tdm.player[id].effects.fire = 10
+			tdm.applydb(id,tdm.dbtypes.combattag)
+			tdm.applydb(id,tdm.dbtypes.fire)
 			entity.alive = false
 		end
 	end,
@@ -67,8 +67,8 @@ tdm.entitytypes.solarspear = {
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then
 			tdm.handledamage(id, entity.owner, 100)
-			tdm.player[id].effects.combattimer = math.random(15,20)
-			tdm.player[id].effects.fire = 15
+			tdm.applydb(id,tdm.dbtypes.combattag)
+			tdm.applydb(id,tdm.dbtypes.fire)
 			entity.alive = false
 		end
 	end,
@@ -94,8 +94,8 @@ tdm.entitytypes.brimstoneblast = {
 	onPlayerCollsion = function(entity,id)
 		if (player(entity.owner, "team") ~= player(id, "team")) then
 			tdm.handledamage(id, entity.owner, 125)
-			tdm.player[id].effects.combattimer = math.random(15,20)
-			tdm.player[id].effects.brimstonefire = 8
+			tdm.applydb(id,tdm.dbtypes.combattag)
+			tdm.applydb(id,tdm.dbtypes.brimstone)
 			entity.alive = false
 		end
 	end,

@@ -30,6 +30,25 @@ function tdm.solarAngelCosmetics(id,type,mode)
   end
 end
 
+function tdm.regeneration()
+	for _,id in ipairs(player(0,"tableliving")) do
+		tdm.regeneratePlayer(id)
+	end
+end
+
+function tdm.regeneratePlayer(id)
+	if tdm.player[id].class == nil then
+		return
+	end
+	if tdm.finddb(id,tdm.dbtypes.combattag) ~= nil then
+		return
+	end
+	tdm.player[id].health = tdm.player[id].health + (tdm.player[id].maxhealth / math.random(24,30))
+	if tdm.player[id].health >= tdm.player[id].maxhealth then
+		tdm.player[id].health = tdm.player[id].maxhealth
+	end
+end
+
 addbind("space")
 addhook("key","tdm.key")
 function tdm.key(id,key,state)

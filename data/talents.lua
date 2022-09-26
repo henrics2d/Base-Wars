@@ -83,7 +83,7 @@ tdm.registerTalent({
 	damagebonus = 0,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if math.random(1,100) <= 10 then
-			tdm.player[id].effects.immunityframes = 0.15
+			tdm.applydb(id,tdm.dbtypes.immunity)
 		end
 	end,
 	prerequirment = nil,
@@ -102,9 +102,9 @@ tdm.registerTalent({
 	damagebonus = 0.01,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if math.random(1,100) <= 15 then
-			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),25,30,128,128,128)
-			tdm.player[id].effects.immunityframes = 0.15
-			tdm.player[id].effects.dodgeboost = 8
+			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),25,30,180,180,180)
+			tdm.applydb(id,tdm.dbtypes.immunity)
+			tdm.applydb(id,tdm.dbtypes.dodge)
 		end
 	end,
 	prerequirment = 5,
@@ -134,27 +134,6 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
-	id = "chancetododgesecondupgrade",
-	name = "Evasive Expert",
-	rarity = tdm.rarity.legendary,
-	chance = 10,
-	description = "Increases your dodge chances",
-	description2 = "Also increases your speed boost on dodge",
-	healthbonus = 0.035,
-	speedbonus = 2,
-	damagebonus = 0.02,
-	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		if math.random(1,100) <= 20 then
-			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),25,30,255,255,255)
-			tdm.player[id].effects.immunityframes = 0.15
-			tdm.player[id].effects.dodgeboost = 13
-		end
-	end,
-	prerequirment = 6,
-	owned = false
-})
-
-tdm.registerTalent({
 	id = "damageresistance",
 	name = "Exo-Skeleton",
 	rarity = tdm.rarity.legendary,
@@ -165,7 +144,7 @@ tdm.registerTalent({
 	speedbonus = 0,
 	damagebonus = 0,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		tdm.player[id].effects.resistancebuff = 30
+		tdm.applydb(id,tdm.dbtypes.endurance)
 	end,
 	prerequirment = nil,
 	owned = false
@@ -176,13 +155,13 @@ tdm.registerTalent({
 	name = "Destructive Recovery",
 	rarity = tdm.rarity.legendary,
 	chance = 10,
-	description = "Deal more damage the more you are hit",
-	description2 = "1% extra damage per hit",
+	description = "Recover from damage dealt by dealing even more damage back",
+	description2 = "Applies the strength buff on hit",
 	healthbonus = 0.04,
 	speedbonus = 1,
 	damagebonus = 0,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
-		tdm.player[id].effects.damagebuff = tdm.player[id].effects.damagebuff + 1
+		tdm.applydb(id,tdm.dbtypes.strength)
 	end,
 	prerequirment = nil,
 	owned = false
@@ -211,14 +190,12 @@ tdm.registerTalent({
 	rarity = tdm.rarity.rare,
 	chance = 30,
 	description = "Gain a brief period of immunity after killing someone",
-	description2 = "Immunity lasts 1.5 seconds",
+	description2 = "Immunity lasts 1 second",
 	healthbonus = 0.025,
 	speedbonus = 0,
 	damagebonus = 0.02,
 	callback = function(killer,victim,weapon,x,y,killerobject,assistant)
-		if weapon >= 1 and weapon <= 100 then
-			tdm.player[killer].effects.immunityframes = 1.5
-		end
+		tdm.applydb(killer,tdm.dbtypes.immunity)
 	end,
 	prerequirment = nil,
 	owned = false
@@ -229,17 +206,34 @@ tdm.registerTalent({
 	name = "Ghost",
 	rarity = tdm.rarity.legendary,
 	chance = 10,
-	description = "Gain 6 seconds of dodge frames for 6 seconds",
+	description = "Gain 6 seconds of dodge frames on kill",
 	description2 = "Dodge frames give you a 50% chance of dodging an attack",
 	healthbonus = 0,
 	speedbonus = 3,
 	damagebonus = 0.02,
 	callback = function(killer,victim,weapon,x,y,killerobject,assistant)
-		if weapon >= 1 and weapon <= 100 then
-			tdm.player[killer].effects.dodgeframes = 6
-		end
+		tdm.applydb(killer,tdm.dbtypes.dodge)
 	end,
 	prerequirment = 5,
+	owned = false
+})
+
+tdm.registerTalent({
+	id = "poisononhit",
+	name = "Poison Shot",
+	rarity = tdm.rarity.rare,
+	chance = 30,
+	description = "All your attacks apply the Poison debuff",
+	description2 = "Slowly degrades health, ignoring armor",
+	healthbonus = 0.03,
+	speedbonus = 0,
+	damagebonus = 0.03,
+	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
+		if weapon >= 1 and weapon <= 100 then
+			tdm.applydb(id,tdm.dbtypes.poison)
+		end
+	end,
+	prerequirment = nil,
 	owned = false
 })
 
@@ -369,15 +363,14 @@ tdm.registerTalent({
 	rarity = tdm.rarity.rare,
 	chance = 30,
 	description = "Hitting an enemy whos on fire or with 40+ damage causes you to throw a followup burning spear",
-	description2 = "Extinguishes enemy fire on succesful fiery hits",
+	description2 = "Burning spears move even through walls",
 	healthbonus = 0.02,
 	speedbonus = 1,
 	damagebonus = 0.03,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if weapon >= 1 and weapon <= 100 then
-			if tdm.player[id].effects.fire > 0 then
+			if tdm.finddb(id,tdm.dbtypes.fire) ~= nil then
 				tdm.spawnprojectile(source,tdm.entitytypes.burningspear)
-				tdm.player[id].effects.fire = 0
 			end
 			if hpdmg >= 40 then
 				tdm.spawnprojectile(source,tdm.entitytypes.burningspear)
@@ -394,13 +387,13 @@ tdm.registerTalent({
 	rarity = tdm.rarity.rare,
 	chance = 30,
 	description = "All your attacks apply the On Fire! debuff",
-	description2 = "Deals 15 damage per second to unarmored targets",
+	description2 = "Eats through armor and health alike!",
 	healthbonus = 0.03,
 	speedbonus = 0,
 	damagebonus = 0.03,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if weapon >= 1 and weapon <= 100 then
-			tdm.player[id].effects.fire = 3
+			tdm.applydb(id,tdm.dbtypes.fire)
 		end
 	end,
 	prerequirment = nil,
@@ -444,13 +437,32 @@ tdm.registerTalent({
 	      tdm.spawnprojectile(source,tdm.entitytypes.brimstoneblast)
 	    end
 			if math.random(1,150) <= hpdmg then
-	      tdm.player[id].effects.brimstonefire = 8
+	      tdm.applydb(id,tdm.dbtypes.brimstone)
 	    end
 			if math.random(1,2500) <= hpdmg then
-				tdm.player[source].effects.brimstonefire = 6
+				tdm.applydb(source,tdm.dbtypes.brimstone)
 	    end
 		end
   end,
   prerequirment = nil,
   owned = false
+})
+
+tdm.registerTalent({
+	id = "poisononhitupgrade",
+	name = "Cobra",
+	rarity = tdm.rarity.legendary,
+	chance = 10,
+	description = "All your attacks apply the Acid Venom debuff",
+	description2 = "Acid Venom eats through armor quickly and makes short work of health",
+	healthbonus = 0.05,
+	speedbonus = 0,
+	damagebonus = 0.07,
+	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
+		if weapon >= 1 and weapon <= 100 then
+			tdm.applydb(id,tdm.dbtypes.acid)
+		end
+	end,
+	prerequirment = nil,
+	owned = false
 })
