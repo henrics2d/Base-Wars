@@ -83,7 +83,7 @@ tdm.registerTalent({
 	damagebonus = 0,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if math.random(1,100) <= 10 then
-			tdm.applydb(id,tdm.dbtypes.immunity)
+			tdm.applydb(id,tdm.dbtypes.falseimmunity)
 		end
 	end,
 	prerequirment = nil,
@@ -103,8 +103,8 @@ tdm.registerTalent({
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if math.random(1,100) <= 15 then
 			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),25,30,180,180,180)
-			tdm.applydb(id,tdm.dbtypes.immunity)
-			tdm.applydb(id,tdm.dbtypes.dodge)
+			tdm.applydb(id,tdm.dbtypes.falseimmunity)
+			tdm.applydb(id,tdm.dbtypes.swiftness)
 		end
 	end,
 	prerequirment = 5,
@@ -190,7 +190,7 @@ tdm.registerTalent({
 	rarity = tdm.rarity.rare,
 	chance = 30,
 	description = "Gain a brief period of immunity after killing someone",
-	description2 = "Immunity lasts 1 second",
+	description2 = "Immunity lasts 2 seconds",
 	healthbonus = 0.025,
 	speedbonus = 0,
 	damagebonus = 0.02,
@@ -442,6 +442,29 @@ tdm.registerTalent({
 			if math.random(1,2500) <= hpdmg then
 				tdm.applydb(source,tdm.dbtypes.brimstone)
 	    end
+		end
+  end,
+  prerequirment = nil,
+  owned = false
+})
+
+tdm.registerTalent({
+  id = "curseonhit",
+  name = "Curse of the Dead-King",
+  rarity = tdm.rarity.curse,
+  chance = 4,
+  description = "Killing an enemy steals their life energy and refills you to max health and increases your max health by a bit",
+  description2 = "However, you cannot regenerate life normally",
+  healthbonus = 0,
+  speedbonus = 2,
+  damagebonus = 0.15,
+  callback = function(killer,victim,weapon,x,y,killerobject,assistant)
+		if weapon >= 1 and weapon <= 100 then
+			tdm.player[killer].maxhealth = tdm.player[killer].maxhealth + (tdm.player[killer].maxhealth * 0.05)
+	    tdm.player[killer].health = tdm.player[killer].maxhealth
+			console.effect("\"colorsmoke\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
+			console.effect("\"flare\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
+			console.effect("\"colorsmoke\"",player(victim,"x"),player(victim,"y"),25,30,255,000,000)
 		end
   end,
   prerequirment = nil,

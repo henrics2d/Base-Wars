@@ -45,7 +45,7 @@ tdm.dbtypes.acid = {
 	onUpdate = function (db,id)
 		tdm.applydb(id,tdm.dbtypes.combattag)
 		console.effect("\"flare\"",player(id,"x"),player(id,"y"),1,1,170,000,225)
-		console.effect("\"smoke\"",player(id,"x"),player(id,"y"),1,1,000,255,000)
+		console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),3,3,170,000,225)
 		tdm.player[id].health = tdm.player[id].health - 1.2
 		if tdm.player[id].armor > 0 then
 			tdm.player[id].armor = tdm.player[id].armor - 3
@@ -107,7 +107,16 @@ tdm.dbtypes.dodge = {
 
 tdm.dbtypes.immunity = {
 	name = "Immunity-Frames",
-	duration = 1,
+	duration = 2,
+	image = "gfx/henristdm/buffsdebuffs/immunity.png",
+	onCreate = function (id) end,
+	onUpdate = function (db,id) end,
+	onDespawn = function (id) end
+}
+
+tdm.dbtypes.falseimmunity = {
+	name = "False Immunity-Frames",
+	duration = 0.2,
 	image = "gfx/henristdm/buffsdebuffs/immunity.png",
 	onCreate = function (id) end,
 	onUpdate = function (db,id) end,

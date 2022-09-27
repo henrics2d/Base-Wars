@@ -20,7 +20,7 @@ function tdm.killTalents(killer,victim,weapon,x,y,killerobject,assistant)
 	local pid = tdm.player[victim].chosentalent
 	local sourceid = tdm.player[killer].chosentalent
 	if sourceid ~= nil then
-		if sourceid.name == "Explosive Finish" or sourceid.name == "In Twain" or sourceid.name == "Ghost" then
+		if sourceid.name == "Explosive Finish" or sourceid.name == "In Twain" or sourceid.name == "Ghost" or sourceid.name == "Curse of the Dead-King" then
 			sourceid.callback(killer,victim,weapon,x,y,killerobject,assistant)
 		end
 	end

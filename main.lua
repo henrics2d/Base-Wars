@@ -70,7 +70,7 @@ function tdm.deletePlayerClass(id)
 				freeimage(db.image)
 			end
 		end
-	end 
+	end
 	if tdm.player[id].knifeimage ~= nil then
 		freeimage(tdm.player[id].knifeimage)
 		tdm.player[id].knifeimage = nil
@@ -128,7 +128,11 @@ function tdm.createClassImg(id)
 	    if playerdata.chosentalent.name ~= "Blessing of the Solar Angel" then
 	      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
 	    else
-	      playerdata.image = image(images.."solarradiance.png", 3, 0, 200 + id)
+				if playerdata.chosentalent.name ~= "Curse of the Dead-King" then
+		      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
+		    else
+	      	playerdata.image = image(images.."crown.png", 3, 0, 200 + id)
+				end
 	    end
 		end
 	end

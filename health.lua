@@ -23,7 +23,7 @@ function tdm.handledamage(id, source, damage)
 		if tdm.finddb(id,tdm.dbtypes.endurance) ~= nil then
 			damage = damage * 0.85
 		end
-		if tdm.finddb(id,tdm.dbtypes.immunity) ~= nil then
+		if tdm.finddb(id,tdm.dbtypes.immunity) ~= nil or tdm.finddb(id,tdm.dbtypes.falseimmunity) ~= nil then
 			console.effect("\"smoke\"",player(id,"x"),player(id,"y"),10,10,0,128,255)
 			damage = 0
 		end

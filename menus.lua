@@ -148,5 +148,5 @@ function tdm.pickSpawn(id,button,data,parameter)
 		return
 	end
 	console.setpos(id,misc.tile_to_pixel(data.x),misc.tile_to_pixel(data.y))
-	tdm.player[id].immunityframes = 3
+	tdm.applydb(id,tdm.dbtypes.immunity)
 end
