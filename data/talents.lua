@@ -449,23 +449,21 @@ tdm.registerTalent({
 })
 
 tdm.registerTalent({
-  id = "curseonhit",
+  id = "curseonkill",
   name = "Curse of the Dead-King",
   rarity = tdm.rarity.curse,
   chance = 4,
   description = "Killing an enemy steals their life energy and refills you to max health and increases your max health by a bit",
   description2 = "However, you cannot regenerate life normally",
-  healthbonus = 0,
+  healthbonus = 0.12,
   speedbonus = 2,
-  damagebonus = 0.15,
+  damagebonus = 0.05,
   callback = function(killer,victim,weapon,x,y,killerobject,assistant)
-		if weapon >= 1 and weapon <= 100 then
-			tdm.player[killer].maxhealth = tdm.player[killer].maxhealth + (tdm.player[killer].maxhealth * 0.05)
-	    tdm.player[killer].health = tdm.player[killer].maxhealth
-			console.effect("\"colorsmoke\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
-			console.effect("\"flare\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
-			console.effect("\"colorsmoke\"",player(victim,"x"),player(victim,"y"),25,30,255,000,000)
-		end
+		tdm.player[killer].maxhealth = tdm.player[killer].maxhealth + (tdm.player[killer].maxhealth * 0.05)
+    tdm.player[killer].health = tdm.player[killer].maxhealth
+		console.effect("\"colorsmoke\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
+		console.effect("\"flare\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
+		console.effect("\"colorsmoke\"",player(victim,"x"),player(victim,"y"),25,30,255,000,000)
   end,
   prerequirment = nil,
   owned = false

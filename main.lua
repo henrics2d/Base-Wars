@@ -118,7 +118,7 @@ end
 
 function tdm.createClassImg(id)
 	local playerdata = tdm.player[id]
-	if playerdata.class.img ~= nil or playerdata.chosentalent.name == "Blessing of the Solar Angel" or playerdata.chosentalent.name == "Curse of the Brimstone Witch" then
+	if playerdata.class.img ~= nil or playerdata.chosentalent.name == "Blessing of the Solar Angel" or playerdata.chosentalent.name == "Curse of the Brimstone Witch" or playerdata.chosentalent.name == "Curse of the Dead-King" then
 		if playerdata.class.name == "Solar Angel" then
 			playerdata.knifeimage = image(images.."solarsword.png", 3, 0, 200 + id)
 		end

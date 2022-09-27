@@ -24,7 +24,6 @@ function tdm.killTalents(killer,victim,weapon,x,y,killerobject,assistant)
 			sourceid.callback(killer,victim,weapon,x,y,killerobject,assistant)
 		end
 	end
-	return 1
 end
 
 function tdm.registerTalent(talentData)
