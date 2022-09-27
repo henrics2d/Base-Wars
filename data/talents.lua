@@ -461,6 +461,9 @@ tdm.registerTalent({
   callback = function(killer,victim,weapon,x,y,killerobject,assistant)
 		tdm.player[killer].maxhealth = tdm.player[killer].maxhealth + (tdm.player[killer].maxhealth * 0.05)
     tdm.player[killer].health = tdm.player[killer].maxhealth
+		if tdm.player[killer].maxhealth >= 750 then
+			tdm.player[killer].maxhealth = 750
+		end
 		console.effect("\"colorsmoke\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
 		console.effect("\"flare\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
 		console.effect("\"colorsmoke\"",player(victim,"x"),player(victim,"y"),25,30,255,000,000)

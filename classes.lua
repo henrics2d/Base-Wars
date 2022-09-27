@@ -153,12 +153,10 @@ tdm.classestable[#tdm.classestable+1] = {
 				local dx = math.abs(player(victim,"x")-px)
 				local dy = math.abs(player(victim,"y")-py)
 				local dist = dx + dy
-				if dist <= 128 then
+				if dist <= 256 then
 					if player(id,"team") == player(victim,"team") then
-						tdm.player[victim].damagemultiplier = 1.25
-						timer2(7500,{id},function(id)
-							tdm.player[victim].damagemultiplier = 1
-						end)
+						tdm.applydb(id,tdm.dbtypes.cta)
+						tdm.applydb(victim,tdm.dbtypes.cta)
 					end
 				end
 			end

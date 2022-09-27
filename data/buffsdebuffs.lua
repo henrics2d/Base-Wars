@@ -127,7 +127,10 @@ tdm.dbtypes.swiftness = {
 	name = "Swiftness",
 	duration = 8,
 	image = "gfx/henristdm/buffsdebuffs/swiftness.png",
-	onCreate = function (id) end,
+	onCreate = function (id)
+		console.effect("\"flare\"",player(id,"x"),player(id,"y"),15,25,000,255,000)
+		console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),15,25,000,255,000)
+	end,
 	onUpdate = function (db,id) end,
 	onDespawn = function (id) end
 }
@@ -136,11 +139,30 @@ tdm.dbtypes.strength = {
 	name = "Strength",
 	duration = 3,
 	image = "gfx/henristdm/buffsdebuffs/strength.png",
-	onCreate = function (id) end,
-	onUpdate = function (db,id)
+	onCreate = function (id)
+		console.effect("\"flare\"",player(id,"x"),player(id,"y"),15,25,255,000,000)
+		console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),15,25,255,000,000)
 		tdm.player[id].damagemultiplier = tdm.player[id].damagemultiplier + 0.25
+	end,
+	onUpdate = function (db,id)
 	end,
 	onDespawn = function (id)
 		tdm.player[id].damagemultiplier = tdm.player[id].damagemultiplier - 0.25
+	end
+}
+
+tdm.dbtypes.cta = {
+	name = "Call To Arms",
+	duration = 10,
+	image = "gfx/henristdm/buffsdebuffs/cta.png",
+	onCreate = function (id)
+		console.effect("\"flare\"",player(id,"x"),player(id,"y"),15,25,255,000,000)
+		console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),15,25,255,000,000)
+		tdm.player[id].damagemultiplier = tdm.player[id].damagemultiplier + 0.40
+	end,
+	onUpdate = function (db,id)
+	end,
+	onDespawn = function (id)
+		tdm.player[id].damagemultiplier = tdm.player[id].damagemultiplier - 0.40
 	end
 }
