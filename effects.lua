@@ -43,6 +43,9 @@ function tdm.regeneratePlayer(id)
 	if tdm.finddb(id,tdm.dbtypes.combattag) ~= nil then
 		return
 	end
+	if tdm.player[id].chosentalent.name == "Curse of the Dead-King" then
+		return
+	end
 	tdm.player[id].health = tdm.player[id].health + (tdm.player[id].maxhealth / math.random(24,30))
 	if tdm.player[id].health >= tdm.player[id].maxhealth then
 		tdm.player[id].health = tdm.player[id].maxhealth

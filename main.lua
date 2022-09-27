@@ -125,8 +125,8 @@ function tdm.createClassImg(id)
 		if playerdata.chosentalent.name == "Curse of the Brimstone Witch" then
 			playerdata.image = image(images.."brimstonehalo.png", 3, 0, 200 + id)
 		else
-	    if playerdata.chosentalent.name ~= "Blessing of the Solar Angel" then
-	      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
+	    if playerdata.chosentalent.name == "Blessing of the Solar Angel" then
+	      playerdata.image = image(images.."solarradiance.png", 3, 0, 200 + id)
 	    else
 				if playerdata.chosentalent.name ~= "Curse of the Dead-King" then
 		      playerdata.image = image(images..playerdata.class.img, 3, 0, 200 + id)
