@@ -4,13 +4,13 @@ tdm.registerTalent({
 	rarity = tdm.rarity.legendary,
 	chance = 10,
 	description = "Regain armor when dealing damage, scales with your weapon's damage",
-	description2 = "In a ratio of 1:2",
+	description2 = "In a ratio of 1:3",
 	healthbonus = 0.05,
 	speedbonus = 0,
 	damagebonus = 0.02,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if weapon >= 1 and weapon <= 100 then
-			tdm.player[source].armor = tdm.player[source].armor + (hpdmg * 0.5)
+			tdm.player[source].armor = tdm.player[source].armor + (hpdmg * 0.33)
 			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),1,1,0,128,255)
 		end
 	end,
@@ -57,13 +57,13 @@ tdm.registerTalent({
 	rarity = tdm.rarity.common,
 	chance = 100,
 	description = "Gain the ability to perform random critical attacks",
-	description2 = "Critical attacks deal 1.25x damage",
+	description2 = "Critical attacks deal 1.6x damage",
 	healthbonus = 0.015,
 	speedbonus = 0,
 	damagebonus = 0.05,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if math.random(1,100) <= 10 then
-			tdm.handledamage(id, source, hpdmg*0.25)
+			tdm.handledamage(id, source, hpdmg*0.60)
 			console.effect("\"flare\"",player(id,"x"),player(id,"y"),5,5,255,0,0)
 		end
 	end,
@@ -124,7 +124,7 @@ tdm.registerTalent({
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		if weapon >= 1 and weapon <= 100 then
 			if math.random(1,150) <= (hpdmg / 0.8)  then
-				tdm.handledamage(id, source, hpdmg*1.25)
+				tdm.handledamage(id, source, hpdmg*1.5)
 				console.effect("\"flare\"",player(id,"x"),player(id,"y"),60,30,255,255,255)
 			end
 		end
@@ -157,9 +157,9 @@ tdm.registerTalent({
 	chance = 10,
 	description = "Recover from damage dealt by dealing even more damage back",
 	description2 = "Applies the strength buff on hit",
-	healthbonus = 0.04,
+	healthbonus = 0.08
 	speedbonus = 1,
-	damagebonus = 0,
+	damagebonus = 0.03,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
 		tdm.applydb(id,tdm.dbtypes.strength)
 	end,
@@ -461,8 +461,9 @@ tdm.registerTalent({
   callback = function(killer,victim,weapon,x,y,killerobject,assistant)
 		tdm.player[killer].maxhealth = tdm.player[killer].maxhealth + (tdm.player[killer].maxhealth * 0.05)
     tdm.player[killer].health = tdm.player[killer].maxhealth
-		if tdm.player[killer].maxhealth >= 750 then
-			tdm.player[killer].maxhealth = 750
+		if tdm.player[killer].maxhealth >= 1000 then
+			tdm.player[killer].maxhealth = 1000
+			tdm.player[killer].health = 1000
 		end
 		console.effect("\"colorsmoke\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)
 		console.effect("\"flare\"",player(killer,"x"),player(killer,"y"),25,30,255,000,000)

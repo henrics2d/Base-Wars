@@ -8,7 +8,7 @@ function tdm.applydb(id,type)
 	local current = tdm.finddb(id,type)
 	if current == nil then
 		db.image = image(db.type.image, 200, (player(id,"screenh") - player(id,"screenh")) - 32, 2, id)
-		db.type.onCreate(id)
+		db.type.onCreate(db)
 		local playerdata = tdm.player[id]
 		playerdata.effects[#playerdata.effects + 1] = db
 		tdm.shiftguidbs(id)
