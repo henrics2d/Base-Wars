@@ -63,6 +63,37 @@ function misc.tile_to_pixel(tile)
 	return (tile*32)+16
 end
 
+
+function misc.lengthdir_x(dir,length)
+	return math.cos(math.rad(dir - 90))*length
+end
+
+
+function misc.lengthdir_y(dir,length)
+	return math.sin(math.rad(dir - 90))*length
+end
+
+-- originally created by: http://gmc.yoyogames.com/index.php?showtopic=433253
+-- modified and converted to lua by Endercrypt
+function misc.turnTowards(direction, targetDir, turnspeed)
+    angdiff = misc.angleDiffrence(direction, targetDir)--((((direction - wdir) % 360) + 540) % 360) - 180;
+    return (direction - math.min(math.max(angdiff,-turnspeed),turnspeed)) % 360
+end
+
+function misc.angleDiffrence(dir, dir2)
+    return ((((dir - dir2) % 360) + 540) % 360) - 180;
+end
+
+-- calculate the direction beetween 2 points
+function misc.point_direction(x1,y1,x2,y2)
+	return -math.deg(math.atan2(x1-x2,y1-y2))
+end
+
+-- calculate the distance beetween 2 points
+function misc.point_distance(x1,y1,x2,y2)
+	return math.sqrt((x1-x2)^2 + (y1-y2)^2)
+end
+
 function tdm.find_entity(name)
 	local list=entitylist()
 	for _,e in pairs(list) do
@@ -72,6 +103,7 @@ function tdm.find_entity(name)
 	end
 	return nil
 end
+
 
 function tdm.find_entity_types(typename)
 	local result = {}

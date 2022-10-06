@@ -31,8 +31,8 @@ dofile(tdm.directories.data.."/buffsdebuffs.lua")
 dofile(tdm.directories.data.."/deathmessages.lua")
 dofile(tdm.directory.."/talents.lua")
 dofile(tdm.directory.."/customchat.lua")
-dofile(tdm.directories.vehicles.."/engine.lua")
 dofile(tdm.directories.customnpc.."/engine.lua")
+dofile(tdm.directories.vehicles.."/vehicles.lua")
 
 tdm.player = {}
 
