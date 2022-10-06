@@ -1,8 +1,24 @@
+addhook("second","tdm.solarAngelParticles")
+function tdm.solarAngelParticles()
+	for _,id in ipairs(player(0,"tableliving")) do
+		if tdm.player[id].class == nil then
+			return
+		end
+		if tdm.player[id].class.name == "Solar Angel" or tdm.player[id].chosentalent.name == "Blessing of the Solar Angel" then
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),2,2,255,255,128)
+		end
+		if tdm.player[id].chosentalent.name == "Curse of the Brimstone Witch" then
+			console.effect("\"flare\"",player(id,"x"),player(id,"y"),3,3,255,000,000)
+			console.effect("\"colorsmoke\"",player(id,"x"),player(id,"y"),1,1,255,000,000)
+		end
+	end
+end
+
 addhook("select","tdm.solarAngelCosmetics")
 function tdm.solarAngelCosmetics(id,type,mode)
   if tdm.player[id].class == nil then
     return
-  end 
+  end
   if tdm.player[id].class.name == "Solar Angel" then
     if type == 50 then
       freeimage(tdm.player[id].knifeimage)
@@ -15,8 +31,7 @@ function tdm.solarAngelCosmetics(id,type,mode)
 end
 
 function tdm.regeneration()
-	local players = player(0,"tableliving")
-	for _,id in ipairs(players) do
+	for _,id in ipairs(player(0,"tableliving")) do
 		tdm.regeneratePlayer(id)
 	end
 end
@@ -25,14 +40,16 @@ function tdm.regeneratePlayer(id)
 	if tdm.player[id].class == nil then
 		return
 	end
-	if tdm.player[id].effects.combattimer > 0 then
+	if tdm.finddb(id,tdm.dbtypes.combattag) ~= nil then
 		return
 	end
-	tdm.player[id].health = tdm.player[id].health + tdm.player[id].maxhealth / math.random(16,24)
+	if tdm.player[id].chosentalent.name == "Curse of the Dead-King" then
+		return
+	end
+	tdm.player[id].health = tdm.player[id].health + (tdm.player[id].maxhealth / math.random(24,30))
 	if tdm.player[id].health >= tdm.player[id].maxhealth then
 		tdm.player[id].health = tdm.player[id].maxhealth
 	end
-	tdm.handledamage(id, 0, 0)
 end
 
 addbind("space")
@@ -66,52 +83,6 @@ function tdm.abilityCountdown()
 			tdm.player[id].abilitycooldown = tdm.player[id].abilitycooldown - 0.1
 			if tdm.player[id].abilitycooldown < 0 then
 				tdm.player[id].abilitycooldown = 0
-			end
-		end
-	end
-end
-
-function tdm.dodgeBoostEffect()
-	for _,id in ipairs(player(0,"tableliving")) do
-		if tdm.player[id].class ~= nil then
-			if tdm.player[id].effects.dodgeboost > 0 then
-				parse("speedmod "..id.." "..tdm.player[id].speed+tdm.player[id].effects.dodgeboost)
-			end
-		end
-	end
-end
-
-function tdm.damageBuffEffect()
-	for _,id in ipairs(player(0,"tableliving")) do
-		if tdm.player[id].class ~= nil then
-			tdm.player[id].damagemultiplier = (tdm.player[id].effects.damagebuff / 100)	+ 1
-			if tdm.player[id].damagemultiplier >= 1.6 then
-				tdm.player[id].damagemultiplier = 1.6
-			end
-		end
-	end
-end
-
-function tdm.onFireEffect()
-	for _,id in ipairs(player(0,"tableliving")) do
-		if tdm.player[id].class ~= nil then
-			if tdm.player[id].effects.fire > 0 then
-				tdm.handledamage(id, 0, 1)
-				parse("effect \"flare\" "..player(id,"x").." "..player(id,"y").." 3 3 255 165 000")
-			end
-		end
-	end
-end
-
-function tdm.effectsCounterUpdate()
-	for id,playerdata in pairs(tdm.player) do
-		if playerdata.class ~= nil then
-			for effect,value in pairs(playerdata.effects) do
-				value = value - 0.1
-				if value < 0 then
-					value = 0
-				end
-				playerdata.effects[effect] = value
 			end
 		end
 	end

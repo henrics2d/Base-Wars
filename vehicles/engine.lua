@@ -20,14 +20,13 @@ tdm.vehicletypes.humvee = {
 	onPlayerCollsion = function(entity,id)
 		if (player(vehicle.owner, "team") ~= player(id, "team")) then
 			tdm.handledamage(id, vehicle.owner, math.random(100,125))
-			tdm.player[id].effects.combattimer = math.random(8,10)
+			tdm.applydb(id,tdm.dbtypes.combattag)
 		end
 	end,
 	onWallCollision = function(entity)
 		vehicle.alive = false
 	end,
 	onDespawn = function(entity)
-		--parse("explosion "..entity.position.x.." "..entity.position.y.." 85 550 "..entity.owner)
 	end
 }
 

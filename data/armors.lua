@@ -17,7 +17,7 @@ tdm.armorstable[#tdm.armorstable+1] = {
 	name = "Basic Vest",
 	description = "Can't fully stop even small arms fire",
 	resistance = 15,
-	damageondink = 50,
+	damageondink = 30,
 	damageonresist = 20
 }
 
@@ -26,7 +26,7 @@ tdm.armorstable[#tdm.armorstable+1] = {
 	name = "Kevlar Vest",
 	description = "Can stop most small arms fire",
 	resistance = 20,
-	damageondink = 30,
+	damageondink = 18,
 	damageonresist = 15
 }
 
@@ -35,7 +35,7 @@ tdm.armorstable[#tdm.armorstable+1] = {
 	name = "Full Body Armor",
 	description = "Small arms fire do almost nothing, besides sniper rifles",
 	resistance = 35,
-	damageondink = 20,
+	damageondink = 12,
 	damageonresist = 5
 }
 
@@ -44,7 +44,7 @@ tdm.armorstable[#tdm.armorstable+1] = {
 	name = "Juggernaut Armor",
 	description = "Only explosives will go through this one",
 	resistance = 100,
-	damageondink = 35,
+	damageondink = 9,
 	damageonresist = 5
 }
 
@@ -62,7 +62,7 @@ tdm.armorstable[#tdm.armorstable+1] = {
 	name = "Heavy Armor Suit",
 	description = "Lots of it but not that effective",
 	resistance = 25,
-	damageondink = 25,
+	damageondink = 14,
 	damageonresist = 15
 }
 
@@ -71,6 +71,6 @@ tdm.armorstable[#tdm.armorstable+1] = {
   name = "Solar Armor",
   description = "Extremely hot!",
   resistance = 35,
-  damageondink = 1,
+  damageondink = 2,
   damageonresist = 20
 }

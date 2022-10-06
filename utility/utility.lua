@@ -24,6 +24,7 @@ dofile(tdm.directories.utility.."/timer2.lua")
 dofile(tdm.directories.utility.."/checks.lua")
 dofile(tdm.directories.utility.."/EnderCryptSaveEngine.lua")
 dofile(tdm.directories.utility.."/custommenus.lua")
+dofile(tdm.directories.utility.."/console.lua")
 
 --Made by EnderCrypt
 

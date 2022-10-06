@@ -3,12 +3,12 @@ function tdm.classmenu(id)
 	if tdm.player[id].defaultclass ~= nil then
 		return
 	end
-	sme.createMenu(id,tdm.equipClass,tdm.showClass,"Classes",true,tdm.classestable,false)
+	sme.createMenu(id,tdm.equipClass,tdm.showClass,"Classes",true,tdm.classestable,true)
 end
 
 function tdm.showClass(id,data,parameter)
-	local text = data.name.."| Health: "..data.health
-	if data.unique then
+	local text = data.name.."| Rank: "..tdm.playerranks[data.rankreq].name
+	if data.unique or tdm.player[id].rank < data.rankreq then
 		text = "("..text..")"
 	end
 	return text
@@ -39,27 +39,11 @@ function tdm.sayClass(id,txt)
 		end
 		if (txt == "N") or (txt == "n") then
 			msg2(id,rgb(255,255,255).."Action "..rgb(255,000,000).."Cancelled.")
-			sme.createMenu(id,tdm.equipClass,tdm.showClass,"Classes",true,tdm.classestable,false)
+			sme.createMenu(id,tdm.equipClass,tdm.showClass,"Classes",true,tdm.classestable,true)
 			return 1
 		end
 	end
 	return 1
-end
-
-function tdm.choosespawn(id)
-	sme.createMenu(id,tdm.chooseSpawnpoint,tdm.showSpawnpoint,"Spawn Points",true,tdm.spawnpoints,false)
-end
-
-function tdm.showSpawnpoint(id,data,parameter)
-	local text = data.name
-	if player(id,"team") ~= data.ownedby then
-		text = "("..data..")"
-	end
-	return text
-end
-
-function tdm.chooseSpawnpoint(id,button,data,parameter)
-	parse("setpos "..id.." "..misc.tile_to_pixel(data.x).." "..misc.tile_to_pixel(data.y))
 end
 
 addhook("serveraction","tdm.serveraction")
@@ -99,7 +83,7 @@ function tdm.confirmDefaultClass(id,data)
 	msg2(id,rgb(255,255,128)..data.description2)
 	msg2(id,rgb(255,255,128)..data.name..rgb(255,255,255).." has been set as your default class!")
 	tdm.player[id].defaultclass = data
-	parse("customkill 0 Suicide "..id)
+	console.customkill(0,"Is now a "..data.name,id)
 end
 
 function tdm.optionDefaultClass(id)
@@ -109,7 +93,7 @@ end
 
 
 function tdm.showTalentList(id)
-	sme.createMenu(id,tdm.talentDescription,tdm.showTalent,"Talents",true,tdm.talents,false)
+	sme.createMenu(id,tdm.talentDescription,tdm.showTalent,"Talents",true,tdm.talents,true)
 end
 
 function tdm.showTalent(id,data,parameter)
@@ -119,13 +103,13 @@ end
 
 function tdm.talentDescription(id,button,data,parameter)
 	msg2(id,rgb(255,255,128).."Talent Description: "..data.name)
-	msg2(id,rgb(255,255,255)..data.rarity.name.." Talent")
+	msg2(id,data.rarity.color..data.rarity.name)
 	msg2(id,rgb(255,255,255)..data.description)
 	msg2(id,rgb(255,255,255)..data.description2)
 end
 
 function tdm.pickTalentList(id)
-	sme.createMenu(id,tdm.pickTalent,tdm.showTalentUnlocked,"Owned Talents",true,tdm.listPlayersTalents(id),false)
+	sme.createMenu(id,tdm.pickTalent,tdm.showTalentUnlocked,"Owned Talents",true,tdm.listPlayersTalents(id),true)
 end
 
 function tdm.showTalentUnlocked(id,data,parameter)
@@ -138,9 +122,9 @@ function tdm.pickTalent(id,button,data,parameter)
 end
 
 function tdm.showTalentStats(id,data,parameter)
-	msg2(id,rgb(255,255,128).."Talent "..data.name)
-	msg2(id,rgb(255,255,255)..data.rarity.name.." Talent")
-	msg2(id,rgb(255,255,255)..data.healthbonus.." extra health")
+	msg2(id,rgb(255,255,128).."Talent: "..rgb(255,255,255)..data.name)
+	msg2(id,data.rarity.color..data.rarity.name)
+	msg2(id,rgb(255,255,255)..data.healthbonus * 100 .."% extra health")
 	msg2(id,rgb(255,255,255)..data.speedbonus.." extra base speed")
 	msg2(id,rgb(255,255,255)..data.damagebonus * 100 .."% extra damage")
 	msg2(id,rgb(255,255,255).."Talent "..rgb(000,255,000).."Equipped!")
@@ -163,5 +147,6 @@ function tdm.pickSpawn(id,button,data,parameter)
 	if player(id,"team") ~= entity(data.x,data.y,"int0") then
 		return
 	end
-	parse("setpos "..id.." "..misc.tile_to_pixel(data.x).." "..misc.tile_to_pixel(data.y))
+	console.setpos(id,misc.tile_to_pixel(data.x),misc.tile_to_pixel(data.y))
+	tdm.applydb(id,tdm.dbtypes.immunity)
 end
