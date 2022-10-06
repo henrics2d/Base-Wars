@@ -176,6 +176,7 @@ function tdm.vehicles.exitVehicle(id)
 	end
 
 	vehicle.gear = 0
+	vehicle.player = nil
 	msg2(id, "you exited the vehicle")
 	return true
 end
