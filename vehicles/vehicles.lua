@@ -206,3 +206,7 @@ function tdm.vehicles.getClosest(x, y)
 	end
 	return best.vehicle
 end
+
+
+-- TEST VEHICLE
+tdm.vehicles.spawnVehicle(320, 320, 45, tdm.vehicles.brands.humvee)
