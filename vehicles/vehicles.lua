@@ -1,5 +1,6 @@
 tdm.vehicles = {}
 tdm.vehicles.friction = 0.1
+tdm.vehicles.turnspeed = 0.5
 tdm.vehicles.list = {}
 
 dofile(tdm.directories.vehicles.."/brands.lua")
@@ -20,18 +21,18 @@ function tdm.vehicles.key(id, key, state)
 	if (vehicle == nil) then
 		return
 	end
-
-	if (state == 0) then
+	if (state == 1) then
 		-- press key
 
 		if (key == tdm.vehicles.keys.accelerate) then
 			vehicle.gear = 2
 		end
-		if (key == tdm.vehicles.keys.accelerate) then
+		if (key == tdm.vehicles.keys.decelerate) then
 			vehicle.gear = -1
 		end
 
-	else
+	end
+	if (state == 0) then
 		-- release key
 
 		if (key == tdm.vehicles.keys.accelerate or key == tdm.vehicles.keys.decelerate) then
@@ -43,7 +44,7 @@ end
 
 addhook("use", "tdm.vehicles.use")
 function tdm.vehicles.use(id, event, data, x, y)
-	if (event ~= 0) end
+	if (event ~= 0) then
 		return
 	end
 
@@ -63,7 +64,7 @@ end
 addhook("ms100","tdm.vehicles.ms100")
 function tdm.vehicles.ms100()
 	local i = 1
-	while (i < #tdm.vehicles.list) do
+	while (i <= #tdm.vehicles.list) do
 		local vehicle = tdm.vehicles.list[i]
 		tdm.vehicles.updateVehicle(vehicle, 100)
 		if (vehicle.alive) then
@@ -101,18 +102,21 @@ function tdm.vehicles.updateVehicle(vehicle, delta)
 
 	-- rotation
 	if (vehicle.player ~= nil) then
-		vehicle.rotation = misc.turnTowards(vehicle.rotation, player(vehicle.player, "rot"), vehicle.speed)
+		--msg("rotation: "..vehicle.rotation.." -> "..player(vehicle.player,"rot"))
+		vehicle.rotation = misc.turnTowards(vehicle.rotation, player(vehicle.player, "rot"), math.abs(vehicle.speed * tdm.vehicles.turnspeed))
+		vehicle.rotation = vehicle.rotation % 360
 	end
 
 	-- gear
 	local acceleration = vehicle.gear * vehicle.brand.speed
 	vehicle.speed = vehicle.speed + acceleration
+	--msg("speed: "..vehicle.speed.." ("..vehicle.gear..")")
 
 	-- movement
 	vehicle.position.x = vehicle.position.x + misc.lengthdir_x(vehicle.rotation, vehicle.speed)
 	vehicle.position.y = vehicle.position.y + misc.lengthdir_y(vehicle.rotation, vehicle.speed)
 
-	tween_image(vehicle.image, delta, vehicle.position.x, vehicle.position.y, vehicle.rotation)
+	tween_move(vehicle.image, delta, vehicle.position.x, vehicle.position.y, vehicle.rotation)
 
 	if (vehicle.player ~= nil) then
 		console.setpos(vehicle.player, vehicle.position.x, vehicle.position.y)
@@ -209,4 +213,4 @@ end
 
 
 -- TEST VEHICLE
-tdm.vehicles.spawnVehicle(320, 320, 45, tdm.vehicles.brands.humvee)
+tdm.vehicles.spawnVehicle(100, 100, 270 + 45, tdm.vehicles.brands.humvee)
