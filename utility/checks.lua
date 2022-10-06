@@ -8,6 +8,7 @@ function checks.requireNotNil(name, value)
 	if (value == nil) then
 		checks.typeError(name, value)
 	end
+	return value
 end
 
 function checks.requireType(name, value, ...)
