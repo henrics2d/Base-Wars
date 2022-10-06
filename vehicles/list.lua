@@ -1,2 +1,0 @@
-tdm.vehicles.types = {}
-
