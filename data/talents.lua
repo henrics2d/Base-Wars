@@ -157,7 +157,7 @@ tdm.registerTalent({
 	chance = 10,
 	description = "Recover from damage dealt by dealing even more damage back",
 	description2 = "Applies the strength buff on hit",
-	healthbonus = 0.08
+	healthbonus = 0.08,
 	speedbonus = 1,
 	damagebonus = 0.03,
 	callback = function(id, source, weapon, hpdmg, apdmg, rawdmg, obj)
